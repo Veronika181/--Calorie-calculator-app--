@@ -39,30 +39,44 @@ function changeValue(inputId, increment) {
 }
 
 function calculateCalories() {
-    const height = parseInt(document.getElementById('height').value, 10);
-    const age = parseInt(document.getElementById('ageDisplay').textContent, 10);
-    const weight = parseInt(document.getElementById('weightDisplay').textContent, 10);
-    const gender = document.querySelector('[data-selected="true"]').id === 'maleBtn' ? 'male' : 'female';
-    const bodyFat = parseFloat(document.getElementById('bodyFat').value) || 0;
-    const activityLevel = parseFloat(document.getElementById('activityLevel').value) || 1;
+    // Získání hodnot z formuláře
+    const gender = document.getElementById('gender').value;
+    const age = parseInt(document.getElementById('age').value);
+    const weight = parseFloat(document.getElementById('weight').value);
+    const height = parseFloat(document.getElementById('height').value);
+    const activityFactor = parseFloat(document.getElementById('activity').value);
 
-    let bmr;
-    if (gender === 'male') {
-        bmr = 10 * weight + 6.25 * height - 5 * age + 5;
-    } else {
-        bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+    // Ověření, že všechny vstupy jsou platné
+    if (isNaN(age) || isNaN(weight) || isNaN(height) || isNaN(activityFactor)) {
+        alert('Prosím, zadejte všechny údaje správně.');
+        return;
     }
 
-    const tdee = bmr * activityLevel;
-    const bodyFatCalories = bodyFat ? tdee * (bodyFat / 100) : 0;
-    const totalCalories = tdee - bodyFatCalories;
+    let bmr;
 
-    // Display the total calorie value directly
-    document.getElementById('calorieResult').textContent = `Your daily caloric needs are ${totalCalories.toFixed(2)} calories.`;
+    // Výpočet BMR podle pohlaví
+    if (gender === 'female') {
+        bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
+    } else if (gender === 'male') {
+        bmr = (10 * weight) + (6.25 * height) - (5 * age) + 5;
+    } else {
+        alert('Neplatné pohlaví.');
+        return;
+    }
 
-    // Show the result section
-    showSection('resultSection', 'styles-result.css');
+    // Výpočet TDEE
+    const tdee = bmr * activityFactor;
+
+    // Zobrazení výsledků
+    const results = document.getElementById('results');
+    results.innerHTML = `
+        <h2>Výsledky</h2>
+        <p>Vaše BMR je <strong>${bmr.toFixed(2)} kalorií</strong>.</p>
+        <p>Váš TDEE je <strong>${tdee.toFixed(2)} kalorií</strong>.</p>
+    `;
 }
+
+
 
 // Event listeners to trigger calculation on input change
 document.getElementById('height').addEventListener('input', updateHeightDisplay);
