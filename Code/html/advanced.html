@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Page</title>
+    <link rel="stylesheet" href="css/styles-advanced.css">
+</head>
+<body>
+    <header>
+        <h1>CalorieTracker - Advanced</h1>
+    </header>
+    <main>
+        <div id="advanced" class="section">
+            <div class="advanced-container">
+                <div class="input-group">
+                    <label for="bodyFat">Body Fat</label>
+                    <div class="input-group">
+                        <span id="bodyFatDisplay">40%</span>
+                        <input type="range" id="bodyFat" name="bodyFat" min="0" max="100" value="40" oninput="updateBodyFatDisplay()">
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 20px;"></div>
+            <div class="advanced-container">
+                <div class="dropdown">
+                    <label for="bodyFat">Activity level</label>
+                    <button class="dropbtn">Select activity</button>
+                    <div class="dropdown-content">
+                        <a href="#">Small activity</a>
+                        <a href="#">Middle activity</a>
+                        <a href="#">High activity</a>
+                    </div>
+                </div>
+            </div>
+            <div class="button-container">
+                <button type="button" id="calculateButton" class="btn" onclick="location.href='result.html'; calculateCalories();">Next</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; Visit my Portfolio <a href="https://veronikaobrtelova.netlify.app/" target="_blank">website</a>.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,67 @@
+
+**Sprint 1 (Week 1):**
+Day 1: (4.7)
+Task 1: Implement input fields for height and weight.
+
+Day 2:
+Develop BMI calculation logic.
+
+Day 3:
+Task 3: Display calculated BMI to the user.
+
+Day 4:
+Task 4: Add functionality to clear inputs.
+
+Day 5:
+Review and Refinement:
+Test implemented features (input fields, BMI calculation, display).
+Address any issues or bugs identified during testing.
+Prepare for Sprint 1 review and planning for Sprint 2.
+Categorize BMI result into different categories.
+Provide information about the BMI formula.
+Support both imperial and metric units.
+
+Day 6
+Review and Refinement:
+Test responsiveness and unit support.
+Review information display and BMI categorization.
+Implement saving and retrieving BMI history (if prioritized).
+Develop graphical representation of BMI trends (if prioritized).
+
+Integration and Testing:
+Integrate BMI history and graphical representation features (if applicable).
+Conduct thorough testing to ensure all functionalities work together seamlessly.
+
+Review and Refinement:
+Finalize any remaining tasks.
+Conduct a comprehensive review of the entire application.
+
+Final Review and Release:
+Conduct final testing and quality assurance.
+Address any last-minute issues or adjustments.
+Prepare for the release of the BMI Calculator application.
+
+**Sprint 2 (Week 2):**
+next days:
+-see how to integrate a github project with node.js testing see how-to videos
+-fix missing male and female, user can select the whole area
+-advanced version of the app to add subcutaneous fat and activity,
+-add a menu in the existing app 
+-built-in - just three dashes and after hovering the mouse
+-the menu display in the mobile app and in the normal web ap
+-all the things that are in the menu and in the bar at the top
+-the application should be able to break down how much carbohydrates, proteins, fats and fiber I can ea
+-when dividing, I can choose whether I want a protein, carbohydrate, etc. diet.
+-how many graphic design? 
+-how to split the file index.html if I have one in mobile and one in web?
+-For css:
+mobile and web interface:
+-1. intro, 2. input, 3. result - first version design app
+-1. intro, 2.input - add subcutaneous fat and activity, 3. result -> I may or may now continue
+ 4.advanced version split into carbohydrates, proteins, fats and fiber- just do this 
+ next higher level - I can choose how much I want in what percentage, for example 40% protein, 35% carbohydrates, etc., 5. result for advanced version - second version design app 
+
+make new design
+-1. intro, 2.input, 3. result, 4.advanced version,5. result, 6. menu for food- basic food, add 
+adding taking away food plus and minus, what kind database? will i use something like react etc?
+-add days - monday, tuesday, wednesday, thursday, friday, saturday, sunday,7. result menu - export into pdf - third version app 

@@ -1,0 +1,64 @@
+**Basic Operations**
+
+Input for Height and Weight
+// PRIORITY - MUST HAVE //
+Priority: Must Have
+Description: Allow users to input their height and weight.
+Tool: GitHub Issue, Label: Must Have
+
+Calculate BMI
+Priority: Must Have
+Description: Calculate the Body Mass Index (BMI) based on the entered height and weight.
+Tool: GitHub Issue, Label: Must Have
+Display BMI Result
+
+Priority: Must Have
+Description: Display the calculated BMI value to the user.
+Tool: GitHub Issue, Label: Must Have
+BMI Categories
+
+Priority: Must Have
+Description: Provide a button or function to clear the height and weight inputs.
+Tool: GitHub Issue, Label: Must Have
+Responsive Design
+
+Priority: Must Have
+Description: Ensure the calculator is responsive and works well on various devices (desktop, mobile, tablets).
+Tool: GitHub Issue, Label: Must Have
+
+// PRIORITY - SHOULD HAVE //
+Priority: Should Have
+Description: Categorize the BMI result into underweight, normal weight, overweight, and obese.
+Tool: GitHub Issue, Label: Should Have
+Clear Inputs
+
+**Advanced Operations**
+
+// PRIORITY - SHOULD HAVE //
+BMI Formula Information
+Priority: Should Have
+Description: Display information about the BMI formula and how it is calculated.
+Tool: GitHub Issue, Label: Should Have
+Imperial and Metric Units
+
+Priority: Should Have
+Description: Support both imperial (feet/inches, pounds) and metric (centimeters, kilograms) units for height and weight.
+Tool: GitHub Issue, Label: Should Have
+Save and Retrieve BMI History
+
+// PRIORITY - MAY HAVE //
+Priority: May Have
+Description: Allow users to save their BMI results and retrieve them later.
+Tool: GitHub Issue, Label: May Have
+Graphical Representation of BMI Trends
+
+Priority: May Have
+Description: Show a graphical representation (e.g., chart) of BMI trends over time if saving history is implemented.
+Tool: GitHub Issue, Label: May Have
+Share BMI Results
+
+// PRIORITY - MAY HAVE //
+Priority: Won't Have
+Description: Share BMI results via social media or other platforms.
+Tool: GitHub Issue, Label: Won't Have
+

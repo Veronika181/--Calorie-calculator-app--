@@ -1,0 +1,126 @@
+body {
+    background-image: linear-gradient(#4CAF50, #63B967, #FFFFFF);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+h1, h2 {
+    margin: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.section {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.intro-img {
+    max-width: 100%;
+    height: auto;
+}
+
+button.btn {
+    background-color: #FFA500;
+    color: white;
+    margin: auto;
+}
+
+button {
+    color: #fff;
+    background-color: #808080;
+    width: 257px;
+    height: 76px;
+    border-radius: 20px;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin: 10px 0;
+    margin: right;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.input-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Space between input groups */
+    width: 100%;
+}
+
+.input-group {
+    background-color: #808080;
+    padding: 15px; /* Increased padding for better visibility */
+    border-radius: 10px;
+    box-sizing: border-box; /* Ensures padding is included in width/height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%; /* Ensures all input groups are of equal width */
+    font-size: 200%;
+}
+
+.input-group input[type="range"] {
+    width: 90%; 
+    margin-top: 10px;
+}
+
+.input-group label {
+    font-weight: bold;
+}
+
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px; /* Adjust spacing if necessary */
+}
+
+#calculateButton {
+    width: calc(100% - 40px); /* Adjust width to fit between age and weight inputs */
+}
+
+#result h2:first-of-type {
+    margin-bottom: 20px; /* Space between "Result" heading and result */
+}
+
+#calorieResult {
+    margin-bottom: 20px; /* Space between result and "Calories/Day" */
+}
+
+#result {
+    color: white;
+}
+
+@media (max-width: 768px) {
+    button {
+        width: auto;
+        font-size: 1rem;
+        padding: 10px;
+    }
+}
+

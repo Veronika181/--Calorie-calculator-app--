@@ -1,0 +1,89 @@
+body {
+    background-image: linear-gradient(#4CAF50, #63B967, #FFFFFF);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    padding: 30px;
+    background-color: #4CAF50;
+    color: white;
+    
+}
+
+h1, h2 {
+    margin: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.section {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+button {
+    color: #FFA500;  
+    background-color: white; /* Changed background color to white */
+    width: 257px;
+    height: 76px;
+    border: 2px solid #FFA500;  
+    border-radius: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+#calorieResult {
+    color: #ffffff;  
+    background-color: #FFA500; 
+    width: 257px;
+    height: 76px;
+    border: 2px solid #FFA500;
+    border-radius: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+#result h2:first-of-type {
+    margin-bottom: 20px; /* Space between "Result" heading and result */
+}
+
+#calorieResult {
+    margin-bottom: 20px; /* Space between result and "Calories/Day" */
+}
+
+#result {
+    color: white;
+}
+
+button:hover {
+    background-color: #FFA500;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    button {
+        width: auto;
+        font-size: 1rem;
+        padding: 10px;
+    }
+}
