@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Input Page</title>
-    <link rel="stylesheet" href="css/styles-input.css">
+    <link rel="stylesheet" href="../css/styles-intro.css">
+    <link rel="stylesheet" href="../css/styles-input.css">
 </head>
 <body>
     <header>
@@ -15,11 +16,11 @@
             <div class="input-container">
                 <div class="input-group">
                     <button id="maleBtn" class="gender-btn" onclick="selectGender('male')">Male</button>
-                    <img src="images/Vector.png" alt="male" class="gender-img"/>
+                    <img src="../images/Vector.png" alt="male" class="gender-img"/>
                 </div>
                 <div class="input-group">
                     <button id="femaleBtn" class="gender-btn" onclick="selectGender('female')">Female</button>
-                    <img src="images/Vector2.png" alt="female" class="gender-img"/>
+                    <img src="../images/Vector2.png" alt="female" class="gender-img"/>
                 </div>
             </div>
             <div style="margin-top: 20px;"></div>
@@ -52,13 +53,16 @@
                 </div>
             </div>
             <div class="button-container">
-                <button type="button" id="calculateButton" class="btn" onclick="location.href='advanced.html'; calculateCalories();">Next</button>
+                <button type="button" class="btn" onclick="location.href='advanced.html'">Next</button>
             </div>
+        </div>
+        <div id="result" class="section" style="display:none;">
+            <div id="calorieResult"></div>
         </div>
     </main>
     <footer>
         <p>&copy; Visit my Portfolio <a href="https://veronikaobrtelova.netlify.app/" target="_blank">website</a>.</p>
     </footer>
-    <script src="script.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>

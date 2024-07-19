@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Advanced Page</title>
-    <link rel="stylesheet" href="css/styles-advanced.css">
+    <link rel="stylesheet" href="../css/styles-intro.css">
+    <link rel="stylesheet" href="../css/styles-input.css">
+    <link rel="stylesheet" href="../css/styles-advanced.css">
+    <link rel="stylesheet" href="../css/styles/styles-result.css">
 </head>
 <body>
     <header>
@@ -14,34 +17,41 @@
         <div id="advanced" class="section">
             <div class="advanced-container">
                 <div class="input-group">
-                    <label for="bodyFat">Body Fat</label>
-                    <div class="input-group">
-                        <span id="bodyFatDisplay">40%</span>
-                        <input type="range" id="bodyFat" name="bodyFat" min="0" max="100" value="40" oninput="updateBodyFatDisplay()">
-                    </div>
-                </div>
-            </div>
+                    <label for="bodyFat">Body Fat Percentage:</label>
+<select id="bodyFat" onchange="calculateCalories()">
+    <!-- Options for females -->
+    <option value="" disabled selected>Select body fat percentage</option>
+    <!-- Default female options -->
+    <option value="10">10%</option>
+    <option value="15">15%</option>
+    <option value="20">20%</option>
+    <option value="25">25%</option>
+    <option value="30">30%</option>
+    <option value="35">35%</option>
+    <option value="40">40%</option>
+    <option value="45">45%</option>
+    <option value="50">50%</option>
+</select>
+
             <div style="margin-top: 20px;"></div>
             <div class="advanced-container">
                 <div class="dropdown">
-                    <label for="bodyFat">Activity level</label>
-                    <button class="dropbtn">Select activity</button>
-                    <div class="dropdown-content">
-                        <a href="#">Small activity</a>
-                        <a href="#">Middle activity</a>
-                        <a href="#">High activity</a>
-                    </div>
+                    <label for="activityLevel">Activity level</label>
+                    <select id="activityLevel">
+                        <option value="1.2">Small activity</option>
+                        <option value="1.375">Middle activity</option>
+                        <option value="1.55">High activity</option>
+                    </select>
                 </div>
             </div>
             <div class="button-container">
-                <button type="button" id="calculateButton" class="btn" onclick="location.href='result.html'; calculateCalories();">Next</button>
+                <button type="button" class="btn" onclick="location.href='result.html'">Calculate</button>
             </div>
         </div>
     </main>
     <footer>
         <p>&copy; Visit my Portfolio <a href="https://veronikaobrtelova.netlify.app/" target="_blank">website</a>.</p>
     </footer>
-    <script src="script.js"></script>
-</body>
-</html>
+    <script src="../js/script.js"></script>
+    <script>
 

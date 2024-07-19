@@ -3,21 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Result Page</title>
-    <link rel="stylesheet" href="css/styles-result.css">
+    <title>Calorie Result</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Retrieve the result from local storage
+            const calorieResult = localStorage.getItem('calorieResult');
+
+            // Display the result
+            document.getElementById('calorieResult').textContent = calorieResult || 'No result available.';
+
+            // Clear the local storage item if needed
+            localStorage.removeItem('calorieResult');
+        });
+    </script>
 </head>
 <body>
-    <header>
-        <h1>CalorieTracker - Result</h1>
-    </header>
-    <main>
-        <div id="result" class="section">
-            <p>Your calculated calories will be displayed here.</p>
-        </div>
-    </main>
-    <footer>
-        <p>&copy; Visit my Portfolio <a href="https://veronikaobrtelova.netlify.app/" target="_blank">website</a>.</p>
-    </footer>
-    <script src="script.js"></script>
+    <h1>Daily Caloric Needs</h1>
+    <p id="calorieResult">Loading...</p>
+    
+    <!-- Link back to the main page or any other navigation -->
+    <a href="index.html">Go Back</a>
 </body>
 </html>
