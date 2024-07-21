@@ -95,6 +95,17 @@ function saveDataInputOnPage(){
     const height = parseInt(document.getElementById('height').value);
     window.localStorage.setItem('height', height);
 
+    const weight = parseInt(document.getElementById('weight').value);
+    window.localStorage.setItem('weight', weight);
+
+    const age = parseInt(document.getElementById('age').value);
+    window.localStorage.setItem('age', age);
+
+    const male = parseInt(document.getElementById('male').value);
+    window.localStorage.setItem('male', male);
+
+    const female = parseInt(document.getElementById('female').value);
+    window.localStorage.setItem('female', female);
 
     window.location.href = 'adva.html';
 }
