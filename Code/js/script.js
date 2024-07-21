@@ -109,5 +109,13 @@ function saveDataInputOnPage(){
 
     window.location.href = 'adva.html';
 }
+
+function nextStepsaveDataOnPage(){
+    const bodyFat = parseInt(document.getElementById('bodyfat').value);
+    window.localStorage.setItem('bodyfat', bodyfat);
+
+    const activityLevel = parseInt(document.getElementById('activity').value);
+    window.localStorage.setItem('activity', activity);
+}
   
   
