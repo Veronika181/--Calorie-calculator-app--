@@ -21,12 +21,14 @@ function calculateCalories() {
     const weightLossCalories = totalCalories - 500; 
 
     console.log(bmr)
-    function myFunction() {
-        const outputElement = document.getElementById('output');
-        outputElement.textContent = 'The page has loaded and myFunction() was called!';
+    
+    function displayResults() {
+        const bmrElement = document.getElementById('bmr');
+        const tdeeElement = document.getElementById('tdee');
+        const totalCaloriesElement = document.getElementById('totalCalories');
+        const weightLossCaloriesElement = document.getElementById('weightLossCalories');
     }
-
-    }
+     
 
 function selectGender(gender) {
     const maleBtn = document.getElementById('maleBtn');
@@ -106,6 +108,5 @@ function nextStepSaveDataOnPage() {
     window.localStorage.setItem('activityLevel', activityLevel);
 
     window.location.href = 'result.html';
+    }
 }
-
-  
