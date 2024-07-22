@@ -8,10 +8,6 @@ function calculateCalories() {
 
     let bmr;
     if (gender === 'male') {
-        console.log(gender);
-        console.log(weight);
-        console.log(age);
-
         bmr = 10 * weight + 6.25 * height - 5 * age + 5;
     } else {
         bmr = 10 * weight + 6.25 * height - 5 * age - 161;
@@ -20,6 +16,9 @@ function calculateCalories() {
     const tdee = bmr * activityLevel;
     const totalCalories = tdee - (bodyFat ? tdee * (bodyFat / 100) : 0);
     const weightLossCalories = totalCalories - 500; 
+    const bmrValue = document.getElementById(id="bmr"); 
+    bmrValue.textContent = "BMR: " + bmr; 
+    
 
     console.log(bmr)
     
@@ -80,7 +79,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function saveDataInputOnPage() {
-    const height = parseInt(document.getElementById('heightDisplay').value, 10);
+    const height = parseInt(document.getElementById('height').value, 10);
+    console.log(height)
     window.localStorage.setItem('height', height);
 
     const weight = parseInt(document.getElementById('weightDisplay').textContent, 10);
