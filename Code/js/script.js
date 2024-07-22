@@ -1,13 +1,16 @@
 function calculateCalories() {
     const height = parseInt(localStorage.getItem("height"), 10) || 0;
-    const age = parseInt(document.getElementById('ageDisplay').textContent, 10);
-    const weight = parseInt(document.getElementById('weightDisplay').textContent, 10);
-    const gender = document.querySelector('[data-selected="true"]').id === 'maleBtn' ? 'male' : 'female';
-    const bodyFat = parseFloat(document.getElementById('bodyFat').value) || 0;
-    const activityLevel = parseFloat(document.getElementById('activityLevel').value) || 1;
+    const age = parseInt(localStorage.getItem('ageDisplay'), 10);
+    const weight = parseInt(localStorage.getItem('weightDisplay'), 10);
+    const gender = localStorage.getItem('gender');
+    const bodyFat = parseFloat(localStorage.getItem('bodyFat').value) || 0;
+    const activityLevel = parseFloat(localStorage.getItem('activityLevel')) || 1;
 
     let bmr;
     if (gender === 'male') {
+        console.log(gender);
+        console.log(weight);
+        console.log(age);
         bmr = 10 * weight + 6.25 * height - 5 * age + 5;
     } else {
         bmr = 10 * weight + 6.25 * height - 5 * age - 161;
@@ -17,13 +20,13 @@ function calculateCalories() {
     const totalCalories = tdee - (bodyFat ? tdee * (bodyFat / 100) : 0);
     const weightLossCalories = totalCalories - 500; 
 
-    localStorage.setItem('bmr', bmr.toFixed(2));
-    localStorage.setItem('tdee', tdee.toFixed(2));
-    localStorage.setItem('totalCalories', totalCalories.toFixed(2));
-    localStorage.setItem('weightLossCalories', weightLossCalories.toFixed(2));
-    
-    window.location.href = 'result.html';
-}
+    console.log(bmr)
+    function myFunction() {
+        const outputElement = document.getElementById('output');
+        outputElement.textContent = 'The page has loaded and myFunction() was called!';
+    }
+
+    }
 
 function selectGender(gender) {
     const maleBtn = document.getElementById('maleBtn');
@@ -62,12 +65,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    const heightElement = document.getElementById('height');
-    if (heightElement) {
-        heightElement.addEventListener('input', updateHeightDisplay);
-    } else {
-        console.error('Element with ID "height" not found.');
-    }
 
     const bmr = localStorage.getItem('bmr');
     const tdee = localStorage.getItem('tdee');
@@ -90,10 +87,10 @@ function saveDataInputOnPage() {
     window.localStorage.setItem('height', height);
 
     const weight = parseInt(document.getElementById('weightDisplay').textContent, 10);
-    window.localStorage.setItem('weight', weight);
+    window.localStorage.setItem('weightDisplay', weight);
 
     const age = parseInt(document.getElementById('ageDisplay').textContent, 10);
-    window.localStorage.setItem('age', age);
+    window.localStorage.setItem('ageDisplay', age);
 
     const gender = document.querySelector('[data-selected="true"]').id === 'maleBtn' ? 'male' : 'female';
     window.localStorage.setItem('gender', gender);
@@ -101,7 +98,7 @@ function saveDataInputOnPage() {
     window.location.href = 'adva.html';
 }
 
-function nextStepsaveDataOnPage() {
+function nextStepSaveDataOnPage() {
     const bodyFat = parseInt(document.getElementById('bodyFat').value, 10);
     window.localStorage.setItem('bodyFat', bodyFat);
 
