@@ -69,26 +69,15 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Element with ID "height" not found.');
     }
 
-   
     const bmr = localStorage.getItem('bmr');
     const tdee = localStorage.getItem('tdee');
     const totalCalories = localStorage.getItem('totalCalories');
     const weightLossCalories = localStorage.getItem('weightLossCalories');
 
-    if (bmr && tdee) {
-        document.getElementById('bmr').textContent = `BMR: ${bmr}`;
-        document.getElementById('tdee').textContent = `TDEE: ${tdee}`;
-    } else {
-        document.getElementById('bmr').textContent = 'BMR: No data available';
-        document.getElementById('tdee').textContent = 'TDEE: No data available';
-    }
-    if (totalCalories && weightLossCalories) {
-        document.getElementById('totalCalories').textContent = `Total Calories: ${totalCalories}`;
-        document.getElementById('weightLossCalories').textContent = `Calories for Weight Loss: ${weightLossCalories}`;
-    } else {
-        document.getElementById('totalCalories').textContent = 'Total Calories: No data available';
-        document.getElementById('weightLossCalories').textContent = 'Calories for Weight Loss: No data available';
-    }
+    const bmrElement = document.getElementById('bmr');
+    const tdeeElement = document.getElementById('tdee');
+    const totalCaloriesElement = document.getElementById('totalCalories');
+    const weightLossCaloriesElement = document.getElementById('weightLossCalories');
 
     localStorage.removeItem('bmr');
     localStorage.removeItem('tdee');
