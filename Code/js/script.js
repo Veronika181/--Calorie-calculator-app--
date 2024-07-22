@@ -10,8 +10,6 @@ function calculateCalories() {
     const activityLevel = parseFloat(document.getElementById('activityLevel').value) || 1;
 
 
-
-
     let bmr;
     if (gender === 'male') {
         bmr = 10 * weight + 6.25 * height - 5 * age + 5;
@@ -27,8 +25,6 @@ function calculateCalories() {
 
     
     localStorage.setItem('calorieResult', totalCalories.toFixed(2));
-
-    
     window.location.href = 'result.html';
 }
 
@@ -46,22 +42,19 @@ function selectGender(gender) {
         femaleBtn.setAttribute('data-selected', 'true');
         maleBtn.setAttribute('data-selected', 'false');
     }
-    updateBodyFatOptions();
 }
 
 function updateHeightDisplay() {
     const heightRange = document.getElementById('height');
     const heightDisplay = document.getElementById('heightDisplay');
     heightDisplay.textContent = heightRange.value + " cm";
-    calculateCalories();
 }
 
 function changeValue(id, delta) {
     const display = document.getElementById(id + 'Display');
     let value = parseInt(display.textContent, 10) + delta;
     if (value < 0) value = 0;
-    display.textContent = value;
-    calculateCalories();
+    display.textContent = value;  
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -95,27 +88,31 @@ function saveDataInputOnPage(){
     const height = parseInt(document.getElementById('height').value);
     window.localStorage.setItem('height', height);
 
-    const weight = parseInt(document.getElementById('weight').value);
+    const weight = parseInt(document.getElementById('weightDisplay').value);
     window.localStorage.setItem('weight', weight);
 
-    const age = parseInt(document.getElementById('age').value);
+    const age = parseInt(document.getElementById('ageDisplay').value);
     window.localStorage.setItem('age', age);
 
-    const male = parseInt(document.getElementById('male').value);
-    window.localStorage.setItem('male', male);
+    const gender = document.querySelector('[data-selected="true"]').id === 'maleBtn' ? 'male' : 'female';
+    window.localStorage.setItem('gender', gender);
 
-    const female = parseInt(document.getElementById('female').value);
-    window.localStorage.setItem('female', female);
-
+  
     window.location.href = 'adva.html';
 }
 
-function nextStepsaveDataOnPage(){
-    const bodyFat = parseInt(document.getElementById('bodyfat').value);
-    window.localStorage.setItem('bodyfat', bodyfat);
 
-    const activityLevel = parseInt(document.getElementById('activity').value);
-    window.localStorage.setItem('activity', activity);
+
+function nextStepsaveDataOnPage(){
+    const bodyFat = parseInt(document.getElementById('bodyFat').value);
+    window.localStorage.setItem('bodyFat', bodyFat);
+
+    const activityLevel = parseInt(document.getElementById('activityLevel').value);
+    window.localStorage.setItem('activityLevel', activityLevel);
+
+
+    window.location.href = 'result.html';
 }
   
+
   
