@@ -1,5 +1,5 @@
 function calculateCalories() {
-    const height = parseInt(localStorage.getItem("height"), 10) || 0;
+    const height = parseInt(localStorage.getItem('height'), 10) || 0;
     const age = parseInt(localStorage.getItem('ageDisplay'), 10);
     const weight = parseInt(localStorage.getItem('weightDisplay'), 10);
     const gender = localStorage.getItem('gender');
@@ -11,6 +11,7 @@ function calculateCalories() {
         console.log(gender);
         console.log(weight);
         console.log(age);
+
         bmr = 10 * weight + 6.25 * height - 5 * age + 5;
     } else {
         bmr = 10 * weight + 6.25 * height - 5 * age - 161;
@@ -22,13 +23,7 @@ function calculateCalories() {
 
     console.log(bmr)
     
-    function displayResults() {
-        const bmrElement = document.getElementById('bmr');
-        const tdeeElement = document.getElementById('tdee');
-        const totalCaloriesElement = document.getElementById('totalCalories');
-        const weightLossCaloriesElement = document.getElementById('weightLossCalories');
-    }
-     
+}
 
 function selectGender(gender) {
     const maleBtn = document.getElementById('maleBtn');
@@ -85,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function saveDataInputOnPage() {
-    const height = parseInt(document.getElementById('height').value, 10);
+    const height = parseInt(document.getElementById('heightDisplay').value, 10);
     window.localStorage.setItem('height', height);
 
     const weight = parseInt(document.getElementById('weightDisplay').textContent, 10);
@@ -108,5 +103,4 @@ function nextStepSaveDataOnPage() {
     window.localStorage.setItem('activityLevel', activityLevel);
 
     window.location.href = 'result.html';
-    }
 }
