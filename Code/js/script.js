@@ -1,14 +1,10 @@
 function calculateCalories() {
-    
-    const height = localStorage.getItem("height") 
-
-
+    const height = parseInt(localStorage.getItem("height"), 10) || 0;
     const age = parseInt(document.getElementById('ageDisplay').textContent, 10);
     const weight = parseInt(document.getElementById('weightDisplay').textContent, 10);
     const gender = document.querySelector('[data-selected="true"]').id === 'maleBtn' ? 'male' : 'female';
     const bodyFat = parseFloat(document.getElementById('bodyFat').value) || 0;
     const activityLevel = parseFloat(document.getElementById('activityLevel').value) || 1;
-
 
     let bmr;
     if (gender === 'male') {
@@ -18,13 +14,14 @@ function calculateCalories() {
     }
 
     const tdee = bmr * activityLevel;
-    const bodyFatCalories = bodyFat ? tdee * (bodyFat / 100) : 0;
-    const totalCalories = tdee - bodyFatCalories;
+    const totalCalories = tdee - (bodyFat ? tdee * (bodyFat / 100) : 0);
+    const weightLossCalories = totalCalories - 500; 
 
-    console.log('Calculated total calories:', totalCalories);
-
+    localStorage.setItem('bmr', bmr.toFixed(2));
+    localStorage.setItem('tdee', tdee.toFixed(2));
+    localStorage.setItem('totalCalories', totalCalories.toFixed(2));
+    localStorage.setItem('weightLossCalories', weightLossCalories.toFixed(2));
     
-    localStorage.setItem('calorieResult', totalCalories.toFixed(2));
     window.location.href = 'result.html';
 }
 
@@ -64,11 +61,19 @@ document.addEventListener('DOMContentLoaded', function() {
             changeValue(id, delta);
         });
     });
-    document.getElementById('height').addEventListener('input', updateHeightDisplay);
-});
-document.addEventListener('DOMContentLoaded', function() {
+
+    const heightElement = document.getElementById('height');
+    if (heightElement) {
+        heightElement.addEventListener('input', updateHeightDisplay);
+    } else {
+        console.error('Element with ID "height" not found.');
+    }
+
+   
     const bmr = localStorage.getItem('bmr');
     const tdee = localStorage.getItem('tdee');
+    const totalCalories = localStorage.getItem('totalCalories');
+    const weightLossCalories = localStorage.getItem('weightLossCalories');
 
     if (bmr && tdee) {
         document.getElementById('bmr').textContent = `BMR: ${bmr}`;
@@ -77,42 +82,44 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('bmr').textContent = 'BMR: No data available';
         document.getElementById('tdee').textContent = 'TDEE: No data available';
     }
+    if (totalCalories && weightLossCalories) {
+        document.getElementById('totalCalories').textContent = `Total Calories: ${totalCalories}`;
+        document.getElementById('weightLossCalories').textContent = `Calories for Weight Loss: ${weightLossCalories}`;
+    } else {
+        document.getElementById('totalCalories').textContent = 'Total Calories: No data available';
+        document.getElementById('weightLossCalories').textContent = 'Calories for Weight Loss: No data available';
+    }
 
-   
     localStorage.removeItem('bmr');
     localStorage.removeItem('tdee');
+    localStorage.removeItem('totalCalories');
+    localStorage.removeItem('weightLossCalories');
 });
 
-
-function saveDataInputOnPage(){
-    const height = parseInt(document.getElementById('height').value);
+function saveDataInputOnPage() {
+    const height = parseInt(document.getElementById('height').value, 10);
     window.localStorage.setItem('height', height);
 
-    const weight = parseInt(document.getElementById('weightDisplay').value);
+    const weight = parseInt(document.getElementById('weightDisplay').textContent, 10);
     window.localStorage.setItem('weight', weight);
 
-    const age = parseInt(document.getElementById('ageDisplay').value);
+    const age = parseInt(document.getElementById('ageDisplay').textContent, 10);
     window.localStorage.setItem('age', age);
 
     const gender = document.querySelector('[data-selected="true"]').id === 'maleBtn' ? 'male' : 'female';
     window.localStorage.setItem('gender', gender);
 
-  
     window.location.href = 'adva.html';
 }
 
-
-
-function nextStepsaveDataOnPage(){
-    const bodyFat = parseInt(document.getElementById('bodyFat').value);
+function nextStepsaveDataOnPage() {
+    const bodyFat = parseInt(document.getElementById('bodyFat').value, 10);
     window.localStorage.setItem('bodyFat', bodyFat);
 
-    const activityLevel = parseInt(document.getElementById('activityLevel').value);
+    const activityLevel = parseFloat(document.getElementById('activityLevel').value);
     window.localStorage.setItem('activityLevel', activityLevel);
-
 
     window.location.href = 'result.html';
 }
-  
 
   
