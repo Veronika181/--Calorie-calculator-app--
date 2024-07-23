@@ -3,23 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Výsledky</title>
+    <title>Calorie Tracker Results</title>
     <link rel="stylesheet" href="../css/styles-intro.css">
     <link rel="stylesheet" href="../css/styles-input.css">
     <link rel="stylesheet" href="../css/styles-advanced.css">
     <link rel="stylesheet" href="../css/styles-result.css">
 </head>
-<body onload= "calculateCalories()">
+<body onload="calculateCalories()">
     <header>
-        <h1>CalorieTracker</h1>
+        <h1>Calorie Tracker</h1>
     </header>
     <main>
         <div id="result" class="section">
             <div class="result-container">
-                <p id="bmr">BMR: </p>
-                <p id="tdee">TDEE: </p>
-                <p id="totalCalories">Total Calories:</p>
-                <p id="weightLossCalories">Calories for Weight Loss: </p>
+                <div class="result-item" title="Basal Metabolic Rate - The number of calories your body needs at rest to maintain basic physiological functions.">
+                    <h2>BMR</h2>
+                    <p id="bmr">BMR: </p>
+                </div>
+                <div class="result-item" title="Total Daily Energy Expenditure - The total number of calories you need per day including physical activity.">
+                    <h2>TDEE</h2>
+                    <p id="tdee">TDEE: </p>
+                </div>
+                <div class="result-item" title="Total Calories you should consume per day after considering body fat percentage.">
+                    <h2>Total Calories</h2>
+                    <p id="totalCalories">Total Calories:</p>
+                </div>
+                <div class="result-item" title="Calories you should consume per day to lose weight.">
+                    <h2>Calories for Weight Loss</h2>
+                    <p id="weightLossCalories">Calories for Weight Loss: </p>
+                </div>
             </div>
         </div>
     </main>
@@ -29,3 +41,4 @@
     <script src="../js/script.js"></script>
 </body>
 </html>
+

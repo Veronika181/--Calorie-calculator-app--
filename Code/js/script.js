@@ -14,15 +14,25 @@ function calculateCalories() {
     }
 
     const tdee = bmr * activityLevel;
-    const totalCalories = tdee - (bodyFat ? tdee * (bodyFat / 100) : 0);
-    const weightLossCalories = totalCalories - 500; 
-    const bmrValue = document.getElementById(id="bmr"); 
-    bmrValue.textContent = "BMR: " + bmr; 
-    
+    const bodyFatReduction = bodyFat ? tdee * (bodyFat / 100) : 0;
+    const totalCalories = tdee - bodyFatReduction;
+    const weightLossCalories = totalCalories - 500;
 
+    const bmrValue = document.getElementById("bmr");
+    bmrValue.textContent = "BMR: " + bmr;
+
+    const tdeeValue = document.getElementById("tdee");
+    tdeeValue.textContent = "TDEE: " + tdee;
+
+    const totalCaloriesValue = document.getElementById("totalCalories");
+    totalCaloriesValue.textContent = "Total Calories: " + totalCalories;
+
+    const weightLossCaloriesValue = document.getElementById("weightLossCalories");
+    weightLossCaloriesValue.textContent = "Calories for Weight Loss: " + weightLossCalories;
+}
     console.log(bmr)
     
-}
+
 
 function selectGender(gender) {
     const maleBtn = document.getElementById('maleBtn');
