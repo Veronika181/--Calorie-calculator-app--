@@ -39,7 +39,7 @@ main {
 }
 
 .result-item {
-    background-color: white;
+    background-color: #808080;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -52,18 +52,18 @@ main {
 .result-item h2 {
     margin-top: 0;
     font-size: 1.5em;
-    color: #4CAF50;
+    color: #ffffff;
 }
 
 .result-item p {
     font-size: 1.2em;
     margin: 10px 0;
-    color: black; /* Nastavení barvy textu výsledků na černou */
+    color: #FFA500 
 }
 
 .bar-container {
     height: 20px;
-    background-color: #f0f0f0;
+    background-color: #000000;
     border-radius: 10px;
     overflow: hidden;
     margin-top: 10px;
@@ -76,7 +76,6 @@ main {
     transition: width 0.3s;
 }
 
-/* Vlastní tooltip */
 .result-item:hover::after {
     content: attr(title);
     position: absolute;
@@ -111,3 +110,4 @@ footer {
 footer a {
     color: white;
 }
+

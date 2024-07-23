@@ -19,16 +19,16 @@ function calculateCalories() {
     const weightLossCalories = totalCalories - 500;
 
     const bmrValue = document.getElementById("bmr");
-    bmrValue.textContent = "BMR: " + bmr;
+    bmrValue.textContent = bmr;
 
     const tdeeValue = document.getElementById("tdee");
-    tdeeValue.textContent = "TDEE: " + tdee;
+    tdeeValue.textContent = tdee;
 
     const totalCaloriesValue = document.getElementById("totalCalories");
-    totalCaloriesValue.textContent = "Total Calories: " + totalCalories;
+    totalCaloriesValue.textContent = totalCalories;
 
     const weightLossCaloriesValue = document.getElementById("weightLossCalories");
-    weightLossCaloriesValue.textContent = "Calories for Weight Loss: " + weightLossCalories;
+    weightLossCaloriesValue.textContent =  weightLossCalories;
 }
     console.log(bmr)
     
