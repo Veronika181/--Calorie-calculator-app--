@@ -186,3 +186,129 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// script.js
+
+document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.btn-group button');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Unselect all buttons
+            buttons.forEach(btn => btn.classList.remove('selected'));
+            // Select the clicked button
+            button.classList.add('selected');
+        });
+    });
+});
+
+
+function selectweight(weight) {
+   
+    const reducebtn = document.getElementById('reduce');
+    const maintainbtn = document.getElementById('maintain');
+    const gainbtn = document.getElementById('gain');
+    
+  
+    const buttons = [reducebtn, maintainbtn, gainbtn];
+    buttons.forEach(btn => {
+        btn.style.backgroundColor = '#FFA500'; 
+        btn.setAttribute('data-selected', 'false');
+    });
+
+   
+    const selectedBtn = document.getElementById(weight);
+    if (selectedBtn) {
+        selectedBtn.style.backgroundColor = '#FF4500'; 
+        selectedBtn.setAttribute('data-selected', 'true');
+    }
+}
+
+
+
+function selectdeficit(amount) {
+ 
+    const lowbtn = document.getElementById('low');
+    const mediumbtn = document.getElementById('medium');
+    const highbtn = document.getElementById('high');
+    
+    
+    const buttons = [lowbtn, mediumbtn, highbtn];
+    buttons.forEach(btn => {
+        btn.style.backgroundColor = '#FFA500'; 
+        btn.setAttribute('data-selected', 'false');
+    });
+
+    const selectedBtn = document.getElementById(amount);
+    if (selectedBtn) {
+        selectedBtn.style.backgroundColor = '#FF4500'; 
+        selectedBtn.setAttribute('data-selected', 'true');
+    }
+}
+
+// script.js
+
+document.addEventListener('DOMContentLoaded', () => {
+    const buttonGroups = document.querySelectorAll('.btn-group');
+
+    buttonGroups.forEach(group => {
+        const buttons = group.querySelectorAll('button');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Unselect all buttons in the same group
+                buttons.forEach(btn => btn.classList.remove('selected'));
+                // Select the clicked button
+                button.classList.add('selected');
+            });
+        });
+    });
+});
+// script.js
+
+// Funkce pro přepnutí třídy vybrané
+function toggleSelection(buttonGroup) {
+    const buttons = document.querySelectorAll(buttonGroup + ' button');
+    
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Odebrání třídy 'selected' ze všech tlačítek
+            buttons.forEach(btn => btn.classList.remove('selected'));
+            // Přidání třídy 'selected' na kliknuté tlačítko
+            button.classList.add('selected');
+        });
+    });
+}
+
+// script.js
+
+// Funkce pro přepnutí třídy vybrané
+function toggleSelection(buttonGroupId) {
+    const buttons = document.querySelectorAll(`#${buttonGroupId} button`);
+    
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Odebrání třídy 'selected' ze všech tlačítek v dané skupině
+            buttons.forEach(btn => btn.classList.remove('selected'));
+            // Přidání třídy 'selected' na kliknuté tlačítko
+            button.classList.add('selected');
+        });
+    });
+}
+
+// Inicializace funkcí pro tlačítka
+toggleSelection('weight-goal-group');
+toggleSelection('deficit-amount-group');
+
+// Funkce pro zpracování kliknutí na 'Next'
+function nextStep() {
+    const selectedWeightGoal = document.querySelector('#weight-goal-group .selected');
+    const selectedDeficitAmount = document.querySelector('#deficit-amount-group .selected');
+    
+    if (!selectedWeightGoal || !selectedDeficitAmount) {
+        alert('Please select both a weight goal and a caloric deficit amount.');
+        return;
+    }
+    
+    // Další logika pro přechod na další stránku nebo zpracování
+    alert(`Selected Weight Goal: ${selectedWeightGoal.dataset.title}\nSelected Deficit Amount: ${selectedDeficitAmount.dataset.title}`);
+}
