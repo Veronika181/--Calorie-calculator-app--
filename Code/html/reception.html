@@ -1,59 +1,48 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIP Verze Kalkulačky s Recepty</title>
+    <title>Calorie Tracker Results</title>
     <link rel="stylesheet" href="../css/styles-intro.css">
     <link rel="stylesheet" href="../css/styles-input.css">
     <link rel="stylesheet" href="../css/styles-advanced.css">
-    <link rel="stylesheet" href="../css/styles/styles-result.css">
-    <link rel="stylesheet" href="../css/styles/styles-reception.css">
-    <link rel="stylesheet" href="../css/styles/styles-weightgoals.css.css">
-    <link rel="stylesheet" href="../css/styles/styles.css">
+    <link rel="stylesheet" href="../css/styles-result.css">
 </head>
-<body>
-    <div id="passwordSection">
-        <h2>KALKULAČKA S RECEPTY A GRAMÁŽEMI</h2>
-    </div>
+    <body onload="showRecipeSection()">
+    <header>
+        <h2>Calculator with recipes and weight</h2>
+        <div id="recipeSection" style="display:none;">
+            
+            <div class="meal">
+                <button onclick="showRecipe('breakfast')">Breakfast</button>
+            </div>
 
-    <div id="recipeSection" style="display:none;">
-        <h1>Výběr potravin a recepty k jejich přípravě</h1>
-        
-        <h2>Snídaně</h2>
-        <div class="meal">
-            <button onclick="showRecipe('breakfast')">Snídaně</button>
-        </div>
-        
-        <h2>Svačina</h2>
-        <div class="meal">
-            <button onclick="showRecipe('snack')">Svačina</button>
-        </div>
-        
-        <h2>Oběd</h2>
-        <div class="meal">
-            <button onclick="showRecipe('lunch')">Oběd</button>
-        </div>
-        
-        <h2>Odpolední svačina</h2>
-        <div class="meal">
-            <button onclick="showRecipe('afternoonSnack')">Odpolední svačina</button>
-        </div>
-        
-        <h2>Večeře</h2>
-        <div class="meal">
-            <button onclick="showRecipe('dinner')">Večeře</button>
-        </div>
-        
-        <div id="recipeDetails" style="display:none;">
-            <h3 id="recipeTitle"></h3>
-            <p id="recipeCalories"></p>
-            <p id="recipeProtein"></p>
-            <p id="recipeCarbs"></p>
-            <p id="recipeFat"></p>
-        </div>
-    </div>
+            <div class="meal">
+                <button onclick="showRecipe('snack')">Snack</button>
+            </div>
 
-    <script src="script.js"></script>
+            <div class="meal">
+                <button onclick="showRecipe('lunch')">Lunch</button>
+            </div>
+            
+            <div class="meal">
+                <button onclick="showRecipe('afternoonSnack')">Afternoon Snack</button>
+            </div>
+
+            <div class="meal">
+                <button onclick="showRecipe('dinner')">Dinner</button>
+            </div>
+
+            <div id="recipeDetails" style="display:none;">
+                <h3 id="recipeTitle"></h3>
+                <p id="recipeCalories"></p>
+                <p id="recipeProtein"></p>
+                <p id="recipeCarbs"></p>
+                <p id="recipeFat"></p>
+            </div>
+        </div>
+        <script src="../js/script.js"></script>
+
 </body>
 </html>

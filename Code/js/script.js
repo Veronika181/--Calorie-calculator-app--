@@ -114,3 +114,21 @@ function nextStepSaveDataOnPage() {
 
     window.location.href = 'result.html';
 }
+
+
+
+function showRecipeSection() {
+    document.getElementById('recipeSection').style.display = 'block';
+}
+
+function showRecipe(mealType) {
+    // Placeholder logic for showing the recipe details
+    // You can replace this with actual logic to display recipe details based on mealType
+    const recipeDetails = document.getElementById('recipeDetails');
+    recipeDetails.style.display = 'block';
+    document.getElementById('recipeTitle').innerText = `Recipe for ${mealType}`;
+    document.getElementById('recipeCalories').innerText = 'Calories: 200';
+    document.getElementById('recipeProtein').innerText = 'Protein: 10g';
+    document.getElementById('recipeCarbs').innerText = 'Carbs: 30g';
+    document.getElementById('recipeFat').innerText = 'Fat: 5g';
+}
