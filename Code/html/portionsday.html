@@ -8,12 +8,43 @@
     <link rel="stylesheet" href="../css/styles-input.css">
     <link rel="stylesheet" href="../css/styles-advanced.css">
     <link rel="stylesheet" href="../css/styles-result.css">
+    <link rel="stylesheet" href="../css/styles-weightgoals.css">
 </head>
-<body onload="()">
+<body onload="calculateCalories()">
     <header>
-        <h1>Portions day</h1>
+        <h1>CalorieTracker</h1>
     </header>
     <main>
-        <div class="button-container">
-            <button type="button" class="btn" onclick="location.href='macronutrientsday.html'">Next</button>
+        <div class="section">
+            <h2>Distribution of individual macronutrients during the day</h2>
+            <div class="result-container">
+                <div class="result-item">
+                    <div class="result-box title-box">Proteins</div>
+                    <div class="result-box value-box">vysledek</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-box title-box">Carbohydrates</div>
+                    <div class="result-box value-box">vysledek</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-box title-box">Fats</div>
+                    <div class="result-box value-box">vysledek</div>
+                </div>
+            </div>
         </div>
+
+        <div class="section">
+            <div class="result-container">
+                <div class="result-item">
+                    <div class="result-box title-box">Calorie Deficit</div>
+                    <div class="result-box value-box">vysledek</div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="button-container">
+        <button type="button" class="btn" onclick="location.href='macronutrientsday.html'">Next</button>
+    </div>
+</body>
+</html>
+

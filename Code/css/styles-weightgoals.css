@@ -1,17 +1,24 @@
+
 .btn-group {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 20px; /* Space below buttons */
+  margin-bottom: 20px;
 }
 
 .btn-group button {
   flex: 1;
-  margin: 0 10px; /* Space between buttons */
+  margin: 0 10px;
   padding: 10px;
   font-size: 16px;
 }
 
-.section {
-  margin-bottom: 20px;
+
+.btn-group button::after {
+  content: attr(data-title);
+  display: block;
+  font-size: 14px;
+  color: #fffcfc;
+  margin-top: 5px;
+  text-align: center;
 }

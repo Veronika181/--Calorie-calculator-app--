@@ -1,4 +1,4 @@
-/* styles-result.css */
+
 body {
     background-image: linear-gradient(#4CAF50, #63B967, #FFFFFF);
     font-family: Arial, sans-serif;
@@ -111,3 +111,104 @@ footer a {
     color: white;
 }
 
+/předělat a dát to třeba k macronutrons day css/
+
+body {
+    background-image: linear-gradient(#4CAF50, #63B967, #FFFFFF);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    padding: 30px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+h1, h2 {
+    margin: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.section {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.result-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.result-item {
+    background-color: #808080;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.result-box {
+    padding: 10px;
+    text-align: center;
+}
+
+.title-box {
+    background-color: #4CAF50;
+    color: #ffffff;
+    font-size: 1.2em;
+    border-radius: 10px 10px 0 0;
+}
+
+.value-box {
+    background-color: #333333;
+    color: #FFA500;
+    font-size: 1.5em;
+    border-radius: 0 0 10px 10px;
+}
+
+.button-container {
+    margin-top: 20px;
+}
+
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+footer {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: white;
+}

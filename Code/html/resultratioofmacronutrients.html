@@ -8,12 +8,29 @@
     <link rel="stylesheet" href="../css/styles-input.css">
     <link rel="stylesheet" href="../css/styles-advanced.css">
     <link rel="stylesheet" href="../css/styles-result.css">
+    <link rel="stylesheet" href="../css/styles-weightgoals.css">
 </head>
-<body onload="()">
+<body onload="calculateCalories()">
     <header>
-        <h1>Result ratio of macronutrients</h1>
+        <h1>CalorieTracker</h1>
     </header>
     <main>
-        <div class="button-container">
-            <button type="button" class="btn" onclick="location.href='portionsday.html'">Nexts</button>
+        <div class="section">
+            <h2>Result</h2>
+            <div class="btn-group">
+                <button data-title="Proteins vysledek ">vysledek </button>
+                <button data-title="Carbohydrates"></button>
+                <button data-title="Fats"></button>
+            </div>
         </div>
+
+        <div class="section">
+            <div class="btn-group">
+                <button data-title="Calorie vysledek "></button>
+            </div>
+        </div>
+    </main>
+    <div class="button-container">
+        <button type="button" class="btn" onclick="location.href='portionsday.html'">Next</button>
+    </div>
+</body>
