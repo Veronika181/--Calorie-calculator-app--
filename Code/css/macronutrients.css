@@ -1,0 +1,42 @@
+/* macronutrientsday.css */
+
+.result-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Mezera mezi jednotlivými obdélníky */
+}
+
+.result-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Mezera mezi titulkem a detaily */
+}
+
+.result-title-box,
+.result-details-box {
+    background-color: #f0f0f0; /* Světle šedé pozadí */
+    border: 1px solid #ddd; /* Světlý rámeček */
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.result-title-box {
+    /* Styl pro obdélník s názvem */
+    font-weight: bold;
+}
+
+
+.result-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.result-value {
+    font-size: 1em;
+    color: #333; /* Tmavší barva textu */
+}
+
+.result-value span {
+    font-weight: bold; /* Zvýraznění hodnot */
+}

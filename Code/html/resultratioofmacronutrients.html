@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/styles-input.css">
     <link rel="stylesheet" href="../css/styles-advanced.css">
     <link rel="stylesheet" href="../css/styles-result.css">
-    <link rel="stylesheet" href="../css/styles-weightgoals.css">
+    <link rel="stylesheet" href="../css/portions.css"> 
 </head>
 <body onload="calculateCalories()">
     <header>
@@ -17,20 +17,32 @@
     <main>
         <div class="section">
             <h2>Result</h2>
-            <div class="btn-group">
-                <button data-title="Proteins vysledek ">vysledek </button>
-                <button data-title="Carbohydrates"></button>
-                <button data-title="Fats"></button>
+            <div class="result-container">
+                <div class="result-item" id="breakfast">
+                    <div class="result-title">Proteins</div>
+                    <div class="result-value"></div>
+                </div>
+                <div class="result-item" id="snack1">
+                    <div class="result-title">Carbohydrates</div>
+                    <div class="result-value"></div>
+                </div>
+                <div class="result-item" id="lunch">
+                    <div class="result-title">Fats</div>
+                    <div class="result-value"></div>
+                </div>
+                <div class="result-item" id="snack2">
+                    <div class="result-title">Calorie</div>
+                    <div class="result-value"></div>
+        
             </div>
         </div>
-
-        <div class="section">
-            <div class="btn-group">
-                <button data-title="Calorie vysledek "></button>
+                </div>
             </div>
         </div>
     </main>
     <div class="button-container">
         <button type="button" class="btn" onclick="location.href='portionsday.html'">Next</button>
     </div>
+    <script src="../js/script.js"></script>
 </body>
+</html>

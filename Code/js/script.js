@@ -18,6 +18,7 @@ function calculateCalories() {
     const totalCalories = tdee - bodyFatReduction;
     const weightLossCalories = totalCalories - 500;
 
+    
     const bmrValue = document.getElementById("bmr");
     bmrValue.textContent = bmr;
 
@@ -31,8 +32,8 @@ function calculateCalories() {
     weightLossCaloriesValue.textContent =  weightLossCalories;
 }
     console.log(bmr)
-    
 
+  
 
 function selectGender(gender) {
     const maleBtn = document.getElementById('maleBtn');
@@ -132,3 +133,56 @@ function showRecipe(mealType) {
     document.getElementById('recipeCarbs').innerText = 'Carbs: 30g';
     document.getElementById('recipeFat').innerText = 'Fat: 5g';
 }
+
+function displayMacronutrientDistribution() {
+    const totalCalories = parseFloat(document.getElementById('totalCalories').textContent);
+
+    // Macronutrient distribution (example percentages)
+    const breakfastCalories = 0.25 * totalCalories;
+    const snack1Calories = 0.10 * totalCalories;
+    const lunchCalories = 0.30 * totalCalories;
+    const snack2Calories = 0.10 * totalCalories;
+    const dinnerCalories = 0.15 * totalCalories;
+
+    // Update HTML content for macronutrient distribution
+    document.getElementById('breakfast-calories').textContent = `${breakfastCalories.toFixed(2)} Kcal`;
+    document.getElementById('snack1-calories').textContent = `${snack1Calories.toFixed(2)} Kcal`;
+    document.getElementById('lunch-calories').textContent = `${lunchCalories.toFixed(2)} Kcal`;
+    document.getElementById('snack2-calories').textContent = `${snack2Calories.toFixed(2)} Kcal`;
+    document.getElementById('dinner-calories').textContent = `${dinnerCalories.toFixed(2)} Kcal`;
+
+    // Protein, Carbs, and Fat (example distribution for simplicity)
+    document.getElementById('breakfast-protein').textContent = `30% of total = ${0.30 * breakfastCalories / 4} g`;
+    document.getElementById('breakfast-carbs').textContent = `50% of total = ${0.50 * breakfastCalories / 4} g`;
+    document.getElementById('breakfast-fat').textContent = `20% of total = ${0.20 * breakfastCalories / 9} g`;
+
+    document.getElementById('snack1-protein').textContent = `20% of total = ${0.20 * snack1Calories / 4} g`;
+    document.getElementById('snack1-carbs').textContent = `40% of total = ${0.40 * snack1Calories / 4} g`;
+    document.getElementById('snack1-fat').textContent = `40% of total = ${0.40 * snack1Calories / 9} g`;
+
+    document.getElementById('lunch-protein').textContent = `35% of total = ${0.35 * lunchCalories / 4} g`;
+    document.getElementById('lunch-carbs').textContent = `45% of total = ${0.45 * lunchCalories / 4} g`;
+    document.getElementById('lunch-fat').textContent = `20% of total = ${0.20 * lunchCalories / 9} g`;
+
+    document.getElementById('snack2-protein').textContent = `15% of total = ${0.15 * snack2Calories / 4} g`;
+    document.getElementById('snack2-carbs').textContent = `50% of total = ${0.50 * snack2Calories / 4} g`;
+    document.getElementById('snack2-fat').textContent = `35% of total = ${0.35 * snack2Calories / 9} g`;
+
+    document.getElementById('dinner-protein').textContent = `20% of total = ${0.20 * dinnerCalories / 4} g`;
+    document.getElementById('dinner-carbs').textContent = `25% of total = ${0.25 * dinnerCalories / 4} g`;
+    document.getElementById('dinner-fat').textContent = `15% of total = ${0.15 * dinnerCalories / 9} g`;
+}
+
+// Attach event listeners to ensure the functions are triggered correctly
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.body.classList.contains('input')) {
+        document.getElementById('height').addEventListener('input', updateHeightDisplay);
+    }
+    if (document.body.classList.contains('results')) {
+        calculateCalories();
+    }
+    if (document.body.classList.contains('macronutrients')) {
+        displayMacronutrientDistribution();
+    }
+});
+
