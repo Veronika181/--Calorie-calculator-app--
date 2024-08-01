@@ -22,7 +22,6 @@ document.getElementById('macros-form').addEventListener('submit', function(event
     }
 });
 
-// script.js
 document.addEventListener('DOMContentLoaded', (event) => {
     let calorieCount = 0;
 
@@ -34,3 +33,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
         calorieCountElement.textContent = calorieCount;
     });
 });
+
+function changeValue(meal, change) {
+    const display = document.getElementById(meal + 'Display');
+    let currentValue = parseInt(display.textContent, 10);
+    currentValue += change;
+    if (currentValue < 0) currentValue = 0; // Prevent negative values
+    display.textContent = currentValue;
+}
