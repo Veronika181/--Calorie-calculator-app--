@@ -1,6 +1,16 @@
-* {box-sizing: border-box;}
-ul {list-style-type: none;}
-body {font-family: Verdana, sans-serif;}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style-type: none;
+}
+
+body {
+  font-family: Verdana, sans-serif;
+}
 
 .month {
   padding: 70px 25px;
@@ -56,26 +66,150 @@ body {font-family: Verdana, sans-serif;}
   width: 13.6%;
   text-align: center;
   margin-bottom: 5px;
-  font-size:12px;
+  font-size: 12px;
   color: #777;
 }
 
 .days li .active {
   padding: 5px;
   background: #1abc9c;
-  color: white !important
+  color: white !important;
 }
 
 /* Add media queries for smaller screens */
-@media screen and (max-width:720px) {
-  .weekdays li, .days li {width: 13.1%;}
+@media screen and (max-width: 720px) {
+  .weekdays li, .days li { width: 13.1%; }
 }
 
 @media screen and (max-width: 420px) {
-  .weekdays li, .days li {width: 12.5%;}
-  .days li .active {padding: 2px;}
+  .weekdays li, .days li { width: 12.5%; }
+  .days li .active { padding: 2px; }
 }
 
 @media screen and (max-width: 290px) {
-  .weekdays li, .days li {width: 12.2%;}
+  .weekdays li, .days li { width: 12.2%; }
+}
+
+.skill {
+  width: 160px;
+  height: 160px;
+  position: relative;
+  border: 1px solid orangered;
+}
+
+
+.circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%; /* Ensures the shape is a circle */
+  background: conic-gradient(#4caf50 0, #4caf50 75%, #f44336 75%, #f44336);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.circle-inner {
+  background: white;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%; /* Ensures the inner shape is a circle */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+#total-calories {
+  font-size: 2em;
+  margin: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label, input {
+  margin: 5px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.counter-container {
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+#calorie-count {
+  font-size: 2em;
+  margin: 20px 0;
+}
+
+#add-calorie {
+  font-size: 1.5em;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f4f4f4;
+}
+
+.counter-container {
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#calorie-count, #total-meal-calories {
+  font-size: 2em;
+  margin: 20px 0;
+}
+
+input {
+  font-size: 1.5em;
+  padding: 5px;
+  margin: 10px 0;
+}
+
+canvas {
+  margin-top: 20px;
 }
