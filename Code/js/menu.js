@@ -58,10 +58,11 @@ document.addEventListener('DOMContentLoaded', function () {
         { name: 'December', days: 31 }
     ];
 
-    let currentMonthIndex = 7; // August by default
+    let currentMonthIndex = 7; // Default to August
     const monthNameElem = document.querySelector('.month-name');
     const daysContainer = document.getElementById('calendar-days');
     const selectedDateDisplay = document.getElementById('selected-date');
+    const monthSelect = document.getElementById('month-select');
 
     function renderCalendar(monthIndex) {
         const month = months[monthIndex];
@@ -95,6 +96,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.querySelector('.prev').addEventListener('click', () => changeMonth(-1));
     document.querySelector('.next').addEventListener('click', () => changeMonth(1));
+
+    monthSelect.addEventListener('change', function () {
+        currentMonthIndex = parseInt(this.value);
+        renderCalendar(currentMonthIndex);
+    });
 
     // Initial render
     renderCalendar(currentMonthIndex);
