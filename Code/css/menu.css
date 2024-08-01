@@ -94,7 +94,7 @@ body {
   width: 160px;
   height: 160px;
   position: relative;
-  border: 1px solid orangered;
+  border: 1px solid #FFA500;
 }
 
 
@@ -102,7 +102,7 @@ body {
   width: 200px;
   height: 200px;
   border-radius: 50%; /* Ensures the shape is a circle */
-  background: conic-gradient(#4caf50 0, #4caf50 75%, #f44336 75%, #f44336);
+  background: conic-gradient(#4caf50 0, #4caf50 75%, #FFA500 75%, #FFA500);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -111,7 +111,7 @@ body {
 }
 
 .circle-inner {
-  background: white;
+  background: #4caf50;
   width: 180px;
   height: 180px;
   border-radius: 50%; /* Ensures the inner shape is a circle */
@@ -127,6 +127,7 @@ body {
 #total-calories {
   font-size: 2em;
   margin: 0;
+  color: #FFA500
 }
 
 form {
@@ -278,6 +279,8 @@ input[type="range"]::-webkit-progress-value {
 .input-group {
     display: flex;
     align-items: center;
+    height: 150px;
+    weight: 100px;
 }
 
 .input-group button {
@@ -297,4 +300,7 @@ input[type="range"]::-webkit-progress-value {
 .lunch-btn-right, .lunch-btn-left, .snack2-btn-right, .snack2-btn-left, 
 .dinner-btn-right, .dinner-btn-left {
   background-color: #FFA500;
+  font-size: 80;
+
 }
+
