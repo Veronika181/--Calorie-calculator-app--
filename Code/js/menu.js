@@ -41,3 +41,61 @@ function changeValue(meal, change) {
     if (currentValue < 0) currentValue = 0; 
     display.textContent = currentValue;
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    const months = [
+        { name: 'January', days: 31 },
+        { name: 'February', days: 28 }, // Leap year handling omitted
+        { name: 'March', days: 31 },
+        { name: 'April', days: 30 },
+        { name: 'May', days: 31 },
+        { name: 'June', days: 30 },
+        { name: 'July', days: 31 },
+        { name: 'August', days: 31 },
+        { name: 'September', days: 30 },
+        { name: 'October', days: 31 },
+        { name: 'November', days: 30 },
+        { name: 'December', days: 31 }
+    ];
+
+    let currentMonthIndex = 7; // August by default
+    const monthNameElem = document.querySelector('.month-name');
+    const daysContainer = document.getElementById('calendar-days');
+    const selectedDateDisplay = document.getElementById('selected-date');
+
+    function renderCalendar(monthIndex) {
+        const month = months[monthIndex];
+        monthNameElem.textContent = `${month.name} 2024`;
+        daysContainer.innerHTML = ''; // Clear existing days
+
+        for (let day = 1; day <= month.days; day++) {
+            const dayElem = document.createElement('li');
+            dayElem.textContent = day;
+            dayElem.setAttribute('data-date', day);
+            dayElem.addEventListener('click', function () {
+                // Remove active class from all days
+                document.querySelectorAll('.days li').forEach(d => d.classList.remove('active'));
+                
+                // Add active class to clicked day
+                this.classList.add('active');
+                
+                // Display the selected date
+                selectedDateDisplay.textContent = `Vybrané datum: ${month.name} ${day}, 2024`;
+            });
+            daysContainer.appendChild(dayElem);
+        }
+    }
+
+    function changeMonth(increment) {
+        currentMonthIndex += increment;
+        if (currentMonthIndex < 0) currentMonthIndex = 11;
+        if (currentMonthIndex > 11) currentMonthIndex = 0;
+        renderCalendar(currentMonthIndex);
+    }
+
+    document.querySelector('.prev').addEventListener('click', () => changeMonth(-1));
+    document.querySelector('.next').addEventListener('click', () => changeMonth(1));
+
+    // Initial render
+    renderCalendar(currentMonthIndex);
+});
