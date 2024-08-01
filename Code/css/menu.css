@@ -245,20 +245,16 @@ input[type="range"]::-moz-range-thumb {
 }
 
 
-/* Styles for the progress (filled part) of the range input */
 input[type="range"]::-moz-range-progress {
-  background-color: #FFA500; /* default progress color */
+  background-color: #FFA500; 
 }
 
 input[type="range"]::-webkit-progress-value {
-  background-color: #FFA500; /* default progress color */
+  background-color: #FFA500; /
 }
 
 
-
-
 .result-item {
-    /* Odstranění stylů obdélníku */
     padding: 0;
     margin: 0;
     border: none;
@@ -276,6 +272,7 @@ input[type="range"]::-webkit-progress-value {
 .result-title {
     font-size: 1.5em;
     margin-right: 20px;
+    color: #FFA500;
 }
 
 .input-group {
@@ -294,4 +291,10 @@ input[type="range"]::-webkit-progress-value {
     font-size: 1.2em;
     width: 40px;
     text-align: center;
+}
+
+.breakfast-btn-right, .breakfast-btn-left, .snack1-btn-right, .snack1-btn-left, 
+.lunch-btn-right, .lunch-btn-left, .snack2-btn-right, .snack2-btn-left, 
+.dinner-btn-right, .dinner-btn-left {
+  background-color: #FFA500;
 }

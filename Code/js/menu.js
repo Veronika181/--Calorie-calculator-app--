@@ -38,6 +38,6 @@ function changeValue(meal, change) {
     const display = document.getElementById(meal + 'Display');
     let currentValue = parseInt(display.textContent, 10);
     currentValue += change;
-    if (currentValue < 0) currentValue = 0; // Prevent negative values
+    if (currentValue < 0) currentValue = 0; 
     display.textContent = currentValue;
 }
