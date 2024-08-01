@@ -219,7 +219,7 @@ input[type="range"] {
   appearance: none;
   width: 100%;
   height: 8px;
-  background: linear-gradient(to right, #FFFFFF, #FFA500); /* Set track color to white */
+  background: linear-gradient(to right, #ffffff, #FFA500); /* Set track color to white */
   border-radius: 5px;
   outline: none;
   opacity: 0.7;
@@ -280,7 +280,6 @@ input[type="range"]::-webkit-progress-value {
     display: flex;
     align-items: center;
     height: 150px;
-    weight: 100px;
 }
 
 .input-group button {
@@ -304,3 +303,81 @@ input[type="range"]::-webkit-progress-value {
 
 }
 
+h2 {
+  position: left;
+}
+
+#proteins, #carbs, #fats {
+  background-color: #4caf50;
+  border: 1px solid #4caf50;
+  color: #FFA500;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 20px; /* Odstup mezi formulářem a kruhem */
+}
+
+.circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: conic-gradient(#4caf50 0, #4caf50 75%, #FFA500 75%, #FFA500);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px; /* Odstup mezi formulářem a kruhem */
+}
+
+.circle-inner {
+  background: #4caf50;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+#total-calories {
+  font-size: 2em;
+  margin: 0;
+  color: #FFA500;
+}
+
+label, input {
+  margin: 5px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
