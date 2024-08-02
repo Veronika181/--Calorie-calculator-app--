@@ -11,52 +11,27 @@
     <link rel="stylesheet" href="../css/menu.css"> 
 </head>
 <body>
-    <header>
-        <h1></h1>
-        <div class="calendar-toggle">
-            <img src="../images/calendar.png" alt="Kalendář" id="calendar-icon" class="calendar-icon">
-        </div>
     </header>
-    <main>
-        <div class="calendar-container">
-            <div class="month-selector">
-                <select id="month-select">
-                    <option value="0">January</option>
-                    <option value="1">February</option>
-                    <option value="2">March</option>
-                    <option value="3">April</option>
-                    <option value="4">May</option>
-                    <option value="5">June</option>
-                    <option value="6">July</option>
-                    <option value="7" selected>August</option>
-                    <option value="8">September</option>
-                    <option value="9">October</option>
-                    <option value="10">November</option>
-                    <option value="11">December</option>
-                </select>
-            </div>
-            <div class="calendar">
-                <div class="month">
-                    <button class="prev">&#10094;</button>
-                    <span class="month-name">August 2024</span>
-                    <button class="next">&#10095;</button>
-                </div>
-                <ul class="weekdays">
-                    <li>Mo</li>
-                    <li>Tu</li>
-                    <li>We</li>
-                    <li>Th</li>
-                    <li>Fr</li>
-                    <li>Sa</li>
-                    <li>Su</li>
-                </ul>
-                <ul id="calendar-days" class="days"></ul>
-            </div>
-            <div id="selected-date">Selected day </div>
+    <button id="show-calendar-btn">
+        📅
+    </button>
+
+    <!-- Kalendář -->
+    <div id="calendar-container" style="display: none;">
+        <div class="calendar-header">
+            <button class="prev">&lt;</button>
+            <span class="month-name"></span>
+            <button class="next">&gt;</button>
+            <select id="month-select">
+                <!-- Možnosti měsíce budou přidány dynamicky -->
+            </select>
         </div>
-    </main>
-</head>
-<body>
+        <ul id="calendar-days" class="days">
+            <!-- Dny budou přidány dynamicky -->
+        </ul>
+        <div id="selected-date"></div>
+    </div>
+
     <header>
         <h1>CalorieTracker</h1>
     </header>

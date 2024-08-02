@@ -381,3 +381,34 @@ button {
 button:hover {
   background-color: #45a049;
 }
+#calendar-container {
+  margin-top: 20px;
+}
+
+#calendar-days {
+  list-style-type: none;
+  padding: 0;
+}
+
+#calendar-days li {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  margin: 2px;
+  cursor: pointer;
+}
+
+#calendar-days li.active {
+  background-color: #007bff;
+  color: white;
+}
+
+button {
+  margin: 5px;
+}
+
+#toggle-calendar-btn {
+  margin-top: 20px;
+}

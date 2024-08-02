@@ -63,6 +63,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const daysContainer = document.getElementById('calendar-days');
     const selectedDateDisplay = document.getElementById('selected-date');
     const monthSelect = document.getElementById('month-select');
+    const calendarContainer = document.getElementById('calendar-container');
+    const showCalendarBtn = document.getElementById('show-calendar-btn');
 
     function renderCalendar(monthIndex) {
         const month = months[monthIndex];
@@ -102,6 +104,22 @@ document.addEventListener('DOMContentLoaded', function () {
         renderCalendar(currentMonthIndex);
     });
 
-    // Initial render
+    // Populate the month select options
+    months.forEach((month, index) => {
+        const option = document.createElement('option');
+        option.value = index;
+        option.textContent = month.name;
+        monthSelect.appendChild(option);
+    });
+
+    // Toggle calendar visibility
+    showCalendarBtn.addEventListener('click', function () {
+        if (calendarContainer.style.display === 'none') {
+            calendarContainer.style.display = 'block';
+        } else {
+            calendarContainer.style.display = 'none';
+        }
+    });
+
     renderCalendar(currentMonthIndex);
 });
