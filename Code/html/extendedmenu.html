@@ -3,19 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calorie Tracker Results</title>
+    <title>Add Food</title>
     <link rel="stylesheet" href="../css/styles-intro.css">
     <link rel="stylesheet" href="../css/styles-input.css">
     <link rel="stylesheet" href="../css/styles-advanced.css">
     <link rel="stylesheet" href="../css/styles-result.css">
-    <link rel="stylesheet" href="../css/macronutrientsday.css"> <!-- Update this line -->
+    <link rel="stylesheet" href="../css/macronutrientsday.css">
+    <link rel="stylesheet" href="../css/extendedmenu.css">
+    <style>
+    </style>
 </head>
-<body onload="calculateCalories()">
-    <header>
+<body>
+    <header></header>
+    <main>
+        <h2>Add Food</h2>
+        <div class="result-container">
+            <!-- Breakfast -->
+            <div class="result-item">
+                <div class="result-title-box" onclick="toggleDropdown('breakfastDropdown')">
+                    <div class="result-title">Breakfast</div>
+                    <span id="breakfastDisplay">306 Kcal</span>
+                    <button class="plus-button" onclick="event.stopPropagation(); showDropdown('breakfastDropdown')">+</button>
+                </div>
+                <div class="result-details-box" id="breakfastDetails">
+                    <!-- Food items will be appended here -->
+                </div>
+                <div class="dropdown" id="breakfastDropdown">
+                    <div class="dropdown-input">
+                        <input type="text" id="breakfastInput" placeholder="Enter food item">
+                        <button onclick="showQuantityInput('breakfastDetails', 'breakfastInput', 'breakfastDropdown')">Add Food</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Snack -->
+            <div class="result-item">
+                <div class="result-title-box" onclick="toggleDropdown('snack1Dropdown')">
+                    <div class="result-title">Snack</div>
+                    <span id="snack1Display">306 Kcal</span>
+                    <button class="plus-button" onclick="event.stopPropagation(); showDropdown('snack1Dropdown')">+</button>
+                </div>
+                <div class="result-details-box" id="snack1Details">
+                    <!-- Food items will be appended here -->
+                </div>
+                <div class="dropdown" id="snack1Dropdown">
+                    <div class="dropdown-input">
+                        <input type="text" id="snack1Input" placeholder="Enter food item">
+                        <button onclick="showQuantityInput('snack1Details', 'snack1Input', 'snack1Dropdown')">Add Food</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Lunch -->
+            <div class="result-item">
+                <div class="result-title-box" onclick="toggleDropdown('lunchDropdown')">
+                    <div class="result-title">Lunch</div>
+                    <span id="lunchDisplay">306 Kcal</span>
+                    <button class="plus-button" onclick="event.stopPropagation(); showDropdown('lunchDropdown')">+</button>
+                </div>
+                <div class="result-details-box" id="lunchDetails">
+                    <!-- Food items will be appended here -->
+                </div>
+                <div class="dropdown" id="lunchDropdown">
+                    <div class="dropdown-input">
+                        <input type="text" id="lunchInput" placeholder="Enter food item">
+                        <button onclick="showQuantityInput('lunchDetails', 'lunchInput', 'lunchDropdown')">Add Food</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Dinner -->
+            <div class="result-item">
+                <div class="result-title-box" onclick="toggleDropdown('dinnerDropdown')">
+                    <div class="result-title">Dinner</div>
+                    <span id="dinnerDisplay">306 Kcal</span>
+                    <button class="plus-button" onclick="event.stopPropagation(); showDropdown('dinnerDropdown')">+</button>
+                </div>
+                <div class="result-details-box" id="dinnerDetails">
+                    <!-- Food items will be appended here -->
+                </div>
+                <div class="dropdown" id="dinnerDropdown">
+                    <div class="dropdown-input">
+                        <input type="text" id="dinnerInput" placeholder="Enter food item">
+                        <button onclick="showQuantityInput('dinnerDetails', 'dinnerInput', 'dinnerDropdown')">Add Food</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="button-container">
+            <button type="button" class="btn" onclick="location.href='addfood.html'">Next</button>
+        </div>
+        <script src="../js/extendedmenu.js"></script>
     </main>
-    <div class="button-container">
-        <button type="button" class="btn" onclick="location.href='addfood.html'">Next</button>
-    </div>
-    <script src="../js/script.js"></script>
+    <script>
+      
+    </script>
 </body>
 </html>
+
