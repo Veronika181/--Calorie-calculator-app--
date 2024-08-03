@@ -1,21 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calorie Tracker Results</title>
-    <link rel="stylesheet" href="../css/styles-intro.css">
-    <link rel="stylesheet" href="../css/styles-input.css">
-    <link rel="stylesheet" href="../css/styles-advanced.css">
-    <link rel="stylesheet" href="../css/styles-result.css">
-    <link rel="stylesheet" href="../css/macronutrientsday.css"> <!-- Update this line -->
+    <title>Log In</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 300px;
+        }
+        h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .forgot-password {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .forgot-password a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
-<body onload="calculateCalories()">
-    <header>
-    </main>
-    <div class="button-container">
-        <button type="button" class="btn" onclick="location.href='changes.html'">Next</button>
+<body>
+    <div class="container">
+        <h2>Log In</h2>
+        <form action="/login" method="POST">
+            <label for="email">Enter your email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Enter your password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <input type="submit" value="Log In">
+        </form>
+        <div class="forgot-password">
+            <p><a href="/forgot-password">Forgot your password?</a></p>
+        </div>
     </div>
-    <script src="../js/script.js"></script>
 </body>
 </html>
+

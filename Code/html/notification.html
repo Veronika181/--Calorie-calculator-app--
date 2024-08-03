@@ -1,21 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calorie Tracker Results</title>
-    <link rel="stylesheet" href="../css/styles-intro.css">
-    <link rel="stylesheet" href="../css/styles-input.css">
-    <link rel="stylesheet" href="../css/styles-advanced.css">
-    <link rel="stylesheet" href="../css/styles-result.css">
-    <link rel="stylesheet" href="../css/macronutrientsday.css"> <!-- Update this line -->
+    <title>Notifications</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 300px;
+        }
+        h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+        .menu {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .menu a {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            background-color: #007BFF;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .menu a:hover {
+            background-color: #0056b3;
+        }
+        .menu a.sign-out,
+        .menu a.delete-account {
+            background-color: #dc3545;
+        }
+        .menu a.sign-out:hover,
+        .menu a.delete-account:hover {
+            background-color: #c82333;
+        }
+    </style>
 </head>
-<body onload="calculateCalories()">
-    <header>
-    </main>
-    <div class="button-container">
-        <button type="button" class="btn" onclick="location.href='mytargets.html'">Next</button>
+<body>
+    <div class="container">
+        <h2>Notifications</h2>
+        <div class="menu">
+            <a href="/profile/change">Change Profile</a>
+            <a href="/my-targets">My Targets</a>
+            <a href="/my-neutron">My Neutron</a>
+            <a href="/notifications">Notifications</a>
+            <a href="/change-password">Change Password</a>
+            <a href="/sign-out" class="sign-out">Sign Out</a>
+            <a href="/delete-account" class="delete-account">Delete Account</a>
+        </div>
     </div>
-    <script src="../js/script.js"></script>
 </body>
 </html>
