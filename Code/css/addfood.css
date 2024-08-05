@@ -1,4 +1,3 @@
-
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -7,13 +6,15 @@ body {
     height: 100vh;
     background-image: linear-gradient(#4CAF50, #63B967, #FFFFFF);
     margin: 0;
+    color: white; /* Changed font color to white */
 }
 
 .container {
     display: flex;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: white;
+    background-color: #808080; /* Changed container background to gray */
+    border: none; /* Removed border */
 }
 
 .column {
@@ -22,8 +23,6 @@ body {
 
 h2 {
     margin-bottom: 20px;
-
-  
 }
 
 .item {
@@ -46,7 +45,7 @@ input {
 
 button {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #FFA500;
     color: white;
     border: none;
     border-radius: 5px;
@@ -60,8 +59,9 @@ button:hover {
 span {
     display: block;
     padding: 5px;
+    border: 1px solid #808080;
     border-radius: 5px;
-    background-color: #f9f9f9;
+    background-color: #808080;
 }
 
 .result-container {
@@ -71,7 +71,7 @@ span {
 }
 
 .result-item {
-    background: #fff;
+    background: #808080;
     border: 1px solid #ddd;
     border-radius: 4px;
     margin-bottom: 10px;
@@ -83,7 +83,6 @@ span {
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    
 }
 
 .plus-button {
@@ -91,7 +90,7 @@ span {
 }
 
 .plus-button:hover {
-    background-color:#FFA500;
+    background-color: #FFA500;
 }
 
 .result-details-box {
@@ -243,7 +242,7 @@ label, input {
 button {
     margin-top: 10px;
     padding: 10px 20px;
-    background-color: #FFA500;
+    background-color: #4caf50;
     color: white;
     border: none;
     cursor: pointer;
@@ -279,6 +278,7 @@ button:hover {
 
 button {
     margin: 5px;
+    background-color: #FFA500;
 }
 
 #toggle-calendar-btn {
@@ -290,294 +290,3 @@ button {
     margin-right: 20px;
     color: #FFA500;
 }
-
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
-            margin: 0;
-        }
-
-        .container {
-            display: flex;
-            border: 1px solid #918c8c;
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        .column {
-            margin: 0 10px;
-        }
-
-        h2 {
-            margin-bottom: 20px;
-        }
-
-        .item {
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        input {
-            width: 100%;
-            padding: 5px;
-            box-sizing: border-box;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #FFA500;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        span {
-            display: block;
-            padding: 5px;
-            border: 1px solid #808080;
-            border-radius: 5px;
-            background-color:#808080;
-        }
-
-        .result-container {
-            width: 100%;
-            max-width: 600px;
-            margin: auto;
-        }
-
-        .result-item {
-            background: #808080;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            margin-bottom: 10px;
-            padding: 10px;
-        }
-
-        .result-title-box {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .plus-button {
-            background-color: #FFA500;
-        }
-
-        .plus-button:hover {
-            background-color: #FFA500;
-        }
-
-        .result-details-box {
-            display: none;
-            margin-top: 10px;
-        }
-
-        .dropdown {
-            display: none;
-            margin-top: 10px;
-        }
-
-        .dropdown-input {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .dropdown-input input {
-            flex: 1;
-            margin-right: 10px;
-        }
-
-        .button-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        body {
-            font-family: Verdana, sans-serif;
-            background-color: #f4f4f4;
-        }
-
-        .month {
-            padding: 70px 25px;
-            width: 100%;
-            background: #1abc9c;
-            text-align: center;
-        }
-
-        .month ul {
-            margin: 0;
-            padding: 0;
-        }
-
-        .month ul li {
-            color: white;
-            font-size: 20px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        .weekdays {
-            margin: 0;
-            padding: 10px 0;
-            background-color: #ddd;
-        }
-
-        .weekdays li {
-            display: inline-block;
-            width: 13.6%;
-            color: #666;
-            text-align: center;
-        }
-
-        .days {
-            padding: 10px 0;
-            background: #eee;
-            margin: 0;
-        }
-
-        .days li {
-            list-style-type: none;
-            display: inline-block;
-            width: 13.6%;
-            text-align: center;
-            margin-bottom: 5px;
-            font-size: 12px;
-            color: #777;
-        }
-
-        .days li .active {
-            padding: 5px;
-            background: #1abc9c;
-            color: white !important;
-        }
-
-        @media screen and (max-width: 720px) {
-            .weekdays li, .days li { width: 13.1%; }
-        }
-
-        @media screen and (max-width: 420px) {
-            .weekdays li, .days li { width: 12.5%; }
-            .days li .active { padding: 2px; }
-        }
-
-        @media screen and (max-width: 290px) {
-            .weekdays li, .days li { width: 12.2%; }
-        }
-
-        .skill {
-            width: 160px;
-            height: 160px;
-            position: relative;
-            border: 1px solid #FFA500;
-        }
-
-        .circle {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: conic-gradient(#4caf50 0, #4caf50 75%, #FFA500 75%, #FFA500);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-
-        .circle-inner {
-            background: #4caf50;
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            box-sizing: border-box;
-            padding: 10px;
-        }
-
-        #total-calories {
-            font-size: 2em;
-            margin: 0;
-            color: #FFA500;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        label, input {
-            margin: 5px;
-        }
-
-        button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            background-color: #4caf50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #FFA500 ;
-        }
-
-        #calendar-container {
-            margin-top: 20px;
-        }
-
-        #calendar-days {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        #calendar-days li {
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            text-align: center;
-            line-height: 30px;
-            margin: 2px;
-            cursor: pointer;
-        }
-
-        #calendar-days li.active {
-            background-color: #FFA500;
-            color: rgb(255, 255, 255);
-        }
-
-        button {
-            margin: 5px;
-            background-color: #FFA500;
-        }
-
-        #toggle-calendar-btn {
-            margin-top: 20px;
-        }
-
-        .result-title {
-            font-size: 1.5em;
-            margin-right: 20px;
-            color: #FFA500;
-        }

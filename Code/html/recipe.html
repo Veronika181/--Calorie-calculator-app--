@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipes</title>
-    <!-- Link to existing CSS files -->
+
     <link rel="stylesheet" href="../css/styles-intro.css">
     <link rel="stylesheet" href="../css/styles-input.css">
     <link rel="stylesheet" href="../css/styles-advanced.css">
@@ -13,74 +13,6 @@
     <link rel="stylesheet" href="../css/extendedmenu.css">
     <link rel="stylesheet" href="../css/addfood.css">
     <style>
-        body {
-            background-image: linear-gradient(#4CAF50, #63B967, #FFFFFF);
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: rgb(255, 255, 255);
-        }
-        main {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-        }
-        .recipe-container {
-            width: 100%;
-            max-width: 800px;
-            margin: 20px auto;
-        }
-        .recipe-item {
-            background-color: #808080;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            position: relative;
-        }
-        .recipe-title {
-            font-size: 24px;
-            color: #ffffff;
-            cursor: pointer;
-            margin: 0;
-        }
-        .recipe-details {
-            display: none;
-            margin-top: 10px;
-        }
-        .recipe-details input {
-            width: 60px;
-            margin: 5px;
-            font-size: 16px;
-            padding: 5px;
-        }
-        .recipe-details button {
-            background-color: #FFA500;
-            color: #ffffff;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 10px;
-        }
-        .recipe-details button:hover {
-            background-color: #ff8c00;
-        }
-        .edit-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: #FFA500;
-            color: #ffffff;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .edit-button:hover {
-            background-color: #ff8c00;
-        }
     </style>
 </head>
 <body>
@@ -89,45 +21,48 @@
     </header>
     <main>
         <div class="recipe-container">
-            <!-- Example recipe item -->
             <div class="recipe-item">
+                <img class="recipe-image" src="path/to/chicken-curry.jpg" alt="Chicken curry with basmati rice">
                 <button class="edit-button" onclick="toggleEdit(this)">Edit</button>
-                <div class="recipe-title" onclick="toggleDetails(this)">Spaghetti Bolognese</div>
+                <div class="recipe-title" onclick="toggleDetails(this)">Chicken curry with basmati rice</div>
                 <div class="recipe-details">
-                    <p>Ingredients:</p>
-                    <div>
-                        <label for="spaghetti-grams">Spaghetti:</label>
-                        <input id="spaghetti-grams" type="number" placeholder="grams" value="200">
+                    <div class="recipe-meta">
+                        <span>Cooking time: 30 minutes</span>
+                        <span>Difficulty: Easy</span>
                     </div>
-                    <div>
-                        <label for="meat-grams">Ground Meat:</label>
-                        <input id="meat-grams" type="number" placeholder="grams" value="300">
+                    <div class="ingredients-container">
+                        <p>Ingredients:</p>
+                        <div class="ingredients-item">
+                            <label for="ingredient1">Chicken</label>
+                            <input id="ingredient1" type="number" placeholder="grams" value="200">
+                        </div>
+                        <div class="ingredients-item">
+                            <label for="ingredient2">Basmati Rice</label>
+                            <input id="ingredient2" type="number" placeholder="grams" value="100">
+                        </div>
+                        <!-- Add more ingredients as needed -->
                     </div>
-                    <!-- Add more ingredients as needed -->
+                    <div class="portion-control">
+                        <button onclick="decreasePortions()">-</button>
+                        <span id="portion-count">2</span>
+                        <button onclick="increasePortions()">+</button>
+                    </div>
+                    <div class="instruction">
+                        <p>Instructions:</p>
+                        <p>1. Heat oil in a large skillet over medium heat. Add the chicken and cook until browned.</p>
+                        <p>2. Add the curry paste and cook for 1 minute.</p>
+                        <p>3. Stir in the coconut milk and bring to a simmer.</p>
+                        <p>4. Reduce the heat and cook for 10 minutes.</p>
+                        <p>5. Serve with basmati rice.</p>
+                    </div>
                     <button type="button" onclick="saveChanges(this)">Save</button>
                 </div>
             </div>
-            <!-- Add more recipes here -->
+            <script src="../js/recipe.js"></script>
+            <button type="button" class="btn" onclick="location.href='signup.html'">Next</button>
+        </div>
         </div>
     </main>
-    <script>
-        function toggleDetails(element) {
-            const details = element.nextElementSibling;
-            details.style.display = details.style.display === 'block' ? 'none' : 'block';
-        }
-
-        function toggleEdit(button) {
-            const recipeItem = button.parentElement;
-            const inputs = recipeItem.querySelectorAll('input');
-            inputs.forEach(input => input.disabled = !input.disabled);
-            button.textContent = button.textContent === 'Edit' ? 'Save' : 'Edit';
-        }
-
-        function saveChanges(button) {
-            // Save changes logic here
-            alert('Changes saved!');
-            toggleEdit(button.previousElementSibling); // Toggle the edit mode
-        }
-    </script>
+  
 </body>
 </html>
