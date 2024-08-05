@@ -1,21 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calorie Tracker Results</title>
-    <link rel="stylesheet" href="../css/styles-intro.css">
-    <link rel="stylesheet" href="../css/styles-input.css">
-    <link rel="stylesheet" href="../css/styles-advanced.css">
-    <link rel="stylesheet" href="../css/styles-result.css">
-    <link rel="stylesheet" href="../css/macronutrientsday.css"> <!-- Update this line -->
+    <title>My Nutrition</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body onload="calculateCalories()">
-    <header>
-    </main>
-    <div class="button-container">
-        <button type="button" class="btn" onclick="location.href='notificationonoff.html'">Next</button>
+<body>
+    <div class="container">
+        <div class="column">
+            <div class="item">
+                <label for="goal">Goal:</label>
+                <input type="text" id="goal">
+            </div>
+            <div class="item">
+                <label for="proteins">Proteins:</label>
+                <input type="text" id="proteins">
+            </div>
+            <div class="item">
+                <label for="carbs">Carbs:</label>
+                <input type="text" id="carbs">
+            </div>
+            <div class="item">
+                <label for="fats">Fats:</label>
+                <input type="text" id="fats">
+            </div>
+            <button id="saveButton">Save</button>
+        </div>
+        <div class="column">
+            <div class="item">
+                <label>Goal Value:</label>
+                <span id="goalValue"></span>
+            </div>
+            <div class="item">
+                <label>Proteins Value:</label>
+                <span id="proteinsValue"></span>
+            </div>
+            <div class="item">
+                <label>Carbs Value:</label>
+                <span id="carbsValue"></span>
+            </div>
+            <div class="item">
+                <label>Fats Value:</label>
+                <span id="fatsValue"></span>
+            </div>
+        </div>
     </div>
-    <script src="../js/script.js"></script>
+    <script src="nutrition.js"></script>
 </body>
 </html>
+

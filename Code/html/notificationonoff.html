@@ -1,21 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calorie Tracker Results</title>
-    <link rel="stylesheet" href="../css/styles-intro.css">
-    <link rel="stylesheet" href="../css/styles-input.css">
-    <link rel="stylesheet" href="../css/styles-advanced.css">
-    <link rel="stylesheet" href="../css/styles-result.css">
-    <link rel="stylesheet" href="../css/macronutrientsday.css"> <!-- Update this line -->
+    <title>Notification Settings</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body onload="calculateCalories()">
-    <header>
-    </main>
-    <div class="button-container">
-        <button type="button" class="btn" onclick="location.href='changepassword.html'">Next</button>
+<body>
+    <div class="container">
+        <div class="column">
+            <h2>All Notifications</h2>
+            <div class="item">
+                <label>Food Entry Reminder:</label>
+                <button id="foodEntryToggle" class="toggle-button" data-status="off">Off</button>
+            </div>
+            <div class="item">
+                <label>All Notifications:</label>
+                <button id="allNotificationsToggle" class="toggle-button" data-status="off">Off</button>
+            </div>
+            <button id="saveButton">Save</button>
+        </div>
     </div>
-    <script src="../js/script.js"></script>
+    <script src="../js/notificationonoff.js"></script>
 </body>
 </html>
