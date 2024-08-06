@@ -9,18 +9,41 @@
     <link rel="stylesheet" href="../css/styles-advanced.css">
     <link rel="stylesheet" href="../css/styles-result.css">
     <link rel="stylesheet" href="../css/styles-weightgoals.css">
-    <link rel="stylesheet" href="../css/macronutrientsday.css">
+    <link rel="stylesheet" href="../css/resultratioofmacronutrients.css">
 </head>
 <body>
+    <header>
+        <h1>Result Ratio of Macronutrients</h1>
+    </header>
     <main>
-        <p>Result ratio of macronutrients<p>
-        <div class="section" id="results">
-
+        <h1>Results</h1>
+        <div id="results" class="section">
+            <div class="result-container">
+                <div class="result-item" id="calories" title="Total caloric intake">
+                    <h2>Calories:</h2>
+                    <p id="calories-value"></p>
+                </div>
+                <div class="result-item" id="protein" title="Total protein intake">
+                    <h2>Protein:</h2>
+                    <p id="protein-value"></p>
+                </div>
+                <div class="result-item" id="fat" title="Total fat intake">
+                    <h2>Fat:</h2>
+                    <p id="fat-value"></p>
+                </div>
+                <div class="result-item" id="carbs" title="Total carbohydrate intake">
+                    <h2>Carbs:</h2>
+                    <p id="carbs-value"></p>
+                </div>
+            </div>
         </div>
         <div class="button-container">
             <button type="button" class="btn" onclick="portionsday()">Next</button>
         </div>
     </main>
+    <footer>
+        <p>&copy; Visit my Portfolio <a href="https://veronikaobrtelova.netlify.app/" target="_blank">website</a>.</p>
+    </footer>
     <script>
         function getQueryParams() {
             const params = {};
@@ -33,18 +56,10 @@
 
         function displayResults() {
             const params = getQueryParams();
-            const calories = params.calories;
-            const protein = params.protein;
-            const fat = params.fat;
-            const carbs = params.carbs;
-
-            document.getElementById('results').innerHTML = `
-                <h2>Results</h2>
-                <p>Calories: ${calories} kcal</p>
-                <p>Protein: ${protein} g</p>
-                <p>Fat: ${fat} g</p>
-                <p>Carbs: ${carbs} g</p>
-            `;
+            document.getElementById('calories-value').innerText = `${params.calories} kcal`;
+            document.getElementById('protein-value').innerText = `${params.protein} g`;
+            document.getElementById('fat-value').innerText = `${params.fat} g`;
+            document.getElementById('carbs-value').innerText = `${params.carbs} g`;
         }
 
         function goBack() {
@@ -52,7 +67,6 @@
         }
 
         displayResults();
-    
     </script>
 </body>
 </html>
