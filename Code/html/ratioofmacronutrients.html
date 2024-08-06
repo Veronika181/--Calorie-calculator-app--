@@ -3,39 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calorie Tracker Results</title>
+    <title>Calorie Tracker - Macronutrient Ratios</title>
     <link rel="stylesheet" href="../css/styles-intro.css">
     <link rel="stylesheet" href="../css/styles-input.css">
     <link rel="stylesheet" href="../css/styles-advanced.css">
     <link rel="stylesheet" href="../css/styles-result.css">
     <link rel="stylesheet" href="../css/styles-weightgoals.css">
-    <link rel="stylesheet" href="../css/macronutrients.css">
-    <link rel="stylesheet" href="../css/ratio.css">
+    <link rel="stylesheet" href="../css/macronutrientsday.css">
 </head>
-<body onload="calculateCalories()">
-    <header>
-        <h1>CalorieTracker</h1>
-    </header>
+<body>
     <main>
-        <div class="ratio">
-            <h2>Ratio of macronutrients</h2>
-            <div class="btn-group">
-                <button data-title="Proteins">Proteins</button>
-                <button data-title="Carbohydrates">Carbohydrates</button>
-                <button data-title="Fats">Fats</button>
-            </div>
+        <div class="section">
+            <h2>Set Macronutrient Ratios</h2>
+            <label for="protein">Protein (%):</label>
+            <input type="number" id="protein" name="protein" min="0" max="100" value="30">
+            <label for="carbs">Carbs (%):</label>
+            <input type="number" id="carbs" name="carbs" min="0" max="100" value="40">
+            <label for="fat">Fat (%):</label>
+            <input type="number" id="fat" name="fat" min="0" max="100" value="30">
         </div>
-
-        <div class="activityl">
-            <h2>Activity level</h2>
-            <h2>(1,2 - 1,9)</h2>
-            <div class="btn-group">
-                <button data-title="activityLevel">?</button>
-            </div>
+        <div class="button-container">
+            <button type="button" class="btn" onclick="calculateMacros()">Calculate</button>
+        </div>
+        <div class="section" id="result">
+            <!-- Výsledky se zobrazí zde -->
         </div>
     </main>
-    <div class="button-container">
-        <button type="button" class="btn" onclick="location.href='resultratioofmacronutrients.html'">Calculate</button>
-    </div>
+    <script>
+        function getQueryParams() {
+            const params = {};
+            window.location.search.substring(1).split("&").forEach(param => {
+                const [key, value] = param.split("=");
+                params[key] = decodeURIComponent(value);
+            });
+            return params;
+        }
+
+        function calculateMacros() {
+            const params = getQueryParams();
+            const goal = params.goal;
+            const deficit = params.deficit;
+            const proteinPercent = parseFloat(document.getElementById('protein').value) / 100;
+            const carbsPercent = parseFloat(document.getElementById('carbs').value) / 100;
+            const fatPercent = parseFloat(document.getElementById('fat').value) / 100;
+
+            // Výpočet BMR
+            const weight = 70; // kg (předpokládáme)
+            const height = 175; // cm (předpokládáme)
+            const age = 25; // let (předpokládáme)
+            const gender = 'male'; // muž nebo žena (předpokládáme)
+
+            let BMR;
+            if (gender === 'male') {
+                BMR = 10 * weight + 6.25 * height - 5 * age + 5;
+            } else {
+                BMR = 10 * weight + 6.25 * height - 5 * age - 161;
+            }
+
+            let calories;
+            if (goal === 'Reduce') {
+                if (deficit === 'Low') {
+                    calories = BMR - 250;
+                } else if (deficit === 'Medium') {
+                    calories = BMR - 500;
+                } else if (deficit === 'High') {
+                    calories = BMR - 750;
+                }
+            } else if (goal === 'Maintain') {
+                calories = BMR;
+            } else if (goal === 'Gain') {
+                if (deficit === 'Low') {
+                    calories = BMR + 250;
+                } else if (deficit === 'Medium') {
+                    calories = BMR + 500;
+                } else if (deficit === 'High') {
+                    calories = BMR + 750;
+                }
+            }
+
+            const protein = (calories * proteinPercent) / 4; // 1g = 4kcal
+            const fat = (calories * fatPercent) / 9; // 1g = 9kcal
+            const carbs = (calories * carbsPercent) / 4; // 1g = 4kcal
+
+            // Přesměrování na stránku s výsledky
+            const resultUrl = `resultratioofmacronutrients.html?calories=${calories.toFixed(2)}&protein=${protein.toFixed(2)}&fat=${fat.toFixed(2)}&carbs=${carbs.toFixed(2)}`;
+            window.location.href = resultUrl;
+        }
+    </script>
 </body>
 </html>

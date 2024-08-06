@@ -9,31 +9,76 @@
     <link rel="stylesheet" href="../css/styles-advanced.css">
     <link rel="stylesheet" href="../css/styles-result.css">
     <link rel="stylesheet" href="../css/styles-weightgoals.css">
-    <link rel="stylesheet" href="../css/macronutrientsday.css"> <!-- Update this line -->
+    <link rel="stylesheet" href="../css/macronutrientsday.css">
 </head>
 <body>
     <main>
         <div class="section">
             <h2>What would you like to do with your weight?</h2>
             <div class="btn-group">
-                <button data-title="Reduce">Reduce</button>
-                <button data-title="Maintain">Maintain</button>
-                <button data-title="Gain">Gain</button>
+                <button data-title="Reduce" onclick="selectGoal('Reduce')">Reduce</button>
+                <button data-title="Maintain" onclick="selectGoal('Maintain')">Maintain</button>
+                <button data-title="Gain" onclick="selectGoal('Gain')">Gain</button>
             </div>
         </div>
         <div class="section">
             <h2>Caloric Deficit Amount</h2>
             <div class="btn-group">
-                <button data-title="Low">Low</button>
-                <button data-title="Medium">Medium</button>
-                <button data-title="High">High</button>
+                <button data-title="Low" onclick="selectDeficit('Low')">Low</button>
+                <button data-title="Medium" onclick="selectDeficit('Medium')">Medium</button>
+                <button data-title="High" onclick="selectDeficit('High')">High</button>
             </div>
         </div>
         <div class="button-container">
-            <button type="button" class="btn" onclick="location.href='ratioofmacronutrients.html'">Next</button>
+            <button type="button" class="btn" onclick="nextPage()">Next</button>
         </div>
     </main>
-    <script src="script.js"></script>
+    <script>
+        let weightGoal = '';
+        let deficitAmount = '';
+
+        function selectGoal(goal) {
+            weightGoal = goal;
+            updateButtonStyles('goal', goal);
+        }
+
+        function selectDeficit(deficit) {
+            deficitAmount = deficit;
+            updateButtonStyles('deficit', deficit);
+        }
+
+        function updateButtonStyles(type, value) {
+            let buttons;
+            if (type === 'goal') {
+                buttons = document.querySelectorAll('.section:first-of-type .btn-group button');
+            } else if (type === 'deficit') {
+                buttons = document.querySelectorAll('.section:nth-of-type(2) .btn-group button');
+            }
+
+            buttons.forEach(button => {
+                if (button.getAttribute('data-title') === value) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+        }
+
+        function nextPage() {
+            if (weightGoal && deficitAmount) {
+                const url = `ratioofmacronutrients.html?goal=${weightGoal}&deficit=${deficitAmount}`;
+                location.href = url;
+            } else {
+                alert('Please select all options.');
+            }
+        }
+    </script>
+    <style>
+        .btn-group button.active {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
 </body>
 </html>
 

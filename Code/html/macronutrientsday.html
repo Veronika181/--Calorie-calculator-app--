@@ -3,98 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calorie Tracker Results</title>
+    <title>Calorie Tracker - Macronutrients per Day</title>
     <link rel="stylesheet" href="../css/styles-intro.css">
     <link rel="stylesheet" href="../css/styles-input.css">
     <link rel="stylesheet" href="../css/styles-advanced.css">
     <link rel="stylesheet" href="../css/styles-result.css">
-    <link rel="stylesheet" href="../css/macronutrientsday.css"> <!-- Update this line -->
+    <link rel="stylesheet" href="../css/styles-weightgoals.css">
+    <link rel="stylesheet" href="../css/macronutrientsday.css">
 </head>
-<body onload="calculateCalories()">
-    <header>
-        <h1>CalorieTracker</h1>
-    </header>
+<body>
     <main>
-        <div class="section">
-            <h2>Distribution of individual macronutrients during the day</h2>
-            <div class="result-container">
-                <!-- Breakfast -->
-                <div class="result-item">
-                    <div class="result-title-box">
-                        <div class="result-title">Breakfast</div>
-                    </div>
-                    <div class="result-details-box">
-                        <div class="result-details">
-                            <div class="result-value">Calories: <span id="breakfast-calories"></span></div>
-                            <div class="result-value">Protein: <span id="breakfast-protein"></span></div>
-                            <div class="result-value">Carbohydrates: <span id="breakfast-carbs"></span></div>
-                            <div class="result-value">Fat: <span id="breakfast-fat"></span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Snack 1 -->
-                <div class="result-item">
-                    <div class="result-title-box">
-                        <div class="result-title">Snack</div>
-                    </div>
-                    <div class="result-details-box">
-                        <div class="result-details">
-                            <div class="result-value">Calories: <span id="snack1-calories"></span></div>
-                            <div class="result-value">Protein: <span id="snack1-protein"></span></div>
-                            <div class="result-value">Carbohydrates: <span id="snack1-carbs"></span></div>
-                            <div class="result-value">Fat: <span id="snack1-fat"></span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Lunch -->
-                <div class="result-item">
-                    <div class="result-title-box">
-                        <div class="result-title">Lunch</div>
-                    </div>
-                    <div class="result-details-box">
-                        <div class="result-details">
-                            <div class="result-value">Calories: <span id="lunch-calories"></span></div>
-                            <div class="result-value">Protein: <span id="lunch-protein"></span></div>
-                            <div class="result-value">Carbohydrates: <span id="lunch-carbs"></span></div>
-                            <div class="result-value">Fat: <span id="lunch-fat"></span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Snack 2 -->
-                <div class="result-item">
-                    <div class="result-title-box">
-                        <div class="result-title">Snack</div>
-                    </div>
-                    <div class="result-details-box">
-                        <div class="result-details">
-                            <div class="result-value">Calories: <span id="snack2-calories"></span></div>
-                            <div class="result-value">Protein: <span id="snack2-protein"></span></div>
-                            <div class="result-value">Carbohydrates: <span id="snack2-carbs"></span></div>
-                            <div class="result-value">Fat: <span id="snack2-fat"></span></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Dinner -->
-                <div class="result-item">
-                    <div class="result-title-box">
-                        <div class="result-title">Dinner</div>
-                    </div>
-                    <div class="result-details-box">
-                        <div class="result-details">
-                            <div class="result-value">Calories: <span id="dinner-calories"></span></div>
-                            <div class="result-value">Protein: <span id="dinner-protein"></span></div>
-                            <div class="result-value">Carbohydrates: <span id="dinner-carbs"></span></div>
-                            <div class="result-value">Fat: <span id="dinner-fat"></span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="section" id="macronutrients">
+            <!-- Rozdělení makroživin během dne se zobrazí zde -->
+        </div>
+        <div class="button-container">
+            <button type="button" class="btn" onclick="goToMenu()">Next</button>
         </div>
     </main>
-    <div class="button-container">
-        <button type="button" class="btn" onclick="location.href='menu.html'">Next</button>
-    </div>
-    <script src="../js/script.js"></script>
+    <script>
+        function getQueryParams() {
+            const params = {};
+            window.location.search.substring(1).split("&").forEach(param => {
+                const [key, value] = param.split("=");
+                params[key] = decodeURIComponent(value);
+            });
+            return params;
+        }
+
+        function displayMacronutrients() {
+            const params = getQueryParams();
+            const calories = parseFloat(params.calories);
+            const proteinPercentage = parseFloat(params.proteinPercentage);
+            const carbsPercentage = parseFloat(params.carbsPercentage);
+            const fatPercentage = parseFloat(params.fatPercentage);
+
+            // Procenta rozdělení kalorií na jednotlivá jídla
+            const meals = [
+                { name: 'Breakfast', ratio: 0.21 },
+                { name: 'Snack 1', ratio: 0.13 },
+                { name: 'Lunch', ratio: 0.27 },
+                { name: 'Snack 2', ratio: 0.18 },
+                { name: 'Dinner', ratio: 0.20 }
+            ];
+
+            // Výpočet makroživin
+            const totalProtein = (calories * (proteinPercentage / 100)) / 4; // 1 gram bílkovin = 4 kalorie
+            const totalCarbs = (calories * (carbsPercentage / 100)) / 4; // 1 gram sacharidů = 4 kalorie
+            const totalFat = (calories * (fatPercentage / 100)) / 9; // 1 gram tuku = 9 kalorie
+
+            let macronutrientsHtml = '<h2>Macronutrients per Meal</h2>';
+            meals.forEach(meal => {
+                const mealCalories = calories * meal.ratio;
+                const mealProtein = totalProtein * meal.ratio;
+                const mealCarbs = totalCarbs * meal.ratio;
+                const mealFat = totalFat * meal.ratio;
+
+                macronutrientsHtml += `
+                    <div>
+                        <h3>${meal.name}</h3>
+                        <p>Calories: ${mealCalories.toFixed(2)} kcal</p>
+                        <p>Protein: ${mealProtein.toFixed(2)} g</p>
+                        <p>Carbs: ${mealCarbs.toFixed(2)} g</p>
+                        <p>Fat: ${mealFat.toFixed(2)} g</p>
+                    </div>
+                `;
+            });
+
+            document.getElementById('macronutrients').innerHTML = macronutrientsHtml;
+        }
+
+        function goToMenu() {
+            // Zde nastavte URL na stránku menu
+            const menuUrl = 'menu.html';
+            window.location.href = menuUrl;
+        }
+
+        displayMacronutrients();
+    </script>
 </body>
 </html>
-
