@@ -45,13 +45,16 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #FFA500;
 }
+
 .sign-in {
     text-align: center;
     margin-top: 10px;
+    color:white;
 }
 .sign-in a {
     color: #FFA500;
     text-decoration: none;
+    
 }
 .sign-in a:hover {
     text-decoration: underline;

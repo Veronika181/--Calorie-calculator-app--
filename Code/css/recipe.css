@@ -5,7 +5,6 @@
 }
 
 .recipe-item {
-    background-color: #808080;
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -94,4 +93,21 @@
 
 .edit-button:hover {
     background-color: #0056b3;
+}
+
+.navigation-arrows {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.arrow-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.arrow-button img {
+    width: 30px;
+    height: 30px;
 }

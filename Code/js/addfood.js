@@ -1,55 +1,42 @@
-function toggleDropdown(dropdownId) {
-    const dropdown = document.getElementById(dropdownId);
-    if (dropdown.style.display === 'none' || dropdown.style.display === '') {
-        dropdown.style.display = 'block';
-    } else {
-        dropdown.style.display = 'none';
-    }
+function toggleDropdown(id) {
+    const dropdown = document.getElementById(id);
+    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
 }
 
-function showDropdown(dropdownId) {
-    const dropdown = document.getElementById(dropdownId);
+function showDropdown(id) {
+    const dropdown = document.getElementById(id);
     dropdown.style.display = 'block';
 }
 
-function showQuantityInput(detailsId, inputId, dropdownId) {
-    const foodItem = document.getElementById(inputId).value;
-    if (!foodItem) {
-        alert('Please enter a food item.');
-        return;
+function addFoodItem(detailsId, inputId) {
+    const detailsBox = document.getElementById(detailsId);
+    const input = document.getElementById(inputId);
+    const foodItem = input.value.trim();
+
+    if (foodItem) {
+        const foodDiv = document.createElement('div');
+        foodDiv.textContent = foodItem;
+        detailsBox.appendChild(foodDiv);
+        input.value = ''; // Clear the input field after adding the item
     }
-
-    const detailsBox = document.getElementById(detailsId);
-    const quantityInput = document.createElement('input');
-    quantityInput.type = 'number';
-    quantityInput.placeholder = 'Enter quantity in grams';
-    quantityInput.classList.add('quantity-input');
-
-    const addButton = document.createElement('button');
-    addButton.innerText = 'Add';
-    addButton.onclick = function() {
-        addFoodItem(detailsId, foodItem, quantityInput.value);
-        document.getElementById(inputId).value = '';
-        quantityInput.remove();
-        addButton.remove();
-        document.getElementById(dropdownId).style.display = 'none';
-    };
-
-    detailsBox.appendChild(quantityInput);
-    detailsBox.appendChild(addButton);
-}
-
-function addFoodItem(detailsId, foodItem, quantity) {
-    const detailsBox = document.getElementById(detailsId);
-    const foodDetails = document.createElement('div');
-    foodDetails.classList.add('food-details');
-    foodDetails.innerText = `${foodItem} - ${quantity} grams`;
-
-    detailsBox.appendChild(foodDetails);
-    detailsBox.style.display = 'block';
 }
 
 function saveFoodEntries() {
-    // Here you would typically save the food entries to the server or local storage
-    alert('Food entries saved!');
+    // Implement saving functionality here
+}
+function addFoodItem(detailsId, inputId) {
+    console.log('Adding food item...'); // Debugging log
+    const detailsBox = document.getElementById(detailsId);
+    const input = document.getElementById(inputId);
+    const foodItem = input.value.trim();
+
+    if (foodItem) {
+        console.log(`Food item to add: ${foodItem}`); // Debugging log
+        const foodDiv = document.createElement('div');
+        foodDiv.textContent = foodItem;
+        detailsBox.appendChild(foodDiv);
+        input.value = ''; // Clear the input field after adding the item
+    } else {
+        console.log('Input is empty'); // Debugging log
+    }
 }

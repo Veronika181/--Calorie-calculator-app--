@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipes</title>
-
     <link rel="stylesheet" href="../css/styles-intro.css">
     <link rel="stylesheet" href="../css/styles-input.css">
     <link rel="stylesheet" href="../css/styles-advanced.css">
@@ -13,6 +12,66 @@
     <link rel="stylesheet" href="../css/extendedmenu.css">
     <link rel="stylesheet" href="../css/addfood.css">
     <style>
+        /* Custom styles */
+        .recipe-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .recipe-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .navigation-arrows {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .arrow-button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .arrow-button img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .recipe-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .clock {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+        }
+
+        .recipe-details {
+            display: none; /* Initially hidden */
+        }
+
+        .edit-button {
+            margin-bottom: 10px;
+        }
+
+        .portion-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .portion-control button {
+            padding: 10px;
+        }
     </style>
 </head>
 <body>
@@ -20,14 +79,22 @@
         <h1>Recipes</h1>
     </header>
     <main>
+        <div class="navigation-arrows">
+            <button class="arrow-button" onclick="prevRecipe()">
+                <img src="../images/arrow-left.png" alt="Previous Recipe">
+            </button>
+            <button class="arrow-button" onclick="nextRecipe()">
+                <img src="../images/arrow-right.png" alt="Next Recipe">
+            </button>
+        </div>
         <div class="recipe-container">
             <div class="recipe-item">
-                <img class="recipe-image" src="path/to/chicken-curry.jpg" alt="Chicken curry with basmati rice">
+                <img class="recipe-image" src="../images/chicken-curry.jpeg" alt="Chicken curry with basmati rice">
                 <button class="edit-button" onclick="toggleEdit(this)">Edit</button>
                 <div class="recipe-title" onclick="toggleDetails(this)">Chicken curry with basmati rice</div>
                 <div class="recipe-details">
                     <div class="recipe-meta">
-                        <span>Cooking time: 30 minutes</span>
+                        <span>Cooking time: <img class="clock" src="../images/clock-basic-style.png" alt="Clock"> 30 minutes</span>
                         <span>Difficulty: Easy</span>
                     </div>
                     <div class="ingredients-container">
@@ -40,7 +107,6 @@
                             <label for="ingredient2">Basmati Rice</label>
                             <input id="ingredient2" type="number" placeholder="grams" value="100">
                         </div>
-                        <!-- Add more ingredients as needed -->
                     </div>
                     <div class="portion-control">
                         <button onclick="decreasePortions()">-</button>
@@ -61,8 +127,7 @@
             <script src="../js/recipe.js"></script>
             <button type="button" class="btn" onclick="location.href='signup.html'">Next</button>
         </div>
-        </div>
     </main>
-  
 </body>
 </html>
+
