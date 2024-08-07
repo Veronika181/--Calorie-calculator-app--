@@ -12,14 +12,21 @@
     <link rel="stylesheet" href="../css/macronutrientsday.css">
 </head>
 <body>
+    <header>
+        <h1>Macronutrients per Day</h1>
+    </header>
     <main>
-        <div class="section" id="macronutrients">
+        <h1>Daily Macronutrients</h1>
+        <div id="macronutrients" class="section">
             <!-- Rozdělení makroživin během dne se zobrazí zde -->
         </div>
         <div class="button-container">
             <button type="button" class="btn" onclick="goToMenu()">Next</button>
         </div>
     </main>
+    <footer>
+        <p>&copy; Visit my Portfolio <a href="https://veronikaobrtelova.netlify.app/" target="_blank">website</a>.</p>
+    </footer>
     <script>
         function getQueryParams() {
             const params = {};
@@ -51,7 +58,7 @@
             const totalCarbs = (calories * (carbsPercentage / 100)) / 4; // 1 gram sacharidů = 4 kalorie
             const totalFat = (calories * (fatPercentage / 100)) / 9; // 1 gram tuku = 9 kalorie
 
-            let macronutrientsHtml = '<h2>Macronutrients per Meal</h2>';
+            let macronutrientsHtml = '';
             meals.forEach(meal => {
                 const mealCalories = calories * meal.ratio;
                 const mealProtein = totalProtein * meal.ratio;
@@ -59,8 +66,8 @@
                 const mealFat = totalFat * meal.ratio;
 
                 macronutrientsHtml += `
-                    <div>
-                        <h3>${meal.name}</h3>
+                    <div class="result-item" title="${meal.name} intake">
+                        <h2>${meal.name}</h2>
                         <p>Calories: ${mealCalories.toFixed(2)} kcal</p>
                         <p>Protein: ${mealProtein.toFixed(2)} g</p>
                         <p>Carbs: ${mealCarbs.toFixed(2)} g</p>
@@ -81,3 +88,119 @@
     </script>
 </body>
 </html>
+<style>
+body {
+    background-image: linear-gradient(#4CAF50, #63B967, #FFFFFF);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    padding: 30px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+h1, h2 {
+    margin: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.section {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.result-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.result-item {
+    background-color: #808080;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    width: 200px;
+    margin: 10px;
+}
+
+.result-item h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #ffffff;
+}
+
+.result-item p {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: #FFA500;
+}
+
+.result-item:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    white-space: nowrap;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.result-item:hover::after {
+    opacity: 1;
+}
+
+.button-container {
+    margin-top: 20px;
+}
+
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+footer {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: white;
+}
+</style>
