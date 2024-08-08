@@ -29,12 +29,19 @@
         <div class="container">
             <div class="form-container">
                 <form id="macros-form">
-                    <label for="proteins">Proteins (g):</label>
-                    <input type="number" id="proteins" name="proteins" required>
-                    <label for="carbs">Carbohydrates (g):</label>
-                    <input type="number" id="carbs" name="carbs" required>
-                    <label for="fats">Fats (g):</label>
-                    <input type="number" id="fats" name="fats" required>
+                    <div class="input-group">
+                        <label for="proteins">Proteins (g):</label>
+                        <input type="number" id="proteins" name="proteins" required>
+                        <div class="small-circle" id="proteins-circle"></div>
+                    <div class="input-group">
+                        <label for="carbs">Carbohydrates (g):</label>
+                        <input type="number" id="carbs" name="carbs" required>
+                        <div class="small-circle" id="carbs-circle"></div>
+                    <div class="input-group">
+                        <label for="fats">Fats (g):</label>
+                        <input type="number" id="fats" name="fats" required>
+                        <div class="small-circle" id="fats-circle"></div>
+                    </div>   
                     <button type="submit">Calculate</button>
                 </form>
                 <div class="circle">

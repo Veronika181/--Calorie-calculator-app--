@@ -123,3 +123,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     renderCalendar(currentMonthIndex);
 });
+
+document.getElementById('proteins').addEventListener('input', function() {
+    document.getElementById('proteins-circle').textContent = this.value + 'g';
+});
+
+document.getElementById('carbs').addEventListener('input', function() {
+    document.getElementById('carbs-circle').textContent = this.value + 'g';
+});
+
+document.getElementById('fats').addEventListener('input', function() {
+    document.getElementById('fats-circle').textContent = this.value + 'g';
+});
