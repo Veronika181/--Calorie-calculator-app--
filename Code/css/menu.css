@@ -1,11 +1,9 @@
-/* Reset stylů */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Základní styly */
 body {
   font-family: Verdana, sans-serif;
   display: flex;
@@ -18,7 +16,6 @@ body {
   overflow-x: hidden; /* Skrýt horizontální posuvník */
 }
 
-/* Hlavní nadpis */
 header {
   text-align: center;
   margin-bottom: 16px;
@@ -29,20 +26,19 @@ h1 {
   color: #4caf50;
 }
 
-/* Kalendář */
 #calendar-container {
   width: 100%;
   max-width: 300px;
   margin-bottom: 16px;
-  display: none; /* Zobrazit kalendář po kliknutí */
+  display: none; 
 }
 
 .calendar-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #1abc9c;
-  color: white;
+  background-color: #FF8C00;
+  color: rgb(0, 0, 0);
   padding: 8px;
 }
 
@@ -76,14 +72,14 @@ h1 {
   cursor: pointer;
   border-radius: 4px;
   font-size: 0.8em;
+  background-color: #808080;
 }
 
 #calendar-days li.active {
-  background-color: #1abc9c;
-  color: white;
+  background-color: #FF8C00;
+  color: rgb(0, 0, 0);
 }
 
-/* Přehled */
 .overview {
   text-align: center;
   margin-bottom: 16px;
@@ -143,7 +139,6 @@ h1 {
   margin-bottom: 5px;
 }
 
-/* Menu */
 .menu {
   display: flex;
   justify-content: center;
@@ -155,7 +150,7 @@ h1 {
   background-color: #4caf50;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 30px;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1em;
@@ -165,7 +160,6 @@ h1 {
   background-color: #45a049;
 }
 
-/* Tlačítko Next */
 .next-btn {
   background-color: #4caf50;
   color: white;
@@ -180,7 +174,6 @@ h1 {
   background-color: #45a049;
 }
 
-/* Media queries pro lepší responzivnost */
 @media screen and (max-width: 768px) {
   #calendar-container {
       max-width: 250px;
@@ -243,4 +236,101 @@ h1 {
   }
 }
 
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Space between buttons */
+  width: 100%;
+}
 
+.input-group {
+  background-color: #808080;
+  padding: 15px; /* Increased padding for better visibility */
+  border-radius: 10px;
+  box-sizing: border-box; /* Ensures padding is included in width/height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%; /* Ensures all input groups are of equal width */
+  font-size: 200%;
+}
+
+.input-group input[type="range"] {
+  width: 90%; 
+  margin-top: 10px;
+}
+
+.input-group label {
+  font-weight: bold;
+}
+
+.result-container {
+  width: 326px; /* Šířka kontejneru */
+  height: auto; /* Výška se přizpůsobí obsahu */
+  display: flex; /* Flexbox pro rozložení */
+  flex-direction: column; /* Uloží položky do sloupce */
+  align-items: stretch; /* Ujistěte se, že položky se roztáhnou na šířku kontejneru */
+  padding: 5px; /* Volitelné vnitřní okraje */
+  box-sizing: border-box; /* Zahrne padding a border do šířky a výšky */
+}
+
+.result-item {
+  width: 100%;
+  height: 64px; /* Výška položky */
+  display: flex;
+  flex-direction: row; /* Uloží obsah do řádku */
+  align-items: center; /* Vertikální zarovnání obsahu */
+  justify-content: space-between; /* Rozložení mezi textem a tlačítky */
+  padding: 5px; /* Volitelné vnitřní okraje */
+  border-bottom: 1px solid #ddd; /* Okraj mezi položkami */
+ 
+  
+}
+
+.result-item:last-child {
+  border-bottom: none; /* Odstraní spodní okraj z poslední položky */
+}
+
+.result-item-label {
+  font-weight: bold; /* Tučnější text pro popisky */
+  font-size: 0.8em; /* Velikost písma */
+  color: orange;
+}
+
+.result-item button {
+  margin: 5px; /* Prostor kolem buttonu */
+  padding: 5px 10px; /* Menší padding */
+  font-size: 14px; /* Menší text */
+  color: white;
+  background-color: #FFA500;
+  border: none; /* Bez okraje */
+  border-radius: 50%; /* Kulatý tvar buttonu */
+  cursor: pointer; /* Ručička při najetí */
+  width: 40px; /* Nastav šířku buttonu */
+  height: 40px; /* Nastav výšku buttonu */
+  display: flex; /* Umožní centrování textu */
+  align-items: center; /* Vertikálně centrování textu */
+  justify-content: center; /* Horizontálně centrování textu */
+}
+
+
+.button-container {
+  margin-top: 16px;
+}
+
+.btn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  color: orange;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
