@@ -135,3 +135,47 @@ document.getElementById('carbs').addEventListener('input', function() {
 document.getElementById('fats').addEventListener('input', function() {
     document.getElementById('fats-circle').textContent = this.value + 'g';
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const monthNames = ["Leden", "Únor", "Březen", "Duben", "Květen", "Červen", "Červenec", "Srpen", "Září", "Říjen", "Listopad", "Prosinec"];
+    const calendarContainer = document.getElementById('calendar-container');
+    const monthNameSpan = document.querySelector('.month-name');
+    const monthSelect = document.getElementById('month-select');
+    const prevButton = document.getElementById('prev-month');
+    const nextButton = document.getElementById('next-month');
+    let currentMonth = new Date().getMonth();
+    let currentYear = new Date().getFullYear();
+
+    function updateCalendar() {
+        monthNameSpan.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+        monthSelect.innerHTML = monthNames.map((month, index) => 
+            `<option value="${index}" ${index === currentMonth ? 'selected' : ''}>${month}</option>`
+        ).join('');
+    }
+
+    function changeMonth(offset) {
+        currentMonth += offset;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        } else if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+        }
+        updateCalendar();
+    }
+
+    prevButton.addEventListener('click', () => changeMonth(-1));
+    nextButton.addEventListener('click', () => changeMonth(1));
+    monthSelect.addEventListener('change', () => {
+        currentMonth = parseInt(monthSelect.value);
+        updateCalendar();
+    });
+
+    document.getElementById('show-calendar-btn').addEventListener('click', () => {
+        calendarContainer.style.display = calendarContainer.style.display === 'none' ? 'block' : 'none';
+        updateCalendar();
+    });
+
+    updateCalendar();
+});

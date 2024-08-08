@@ -12,9 +12,7 @@
 </head>
 <body>
     <h2>Calorie Tracker</h2>
-    <header>
-        <button id="show-calendar-btn"> 📅</button>
-    </header>
+        <button id="show-calendar-btn"> 📅</button> 
     <div id="calendar-container" style="display: none;">
         <div class="calendar-header">
             <button class="prev">&lt;</button>
@@ -52,34 +50,68 @@
         <h2>Menu</h2>
         <div class="result-container">
             <div class="result-item">
-                <div class="result-item-label">Breakfast</div>
-                <button type="button" class="breakfast-btn-left" onclick="changeValue('breakfast', -1)">-</button>
-                <span id="breakfastDisplay">306 Kcal</span>
-                <button type="button" class="breakfast-btn-right" onclick="changeValue('breakfast', 1)">+</button>
+              <div class="result-item-content">
+                <div class="result-item-label">Breakfast:</div>
+                <div class="result-item-info">
+                  <span id="breakfastDisplay">306 Kcal</span>
+                  <div class="result-item-buttons">
+                    <button type="button" class="breakfast-btn-left" onclick="changeValue('breakfast', -1)">-</button>
+                    <button type="button" class="breakfast-btn-right" onclick="changeValue('breakfast', 1)">+</button>
+                  </div>
+                </div>
+              </div>
             </div>
+            
             <div class="result-item">
-                <div class="result-item-label">Snack</div>
-                <button type="button" class="snack1-btn-left" onclick="changeValue('snack1', -1)">-</button>
-                <span id="snack1Display">190 Kcal</span>
-                <button type="button" class="snack1-btn-right" onclick="changeValue('snack1', 1)">+</button>
+              <div class="result-item-content">
+                <div class="result-item-label">Snack:</div>
+                <div class="result-item-info">
+                  <span id="snack1Display">190 Kcal</span>
+                  <div class="result-item-buttons">
+                    <button type="button" class="snack1-btn-left" onclick="changeValue('snack1', -1)">-</button>
+                    <button type="button" class="snack1-btn-right" onclick="changeValue('snack1', 1)">+</button>
+                  </div>
+                </div>
+              </div>
             </div>
+            
             <div class="result-item">
-                <div class="result-item-label">Lunch</div>
-                <button type="button" class="lunch-btn-left" onclick="changeValue('lunch', -1)">-</button>
-                <span id="lunchDisplay">401 Kcal</span>
-                <button type="button" class="lunch-btn-right" onclick="changeValue('lunch', 1)">+</button>
+              <div class="result-item-content">
+                <div class="result-item-label">Lunch:</div>
+                <div class="result-item-info">
+                  <span id="lunchDisplay">401 Kcal</span>
+                  <div class="result-item-buttons">
+                    <button type="button" class="lunch-btn-left" onclick="changeValue('lunch', -1)">-</button>
+                    <button type="button" class="lunch-btn-right" onclick="changeValue('lunch', 1)">+</button>
+                  </div>
+                </div>
+              </div>
             </div>
+            
             <div class="result-item">
-                <div class="result-item-label">Snack 2</div>
-                <button type="button" class="snack2-btn-left" onclick="changeValue('snack2', -1)">-</button>
-                <span id="snack2Display">262 Kcal</span>
-                <button type="button" class="snack2-btn-right" onclick="changeValue('snack2', 1)">+</button>
+              <div class="result-item-content">
+                <div class="result-item-label">Snack 2:</div>
+                <div class="result-item-info">
+                  <span id="snack2Display">262 Kcal</span>
+                  <div class="result-item-buttons">
+                    <button type="button" class="snack2-btn-left" onclick="changeValue('snack2', -1)">-</button>
+                    <button type="button" class="snack2-btn-right" onclick="changeValue('snack2', 1)">+</button>
+                  </div>
+                </div>
+              </div>
             </div>
+            
             <div class="result-item">
-                <div class="result-item-label">Dinner</div>
-                <button type="button" class="dinner-btn-left" onclick="changeValue('dinner', -1)">-</button>
-                <span id="dinnerDisplay">299 Kcal</span>
-                <button type="button" class="dinner-btn-right" onclick="changeValue('dinner', 1)">+</button>
+              <div class="result-item-content">
+                <div class="result-item-label">Dinner:</div>
+                <div class="result-item-info">
+                  <span id="dinnerDisplay">299 Kcal</span>
+                  <div class="result-item-buttons">
+                    <button type="button" class="dinner-btn-left" onclick="changeValue('dinner', -1)">-</button>
+                    <button type="button" class="dinner-btn-right" onclick="changeValue('dinner', 1)">+</button>
+                  </div>
+                </div>
+              </div>
             </div>
         </div>
         <div class="button-container">
