@@ -1,4 +1,3 @@
-
 function getQueryParams() {
     const params = {};
     window.location.search.substring(1).split("&").forEach(param => {
@@ -16,17 +15,16 @@ function displayMacronutrients() {
     const fatPercentage = 35;
 
     const meals = [
-        { name: 'Breakfast', ratio: 0.21 },
-        { name: 'Snack 1', ratio: 0.13 },
-        { name: 'Lunch', ratio: 0.27 },
-        { name: 'Snack 2', ratio: 0.18 },
-        { name: 'Dinner', ratio: 0.20 }
+        { name: 'Breakfast', ratio: 0.21, class: 'result-item1' },
+        { name: 'Snack 1', ratio: 0.13, class: 'result-item1' },
+        { name: 'Lunch', ratio: 0.27, class: 'result-item1' },
+        { name: 'Snack 2', ratio: 0.18, class: 'result-item1' },
+        { name: 'Dinner', ratio: 0.20, class: 'result-item1' }
     ];
 
- 
-    const totalProtein = (totalCalories * (proteinPercentage / 100)) / 4; 
-    const totalCarbs = (totalCalories * (carbsPercentage / 100)) / 4; 
-    const totalFat = (totalCalories * (fatPercentage / 100)) / 9; 
+    const totalProtein = (totalCalories * (proteinPercentage / 100)) / 4;
+    const totalCarbs = (totalCalories * (carbsPercentage / 100)) / 4;
+    const totalFat = (totalCalories * (fatPercentage / 100)) / 9;
 
     let macronutrientsHtml = '';
     meals.forEach(meal => {
@@ -36,7 +34,7 @@ function displayMacronutrients() {
         const mealFat = totalFat * meal.ratio;
 
         macronutrientsHtml += `
-            <div class="result-item" title="${meal.name} intake">
+            <div class="${meal.class}" title="${meal.name} intake">
                 <div class="result-title-box">
                     <h2>${meal.name}</h2>
                 </div>
@@ -61,4 +59,3 @@ function goToMenu() {
 }
 
 displayMacronutrients();
-
