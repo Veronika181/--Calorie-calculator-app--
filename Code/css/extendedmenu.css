@@ -47,13 +47,13 @@
 }
 .dropdown-input button {
     padding: 8px;
-    background-color: #007bff;
+    background-color: orange;
     color: white;
     border: none;
     cursor: pointer;
 }
 .dropdown-input button:hover {
-    background-color: #0056b3;
+    background-color: orange;
 }
 .result-title-box {
     display: flex;
@@ -95,13 +95,13 @@
 }
 .dropdown-input button {
     padding: 8px;
-    background-color: #007bff;
+    background-color: orange;
     color: white;
     border: none;
     cursor: pointer;
 }
 .dropdown-input button:hover {
-    background-color: #0056b3;
+    background-color: orange;
 }
 .food-item-container {
     display: flex;
