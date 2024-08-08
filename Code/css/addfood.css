@@ -53,7 +53,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: orange;
 }
 
 span {
@@ -101,16 +101,19 @@ span {
 .dropdown {
     display: none;
     margin-top: 10px;
+    background-color: #FFA500;
 }
 
 .dropdown-input {
     display: flex;
     justify-content: space-between;
+    background-color: #FFA500;
 }
 
 .dropdown-input input {
     flex: 1;
     margin-right: 10px;
+    background-color: #FFA500;
 }
 
 .button-container {
@@ -173,7 +176,7 @@ body {
 
 .days li .active {
     padding: 5px;
-    background: #1abc9c;
+    background: orange;
     color: white !important;
 }
 

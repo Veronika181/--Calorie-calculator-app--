@@ -137,7 +137,7 @@ document.getElementById('fats').addEventListener('input', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    const monthNames = ["Leden", "Únor", "Březen", "Duben", "Květen", "Červen", "Červenec", "Srpen", "Září", "Říjen", "Listopad", "Prosinec"];
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const calendarContainer = document.getElementById('calendar-container');
     const monthNameSpan = document.querySelector('.month-name');
     const monthSelect = document.getElementById('month-select');

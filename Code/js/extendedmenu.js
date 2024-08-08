@@ -37,7 +37,7 @@ function confirmFood(mealDetailsId, foodItem, quantityInputId) {
                 <button type="button" onclick="addToFavorites('${foodItem}')">Add to Favorites</button>
             </div>
         `;
-        // Optionally remove the input field after confirmation
+       
         const container = document.querySelector(`#${mealDetailsId} .food-item-container`);
         if (container) container.remove();
     }
