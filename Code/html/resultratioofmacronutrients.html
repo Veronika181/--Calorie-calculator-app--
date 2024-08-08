@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Result ratio of macronutrients</title>
+    <title>Result Ratio of Macronutrients</title>
     <link rel="stylesheet" href="../css/styles-intro.css">
     <link rel="stylesheet" href="../css/styles-input.css">
     <link rel="stylesheet" href="../css/styles-advanced.css">
@@ -62,8 +62,10 @@
             document.getElementById('carbs-value').innerText = `${params.carbs} g`;
         }
 
-        function goBack() {
-            window.history.back();
+        function portionsday() {
+            const params = getQueryParams();
+            const urlParams = new URLSearchParams(params).toString();
+            window.location.href = `portionsday.html?${urlParams}`;
         }
 
         displayResults();

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calorie Tracker - Portions per Day</title>
+    <title>Portions per Day</title>
     <link rel="stylesheet" href="../css/styles-intro.css">
     <link rel="stylesheet" href="../css/styles-input.css">
     <link rel="stylesheet" href="../css/styles-advanced.css">
@@ -13,15 +13,14 @@
 </head>
 <body>
     <header>
-        <h1>Daily Portions Breakdown</h1>
+        <h1>Portions per Day</h1>
     </header>
     <main>
-        <h1>Portions per Day</h1>
         <div id="portions" class="section">
-            <!-- Rozdělení porcí během dne se zobrazí zde -->
+            <!-- Výsledky porcí se zde zobrazí -->
         </div>
         <div class="button-container">
-            <button type="button" class="btn" onclick="goToNextPage()">Next</button>
+            <button type="button" class="btn" onclick="goToMacronutrientsDay()">Next</button>
         </div>
     </main>
     <footer>
@@ -39,9 +38,8 @@
 
         function displayPortions() {
             const params = getQueryParams();
-            const calories = parseFloat(params.calories);
+            const totalCalories = parseFloat(params.calories);
 
-            // Procenta rozdělení kalorií
             const meals = [
                 { name: 'Breakfast', ratio: 0.21 },
                 { name: 'Snack 1', ratio: 0.13 },
@@ -52,7 +50,7 @@
 
             let portionsHtml = '';
             meals.forEach(meal => {
-                const mealCalories = calories * meal.ratio;
+                const mealCalories = totalCalories * meal.ratio;
 
                 portionsHtml += `
                     <div class="result-item" title="${meal.name} intake">
@@ -63,132 +61,19 @@
             });
 
             document.getElementById('portions').innerHTML = portionsHtml;
+            return totalCalories;
         }
 
-        function goToNextPage() {
-            // Zde nastavte URL další stránky
-            const nextUrl = 'next-page.html';
-            window.location.href = nextUrl;
+        function goToMacronutrientsDay() {
+            const params = getQueryParams();
+            const totalCalories = displayPortions();
+            const url = new URL('macronutrientsday.html', window.location.href);
+            url.searchParams.set('calories', params.calories); // Původní celkové kalorie
+            url.searchParams.set('totalCalories', totalCalories); // Rozdělené kalorie pro jídla
+            window.location.href = url.toString();
         }
 
         displayPortions();
     </script>
 </body>
 </html>
-<style>
-body {
-    background-image: linear-gradient(#4CAF50, #63B967, #FFFFFF);
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-header {
-    text-align: center;
-    padding: 30px;
-    background-color: #4CAF50;
-    color: white;
-}
-
-h1, h2 {
-    margin: 0;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.section {
-    text-align: center;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.result-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
-
-.result-item {
-    background-color: #808080;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
-    position: relative;
-    width: 200px;
-    margin: 10px;
-}
-
-.result-item h2 {
-    margin-top: 0;
-    font-size: 1.5em;
-    color: #ffffff;
-}
-
-.result-item p {
-    font-size: 1.2em;
-    margin: 10px 0;
-    color: #FFA500;
-}
-
-.result-item:hover::after {
-    content: attr(title);
-    position: absolute;
-    bottom: 110%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.75);
-    color: white;
-    padding: 5px;
-    border-radius: 5px;
-    white-space: nowrap;
-    z-index: 10;
-    opacity: 0;
-    transition: opacity 0.3s;
-    pointer-events: none;
-}
-
-.result-item:hover::after {
-    opacity: 1;
-}
-
-.button-container {
-    margin-top: 20px;
-}
-
-.btn {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.btn:hover {
-    background-color: #45a049;
-}
-
-footer {
-    background-color: #4CAF50;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
-footer a {
-    color: white;
-}
-</style>
-
