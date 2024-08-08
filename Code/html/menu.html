@@ -25,31 +25,29 @@
         <ul id="calendar-days" class="days"></ul>
         <div id="selected-date"></div>
     </div>
-    <main>
-        <div class="container">
-            <div class="form-container">
-                <form id="macros-form">
-                    <div class="input-group">
-                        <label for="proteins">Proteins (g):</label>
-                        <input type="number" id="proteins" name="proteins" required>
-                        <div class="small-circle" id="proteins-circle"></div>
-                    <div class="input-group">
-                        <label for="carbs">Carbohydrates (g):</label>
-                        <input type="number" id="carbs" name="carbs" required>
-                        <div class="small-circle" id="carbs-circle"></div>
-                    <div class="input-group">
-                        <label for="fats">Fats (g):</label>
-                        <input type="number" id="fats" name="fats" required>
-                        <div class="small-circle" id="fats-circle"></div>
-                    </div>   
-                    <button type="submit">Calculate</button>
-                </form>
-                <div class="circle">
-                    <div class="circle-inner">
-                        <h2 id="total-calories">0 Kcal</h2>
-                    </div>
-                </div>
+    <form id="macros-form">
+        <div class="input-group">
+            <div class="input-item">
+                <label for="proteins">Proteins:</label>
+                <input type="number" id="proteins" name="proteins" required>
+                <div class="small-circle" id="proteins-circle">P</div>
             </div>
+            <div class="input-item">
+                <label for="carbs">Carbohydrates:</label>
+                <input type="number" id="carbs" name="carbs" required>
+                <div class="small-circle" id="carbs-circle">C</div>
+            </div>
+            <div class="input-item">
+                <label for="fats">Fats:</label>
+                <input type="number" id="fats" name="fats" required>
+                <div class="small-circle" id="fats-circle">F</div>
+            </div>
+            <div class="big-circle">
+                <h2 id="total-calories">0 Kcal</h2>
+            </div>
+        </div>
+        <button type="submit">Calculate</button>
+    </form>    
         </div>
         <h2>Menu</h2>
         <div class="result-container">
