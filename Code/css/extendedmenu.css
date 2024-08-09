@@ -6,8 +6,7 @@
     position: relative;
 }
 .plus-button {
-    background-color: #28a745; /* Green color */
-    color: white;
+    background-color: orange; 
     border: none;
     border-radius: 50%;
     width: 30px;
@@ -114,11 +113,11 @@
     padding: 8px;
 }
 .food-item-container button {
-    background-color: #28a745;
+    background-color: orange;
     color: white;
     border: none;
     cursor: pointer;
 }
 .food-item-container button:hover {
-    background-color: #218838;
+    background-color: orange;
 }

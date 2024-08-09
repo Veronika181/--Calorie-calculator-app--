@@ -12,8 +12,9 @@
 </head>
 <body>
     <h2>Calorie Tracker</h2>
-        <button id="show-calendar-btn"> 📅</button> 
-
+        <button id="show-calendar-btn1"> 📅</button> 
+<div>
+<h2>Overview</h2>
     <div id="calendar-container" style="display: none;">
         <div class="calendar-header">
             <button class="prev">&lt;</button>
@@ -41,13 +42,16 @@
                 <input type="number" id="fats" name="fats" required>
                 <div class="small-circle" id="fats-circle">F</div>
             </div>
-            <div class="big-circle">
-                <h2 id="total-calories">0 Kcal</h2> 
+        
+            <div class="circle-and-submit">
+                <div class="big-circle">
+                    <h2 id="total-calories">0 Kcal</h2>
+                </div>
+                <div class="submit">
+                    <button type="submit">Calculate</button>
+                </div>
             </div>
-        </div>
-        <button type="submit">Calculate</button>
-    </form>    
-        </div>
+        </div>        
         <h2>Menu</h2>
         <div class="result-container">
             <div class="result-item">
