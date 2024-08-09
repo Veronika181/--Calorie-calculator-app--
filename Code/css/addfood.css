@@ -44,7 +44,7 @@ input {
 }
 
 button {
-    padding: 10px 20px;
+    padding: 10px 40px;
     background-color: #FFA500;
     color: white;
     border: none;
@@ -242,16 +242,15 @@ label, input {
 }
 
 button {
-    margin-top: 10px;
-    padding: 10px 20px;
+    margin: auto;
     background-color: orange;
     color: white;
-    border: none;
-    cursor: pointer;
+    
 }
 
 button:hover {
     background-color: #FFA500;
+    margin: auto;
 }
 
 #calendar-container {
@@ -279,7 +278,7 @@ button:hover {
 }
 
 button {
-    margin: 5px;
+    margin: auto;
     background-color: #FFA500;
 }
 
