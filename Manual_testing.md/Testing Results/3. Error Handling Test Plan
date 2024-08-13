@@ -1,0 +1,7 @@
+- **Scenario 4**:
+  - **Result**: [Pass/Fail]
+  - **Notes**: E.g., "The application displayed an appropriate error message for invalid food inputs."
+
+- **Scenario 5**:
+  - **Result**: [Pass/Fail]
+  - **Notes**: E.g., "The application correctly handled non-numeric quantities with an error message."

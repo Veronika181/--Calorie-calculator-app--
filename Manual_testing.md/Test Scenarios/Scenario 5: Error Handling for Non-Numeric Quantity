@@ -1,0 +1,7 @@
+- **Objective**: Verify the application’s response to non-numeric quantities.
+- **Steps**:
+  1. Open the application in a browser.
+  2. Enter "Apple" in the food input field.
+  3. Enter "ABC" in the quantity field.
+  4. Click the "Calculate" button.
+- **Expected Result**: The application should display an error message indicating that the quantity must be a number.

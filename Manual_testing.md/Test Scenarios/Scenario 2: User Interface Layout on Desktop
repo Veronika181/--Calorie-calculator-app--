@@ -1,0 +1,6 @@
+- **Objective**: Ensure the application layout is correct on desktop devices.
+- **Steps**:
+  1. Open the application in a desktop browser.
+  2. Verify that all elements (input fields, buttons, results) are displayed correctly.
+  3. Check that the layout is visually appealing and functional.
+- **Expected Result**: All elements should be properly aligned and functional.

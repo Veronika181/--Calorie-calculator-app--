@@ -1,0 +1,6 @@
+- **Objective**: Ensure the application handles invalid inputs and error scenarios gracefully.
+- **Description**: Test the application’s response to erroneous or incomplete data.
+- **Test Environment**: 
+  - Web browser (e.g., Chrome, Firefox)
+  - URL: `http://127.0.0.1:5500/`
+- **Requirements**: The application should display appropriate error messages for invalid inputs.

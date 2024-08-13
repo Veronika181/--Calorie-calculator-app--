@@ -1,0 +1,6 @@
+- **Objective**: Ensure the application accurately calculates calories based on user input.
+- **Description**: Verify that the application performs correct calculations and displays the results properly.
+- **Test Environment**: 
+  - Web browser (e.g., Chrome, Firefox)
+  - URL: `http://127.0.0.1:5500/`
+- **Requirements**: Application must be running on a local server.

@@ -1,0 +1,7 @@
+- **Objective**: Verify that the application correctly calculates calories.
+- **Steps**:
+  1. Open the application in a browser.
+  2. Enter "Banana" in the food input field.
+  3. Enter "100" in the quantity field.
+  4. Click the "Calculate" button.
+- **Expected Result**: The application should display "89 calories" (or the correct calorie count for 100 grams of banana).

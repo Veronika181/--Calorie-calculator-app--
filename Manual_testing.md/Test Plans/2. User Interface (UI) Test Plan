@@ -1,0 +1,6 @@
+- **Objective**: Verify that the user interface is intuitive and displays correctly on different devices and screen sizes.
+- **Description**: Test the layout and responsiveness of the application across various devices.
+- **Test Environment**: 
+  - Web browser (e.g., Chrome, Firefox)
+  - Devices: Desktop, Tablet, Mobile
+- **Requirements**: The application should adapt correctly to different screen resolutions.

@@ -1,0 +1,7 @@
+- **Objective**: Ensure the application displays an error message for invalid food inputs.
+- **Steps**:
+  1. Open the application in a browser.
+  2. Enter "InvalidFood" (or any non-existent food) in the food input field.
+  3. Enter a valid quantity, e.g., "100".
+  4. Click the "Calculate" button.
+- **Expected Result**: The application should display an error message indicating that the food item is not recognized.

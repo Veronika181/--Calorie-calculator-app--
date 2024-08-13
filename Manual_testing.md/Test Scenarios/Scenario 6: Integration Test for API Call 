@@ -1,0 +1,6 @@
+- **Objective**: Test the integration of API calls if the application uses external APIs for food data.
+- **Steps**:
+  1. Open the application in a browser.
+  2. Enter a valid food item and quantity.
+  3. Trigger the API call by clicking the "Calculate" button.
+- **Expected Result**: The API should return the correct calorie data and display it in the application.

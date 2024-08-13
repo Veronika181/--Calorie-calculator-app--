@@ -1,0 +1,6 @@
+- **Objective**: Verify that the application is responsive and correctly displayed on mobile devices.
+- **Steps**:
+  1. Open the application in a mobile browser or use a mobile simulator.
+  2. Check that the application layout adjusts correctly for smaller screen sizes.
+  3. Verify that all interactive elements are accessible and functional.
+- **Expected Result**: The application should be responsive and easy to use on mobile devices.
