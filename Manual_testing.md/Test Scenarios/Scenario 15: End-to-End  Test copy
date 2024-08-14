@@ -1,0 +1,7 @@
+TC015 - Verify User Registration
+
+Objective: Ensure the user registration process completes successfully.
+Steps:
+Navigate to signup.html.
+Fill out the signup form and submit.
+Expected Result: The signup form should accept and validate input, and a new user account should be created successfully.

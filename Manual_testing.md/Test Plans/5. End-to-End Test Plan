@@ -1,0 +1,67 @@
+End-to-End Test Scenario
+Objective
+
+Verify that the application correctly handles the entire user journey from the initial page load through to the final results and user registration, ensuring all features work together seamlessly and calculations are accurate.
+
+Steps
+
+Navigate to the Home Page:
+Open the application in a desktop browser using the URL http://127.0.0.1:5500/.
+Start the Process:
+Click on the "Start" button on the home page.
+Input Personal Data:
+On the first step page (step1.html), select gender, input height, weight, and age.
+Click "Next" to proceed to the next page.
+Calculate Caloric Needs:
+On the second step page (step2.html), select body fat percentage and activity level.
+Click "Calculate" to get the caloric needs and other results.
+Review Results:
+On the results page (result.html), check that the total calories and calories for weight loss are displayed correctly.
+Click "Next" to proceed.
+Define Goals:
+On the goals page, select an option for what you would like to do with your weight (e.g., Reduce, Maintain, Gain).
+Choose the caloric deficit amount (Low, Medium, High).
+Click "Next" to proceed.
+Set Macronutrient Ratios:
+On the macronutrient ratios page, input values for proteins, carbohydrates, and fats.
+Click "Calculate" to see the macronutrient breakdown.
+Review Macronutrient Results:
+On the macronutrient results page, ensure that the ratios for calories, proteins, fats, and carbohydrates are displayed correctly.
+Click "Next" to proceed.
+Plan Daily Meals:
+On the daily meals page, review and manage meal portions for breakfast, snacks, lunch, and dinner.
+Click "Next" to proceed.
+Menu Planning:
+On the menu page (menu.html), select the quantities of proteins, carbohydrates, and fats.
+Input calorie values for different meals and click "Calculate" to see the total calorie intake.
+Click "Next" to proceed.
+Add Food to Meals:
+On the add food page (add_food.html), add foods to different meals (breakfast, snack, lunch, dinner).
+Click "Next" to proceed.
+Daily Meals Review:
+On the daily meals review page (daily_meals.html), verify that all added foods and calorie counts are accurate.
+Click "Save" to store the information.
+Click "Next" to proceed.
+Choose and Edit Meals:
+On the choose your meal page, select different meals for breakfast, lunch, and dinner.
+Review and edit recipes as necessary on the recipes page.
+Click "Next" to proceed.
+User Registration:
+On the registration page, fill out the sign-up form with the required details.
+Submit the registration form.
+Expected Result
+
+Home Page: The application loads correctly and displays the "Start" button.
+Step 1: User can input personal data and proceed to the next page.
+Step 2: Body fat percentage and activity level can be selected, and the caloric needs are calculated and displayed accurately.
+Results Page: Total calories and calories for weight loss are correctly displayed.
+Goals Page: The goal and caloric deficit amount are selected and saved.
+Macronutrient Ratios Page: Ratios for proteins, carbohydrates, and fats are inputted and displayed correctly.
+Macronutrient Results Page: Results for calories, proteins, fats, and carbohydrates are accurate.
+Daily Meals Page: Meal portions are reviewed and managed correctly.
+Menu Page: Quantities and calorie values are accurately calculated and displayed.
+Add Food Page: Foods are added to meals, and the information is saved correctly.
+Daily Meals Review Page: All added foods and calorie counts are accurate, and the information is saved.
+Choose and Edit Meals Page: Selected meals and recipes are correctly displayed and editable.
+Registration Page: The user registration form is submitted successfully, and the user account is created.
+This structure ensures that the end-to-end test scenario is clear and organized, covering all the necessary steps and expected outcomes for comprehensive testing of the entire application workflow.

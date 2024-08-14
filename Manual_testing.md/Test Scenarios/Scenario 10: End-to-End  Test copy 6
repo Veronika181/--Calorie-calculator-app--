@@ -1,0 +1,7 @@
+TC010 - Verify Navigation to Macronutrient Selection
+
+Objective: Ensure users can navigate to the macronutrient selection page after calculations.
+Steps:
+On result.html, review the results.
+Click "Next" to proceed to menu.html.
+Expected Result: The application should navigate to menu.html after clicking "Next".

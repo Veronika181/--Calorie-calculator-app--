@@ -1,0 +1,7 @@
+TC008 - Verify Personal Data Input and Navigation
+
+Objective: Confirm that users can input personal data and navigate to the calculation step.
+Steps:
+On step1.html, select gender, input height, weight, and age.
+Click "Next" to proceed to step2.html.
+Expected Result: The application should accept personal data inputs and navigate to step2.html.

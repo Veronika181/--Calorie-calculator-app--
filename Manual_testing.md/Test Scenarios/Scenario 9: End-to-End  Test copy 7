@@ -1,0 +1,7 @@
+TC009 - Verify Body Fat Percentage and Activity Level Selection
+
+Objective: Ensure users can select body fat percentage and activity level, and that the calculations are performed correctly.
+Steps:
+On step2.html, select body fat percentage and activity level.
+Click "Calculate" to compute the caloric needs.
+Expected Result: The body fat percentage and activity level should be selected, and the application should correctly calculate and display total calories and calories for weight loss on result.html.

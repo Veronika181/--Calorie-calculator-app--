@@ -1,0 +1,7 @@
+TC013 - Verify Daily Meals Management
+
+Objective: Confirm that users can input and save daily meals.
+Steps:
+On daily_meals.html, review and input daily meals.
+Click "Save" to store the meal data.
+Expected Result: Daily meals should be accurately saved and displayed.

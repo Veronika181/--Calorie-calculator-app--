@@ -1,7 +1,15 @@
 - **Scenario 2**:
-  - **Result**: [Pass/Fail]
-  - **Notes**: E.g., "The desktop layout was correct, but some elements overlapped on mobile."
+  - **Result**: Fail X
+  - **Notes**: 
+  -For the index page, input.html is misaligned at the bottom of the footer
+  -For adva.html, I want to have an image with a calculation in the middle
+  -For result.hmtl slightly up, so result and result
+  -For weigghgoals.html of shrinking the screen, not aligning responsively, it crashes
+  -For macronutrients, I should have larger intervals between, for example, breakfast and lunch snack2 and dinner
+  -For menu.html in the middle of the application and responsively - when changing the application, the big circle can be placed elsewhere
+  -For add food.html I want to have a next button below the save button
+  -For recipe.html I want to have the recipes display at the top and everything in the center of the page
 
-- **Scenario 3**:
-  - **Result**: [Pass/Fail]
-  - **Notes**: E.g., "The application was responsive on mobile, with all elements properly displayed."
+- **Scenario 3**: X
+  - **Result**: Untested
+  - **Notes**: I need to figure out how to use the mobile simulator first

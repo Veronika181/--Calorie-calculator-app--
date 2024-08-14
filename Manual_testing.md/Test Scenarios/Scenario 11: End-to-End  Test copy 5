@@ -1,0 +1,7 @@
+TC011 - Verify Macronutrient Selection and Calculation
+
+Objective: Confirm that users can select macronutrient quantities and that the calculations are accurate.
+Steps:
+On menu.html, input quantities for proteins, carbohydrates, and fats.
+Click "Calculate" to see the total caloric intake.
+Expected Result: The macronutrient quantities should be accepted, and the total caloric intake should be accurately calculated and displayed.

@@ -1,0 +1,8 @@
+TC007 - Verify Initial Page Load and Navigation
+
+Objective: Ensure that the index.html page loads correctly and users can start the process.
+Steps:
+Open the application at http://127.0.0.1:5500/.
+Verify that the index.html page loads without errors.
+Click on the "Start" button.
+Expected Result: The index.html page should load without issues, and clicking "Start" should navigate to the step1.html page.

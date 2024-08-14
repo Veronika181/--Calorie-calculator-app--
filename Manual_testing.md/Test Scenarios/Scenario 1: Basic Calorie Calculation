@@ -1,6 +1,6 @@
-- **Objective**: Verify that the application correctly calculates calories.
+ **Objective**: Verify that the application correctly calculates calories.
 - **Steps**:
-  1. Open the application in a browser.
+  1. Open the application in a browser and page Addfood.html
   2. Enter "Banana" in the food input field.
   3. Enter "100" in the quantity field.
   4. Click the "Calculate" button.

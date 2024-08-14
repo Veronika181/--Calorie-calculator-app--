@@ -1,0 +1,8 @@
+TC012 - Verify Adding Food Items
+
+Objective: Ensure users can add food items to different meals and proceed.
+Steps:
+Navigate to add_food.html.
+Add food items for breakfast, snack, lunch, and dinner.
+Click "Next" to proceed to daily_meals.html.
+Expected Result: Food items should be added correctly, and the application should navigate to daily_meals.html.

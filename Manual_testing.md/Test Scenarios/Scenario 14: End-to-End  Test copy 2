@@ -1,0 +1,7 @@
+TC014 - Verify Recipe Selection and Editing
+
+Objective: Ensure users can select and edit recipes.
+Steps:
+Navigate to recipes.html.
+Select a meal and view/edit the recipe.
+Expected Result: Users should be able to view and edit recipes correctly.
