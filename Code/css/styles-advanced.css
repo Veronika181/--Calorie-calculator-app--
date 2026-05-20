@@ -121,3 +121,54 @@
 .dropdown:hover .dropbtn {
     background-color: #ffffff;
 }
+
+select {
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+.input-group,
+.input-container {
+    position: relative;
+    z-index: 1;
+}
+
+/* === FIX: Select not clickable === */
+.advanced-container {
+    position: relative;
+    z-index: 1;
+}
+
+.advanced-container::before,
+.advanced-container::after {
+    pointer-events: none;
+}
+
+.input-group {
+    position: relative;
+    z-index: 2;
+    background-color: #fff !important;
+    padding: 12px !important;
+    border-radius: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+    font-size: 1rem;
+    gap: 8px;
+}
+
+select {
+    position: relative;
+    z-index: 5;
+    pointer-events: auto;
+    background-color: #fff;
+    color: #000;
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%;
+    cursor: pointer;
+}

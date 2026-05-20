@@ -1,0 +1,23 @@
+{
+  "name": "--calorie-calculator-app--",
+  "version": "1.0.0",
+  "description": "Calorie Calculator App Development Plan",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Veronika181/--Calorie-calculator-app--.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Veronika181/--Calorie-calculator-app--/issues"
+  },
+  "homepage": "https://github.com/Veronika181/--Calorie-calculator-app--#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^25.9.1"
+  }
+}
