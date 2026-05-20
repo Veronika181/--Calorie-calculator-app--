@@ -48,6 +48,11 @@ fetch(`https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${apiK
   })
   .catch(error => console.error('Error fetching recipe:', error));
 
+function toggleDetails(titleElement) {
+    const card = titleElement.closest(".recipe-card");
+    const details = card.querySelector(".recipe-details");
+    details.classList.toggle("open");
+}
 
 
 

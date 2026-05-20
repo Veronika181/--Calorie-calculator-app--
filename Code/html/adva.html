@@ -4,51 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Advanced Page</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="../css/styles-intro.css">
     <link rel="stylesheet" href="../css/styles-input.css">
     <link rel="stylesheet" href="../css/styles-advanced.css">
     <link rel="stylesheet" href="../css/styles-result.css">
 </head>
-<body>
+
+<body class="advanced">
     <header>
-        <h1>CalorieTracker - Advanced</h1>
+        <h1><i class="fa-solid fa-fire-flame-curved"></i> CalorieTracker – Advanced</h1>
     </header>
+
     <main>
         <div id="advanced" class="section">
             <div class="advanced-container">
-                <div class="input-group">
-                    <label for="bodyFat">Body Fat Percentage:</label>
-                    <select id="bodyFat">
-                        <option value="" disabled selected>Select body fat percentage</option>
-                        <option value="10">10%</option>
-                        <option value="15">15%</option>
-                        <option value="20">20%</option>
-                        <option value="25">25%</option>
-                        <option value="30">30%</option>
-                        <option value="35">35%</option>
-                        <option value="40">40%</option>
-                        <option value="45">45%</option>
-                        <option value="50">50%</option>
-                    </select>
+
+                <!-- Body Fat -->
+                <div class="input-container">
+                    <div class="input-group">
+                        <label for="bodyFat">
+                            <i class="fa-solid fa-percent"></i> Body Fat Percentage
+                        </label>
+                        <select id="bodyFat">
+                            <option value="">Select body fat percentage</option>
+                            <option value="10">10%</option>
+                            <option value="15">15%</option>
+                            <option value="20">20%</option>
+                            <option value="25">25%</option>
+                            <option value="30">30%</option>
+                            <option value="35">35%</option>
+                            <option value="40">40%</option>
+                            <option value="45">45%</option>
+                            <option value="50">50%</option>
+                        </select>
+                    </div>
                 </div>
-                <div style="margin-top: 20px;"></div>
-                <div class="input-group">
-                    <label for="activityLevel">Activity level</label>
-                    <select id="activityLevel">
-                        <option value="1.2">Small activity</option>
-                        <option value="1.375">Middle activity</option>
-                        <option value="1.55">High activity</option>
-                    </select>
+
+                <!-- Activity Level -->
+                <div class="input-container">
+                    <div class="input-group">
+                        <label for="activityLevel">
+                            <i class="fa-solid fa-person-running"></i> Activity Level
+                        </label>
+                        <select id="activityLevel">
+                            <option value="1.2">Small activity (1.2)</option>
+                            <option value="1.375">Medium activity (1.375)</option>
+                            <option value="1.55">High activity (1.55)</option>
+                        </select>
+                    </div>
                 </div>
+
+                <!-- Button -->
                 <div class="button-container">
-                    <button type="button" class="btn" onclick="nextStepSaveDataOnPage()">Calculate</button>
+                    <button type="button" class="btn" onclick="nextStepSaveDataOnPage()">
+                        <i class="fa-solid fa-calculator"></i> Calculate
+                    </button>
                 </div>
+
             </div>
         </div>
     </main>
+
     <footer>
-        <p>&copy; Visit my Portfolio <a href="https://veronikaobrtelova.netlify.app/" target="_blank">website</a>.</p>
+        <p>&copy; Visit my Portfolio 
+            <a href="https://veronikaobrtelova.netlify.app/" target="_blank" rel="noopener">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> website
+            </a>.
+        </p>
     </footer>
+
     <script src="../js/script.js"></script>
 </body>
 </html>

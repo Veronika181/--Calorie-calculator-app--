@@ -1,323 +1,259 @@
-/* Základní resetování stylů */
+/* === RESET === */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* === BODY === */
 body {
-  font-family: Verdana, sans-serif;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background: linear-gradient(180deg, #27ae60 0%, #2ecc71 50%, #f5f7fa 100%);
+  padding: 20px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
-  margin: 0;
-  background-color: #f4f4f4;
-  overflow-x: hidden;
 }
 
+/* === NADPISY === */
 h2 {
-  margin-bottom: 20px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 20px 0;
 }
 
-header {
-  margin-bottom: 20px;
+/* === KALENDÁŘ === */
+#show-calendar-btn1 {
+  background: #FFA500;
+  border: none;
+  border-radius: 50%;
+  padding: 12px 16px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #fff;
+  margin-bottom: 10px;
 }
 
 #calendar-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  padding: 15px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  width: 100%;
+  max-width: 380px;
+  margin-bottom: 20px;
 }
 
 .calendar-header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  width: 100%;
-  max-width: 300px;
-  background-color: #FF8C00;
+  align-items: center;
+  background: #FFA500;
+  padding: 10px;
+  border-radius: 10px;
   color: #fff;
-  padding: 8px;
-  border-radius: 5px;
 }
 
-.calendar-header .prev, .calendar-header .next {
+.calendar-header button {
   background: none;
   border: none;
   color: #fff;
-  font-size: 24px;
+  font-size: 22px;
   cursor: pointer;
-}
-
-.month-name {
-  font-size: 1.2em;
-  color: #fff;
 }
 
 #calendar-days {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  background: #eee;
-  padding: 8px;
-  width: 100%;
+  margin-top: 10px;
 }
 
 #calendar-days li {
   list-style: none;
-  display: inline-block;
   width: 14%;
   text-align: center;
-  padding: 4px;
+  padding: 6px;
   margin: 2px;
-  cursor: pointer;
-  border-radius: 4px;
-  font-size: 0.8em;
-  background-color: #808080;
+  background: #808080;
   color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
 #calendar-days li.active {
-  background-color: #FF8C00;
-  color: #fff;
+  background: #FFA500;
 }
 
-#selected-date {
-  margin-top: 10px;
-  text-align: center;
-  font-size: 1.1em;
-}
-
+/* === INPUT GROUP === */
 .input-group {
-  background-color: #808080;
-  padding: 15px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between; /* Prvky budou na opačných stranách */
-  align-items: center;
-  text-align: center;
+  background: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   width: 100%;
-  flex-wrap: wrap;
+  max-width: 700px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
 }
 
-.big-circle {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: conic-gradient(#4caf50 0%, #4caf50 75%, #FFA500 75%, #FFA500);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  box-sizing: border-box;
-  margin-bottom: 0; /* Zajistí, že kruh nebude mít žádné mezery */
-}
-
-#macros-form button {
-  padding: 8px 16px;
-  font-size: 0.9em;
-  border-radius: 4px;
-  border: none;
-  background-color: #FFA500;
-  color: #fff;
-  cursor: pointer;
-}
-
-#macros-form button:hover {
-  background-color: #FFA500;
-}
-
-
-.input-group input[type="number"] {
-  padding: 5px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  font-size: 0.9em;
-}
-
-.input-group label {
-  font-weight: bold;
-  color: #fff;
-}
-
+/* === INPUT ITEM === */
 .input-item {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
-  font-size: 0.8em;
+  gap: 8px;
 }
 
 .input-item label {
-  font-size: 0.8em;
-  margin-right: 5px;
+  font-weight: 600;
+  color: #333;
 }
 
+.input-item input {
+  width: 100%;
+  max-width: 120px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-size: 1rem;
+}
+
+/* === MALÉ KRUHY === */
 .small-circle {
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
-  background: conic-gradient(#4caf50 0%, #4caf50 50%, #FFA500 50%, #FFA500);
+  background: #FFA500;
+  color: #fff;
   display: flex;
-  align-items: center;
   justify-content: center;
-  color: #fff;
-  font-size: 0.7em;
-  font-weight: bold;
-  margin-bottom: 5px;
+  align-items: center;
+  font-weight: 700;
 }
 
-
-.big-circle h2 {
-  font-size: 1.2em;
-  color: #fff;
+/* === KRUH + CALCULATE === */
+.circle-and-submit {
+  grid-column: span 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 10px;
 }
 
+.big-circle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: #27ae60;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
 
+.submit button {
+  background: #FFA500;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.submit button:hover {
+  background: #ff7b00;
+  transform: translateY(-2px);
+}
+
+/* === MENU BLOKY === */
 .result-container {
   width: 100%;
-  max-width: 350px;
+  max-width: 380px;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  padding: 5px;
-  box-sizing: border-box;
+  gap: 15px;
+  margin-top: 30px;
 }
 
 .result-item {
-  width: 100%;
-  height: 64px;
+  background: #fff;
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 5px;
-}
-
-.result-item:last-child {
-  border-bottom: none;
-}
-
-.result-item-content {
-  display: flex;
   align-items: center;
-  width: 100%;
-  justify-content: space-between;
 }
 
 .result-item-label {
-  font-weight: bold;
-  font-size: 0.9em;
-  color: orange;
-}
-
-.result-item-info {
-  display: flex;
-  align-items: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #27ae60;
 }
 
 .result-item-info span {
-  font-size: 1em;
-  margin-right: 10px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #FFA500;
 }
 
 .result-item-buttons {
   display: flex;
-  gap: 5px;
+  gap: 8px;
 }
 
 .result-item button {
-  margin: 0;
-  padding: 5px 10px;
-  font-size: 14px;
-  color: #fff;
-  background-color: #FFA500;
-  border: none;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
+  background: #FFA500;
+  color: #fff;
+  border: none;
+  font-size: 1.2rem;
   cursor: pointer;
-  width: 40px;
-  height: 40px;
 }
 
 .result-item button:hover {
-  background-color: #ff8c00;
+  background: #ff7b00;
 }
 
-@media screen and (max-width: 768px) {
-  .input-item, .result-item {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .result-item-info {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .result-item-buttons {
-    margin-top: 5px;
-  }
-
-  .big-circle {
-    width: 80px;
-    height: 80px;
-    object-fit: cover; /* Přizpůsobí obrázek tak, aby zaplnil kruh */
-    position: absolute; /* Absolutní pozicování */
-    left: 0; /* Umístí na levou stranu */
-    transform: translateY(-50%); /* Korekce pro vertikální zarovnání */
-
-
-  }
-
-  .big-circle h2 {
-    font-size: 1em;
-  }
+/* === NEXT BUTTON === */
+.button-container {
+  margin-top: 20px;
 }
 
-@media screen and (max-width: 480px) {
-  .input-item, .result-item {
-    min-width: 100px;
-  }
-
-  .big-circle {
-    width: 60px;
-    height: 60px;
-  }
-
-  .big-circle h2 {
-    font-size: 0.8em;
-  }
-
-  .small-circle {
-    width: 30px;
-    height: 30px;
-  }
-}
-
-.circle-and-submit {
-  display: flex;
-  align-items: center;
-  gap: 20px; /* Space between the circle and the button */
-}
-
-.big-circle {
-  flex-shrink: 0;
-}
-
-.submit button {
-  padding: 10px 20px;
-  font-size: 1em;
-  border-radius: 5px;
-  border: none;
-  background-color: #4caf50;
+.btn {
+  background: #FFA500;
   color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 40px;
+  font-size: 1.2rem;
   cursor: pointer;
 }
 
-.submit button:hover {
-  background-color: #45a049;
+.btn:hover {
+  background: #ff7b00;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 600px) {
+  .input-group {
+    grid-template-columns: 1fr;
+  }
+
+  .circle-and-submit {
+    flex-direction: column;
+  }
 }
