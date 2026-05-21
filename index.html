@@ -1,34 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calorie Calculator</title>
+    <title>CalorieTracker</title>
 
-    <!-- Font Awesome (ikonky) -->
+    <link rel="stylesheet" href="css/ui-kit.css">
+    <link rel="stylesheet" href="css/styles-index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <!-- CSS -->
-<link rel="stylesheet" href="styles-index.css">
 </head>
 
 <body>
+    <button id="themeToggle" class="theme-toggle"><i class="fa-solid fa-moon"></i></button>
+
     <header>
-        <h1><i class="fa-solid fa-fire-flame-curved"></i> CalorieTracker</h1>
+        <h1><img src="images/logo.svg" class="logo"> CalorieTracker</h1>
     </header>
 
     <main>
-        <div id="intro" class="section">
-            <img src="../images/menu.png" alt="menu" class="intro-img" />
+        <div class="section card-3d">
+            <img src="images/menu.png" class="intro-img">
 
             <div class="intro-text">
-                <h2>Track your calories easily</h2>
-                <p>Start your journey to a healthier lifestyle.</p>
+                <h2>Sleduj své kalorie jednoduše</h2>
+                <p>Začni svou cestu ke zdravějšímu životnímu stylu.</p>
+                <button class="btn btn-pulse" onclick="location.href='input.html'">
+                    <i class="fa-solid fa-play"></i> Start
+                </button>
             </div>
-
-            <button type="button" class="btn" onclick="location.href='input.html'">
-                <i class="fa-solid fa-play"></i> Start
-            </button>
         </div>
     </main>
 
@@ -36,11 +35,10 @@
         <p>&copy; Visit my Portfolio 
             <a href="https://veronikaobrtelova.netlify.app/" target="_blank">
                 <i class="fa-solid fa-arrow-up-right-from-square"></i> website
-            </a>.
+            </a>
         </p>
     </footer>
 
-    <!-- Opravená cesta ke scriptu -->
-    <script src="script.js"></script>
+    <script src="js/theme.js"></script>
 </body>
 </html>

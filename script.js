@@ -215,3 +215,43 @@ function nextStepSaveDataOnPage() {
     window.location.href = 'result.html';
 }
 });
+// === Uložení dat z input stránky ===
+function saveDataInputOnPage() {
+  const height = document.getElementById("height").value;
+  const age = document.getElementById("ageDisplay").textContent;
+  const weight = document.getElementById("weightDisplay").textContent;
+  const gender = localStorage.getItem("gender");
+
+  localStorage.setItem("height", height);
+  localStorage.setItem("age", age);
+  localStorage.setItem("weight", weight);
+
+  window.location.href = "result.html";
+}
+
+// === Výpočet kalorií ===
+function calculateCalories() {
+  const height = localStorage.getItem("height");
+  const age = localStorage.getItem("age");
+  const weight = localStorage.getItem("weight");
+  const gender = localStorage.getItem("gender");
+
+  let bmr;
+
+  if (gender === "male") {
+    bmr = 88.36 + 13.4 * weight + 4.8 * height - 5.7 * age;
+  } else {
+    bmr = 447.6 + 9.2 * weight + 3.1 * height - 4.3 * age;
+  }
+
+  document.getElementById("calorieValue").textContent = Math.round(bmr);
+
+  animateRing(Math.min(100, Math.round((bmr / 3000) * 100)));
+}
+
+// === Animace progress ringu ===
+function animateRing(percent) {
+  const circle = document.querySelector(".progress-ring .progress");
+  const offset = 440 - (440 * percent) / 100;
+  circle.style.strokeDashoffset = offset;
+}
