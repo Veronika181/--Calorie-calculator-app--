@@ -1,0 +1,105 @@
+/* === UI KIT – společné styly pro celou appku === */
+
+:root {
+  /* Light mode */
+  --bg-light: #f5f7fa;
+  --card-light: #ffffffcc;
+  --text-light: #0f172a;
+  --text-muted-light: #475569;
+
+  /* Dark mode */
+  --bg-dark: #050816;
+  --card-dark: rgba(15, 23, 42, 0.55);
+  --text-dark: #e5e7eb;
+  --text-muted-dark: #9ca3af;
+
+  /* Accent */
+  --accent: #f97316;
+  --accent-soft: rgba(249, 115, 22, 0.15);
+  --accent-glow: 0 0 18px rgba(249, 115, 22, 0.55);
+
+  /* Shared */
+  --radius-lg: 24px;
+  --radius-md: 14px;
+  --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.4);
+  --transition: 0.25s ease;
+}
+
+/* === Theme === */
+body {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+  transition: background var(--transition), color var(--transition);
+}
+
+body.light {
+  background: var(--bg-light);
+  color: var(--text-light);
+}
+
+/* === Buttons === */
+.btn {
+  padding: 0.9rem 2rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  border: none;
+  color: #0b1120;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--accent-glow);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+/* === Inputs === */
+.input {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  color: inherit;
+  transition: var(--transition);
+}
+
+.input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 12px rgba(249,115,22,0.4);
+}
+
+/* === Cards === */
+.card {
+  padding: 1.8rem;
+  border-radius: var(--radius-lg);
+  background: var(--card-dark);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: var(--shadow-soft);
+}
+
+/* === 3D Hover === */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-3d:hover {
+  transform: translateY(-10px) rotateX(6deg) rotateY(-6deg);
+  box-shadow: 0 25px 45px rgba(249,115,22,0.35);
+}
+
+/* === Pulse === */
+.btn-pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 rgba(249,115,22,0.4); }
+  50% { transform: scale(1.05); box-shadow: 0 0 20px rgba(249,115,22,0.6); }
+  100% { transform: scale(1); box-shadow: 0 0 0 rgba(249,115,22,0.4); }
+}

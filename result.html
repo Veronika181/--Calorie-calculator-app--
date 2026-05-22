@@ -1,48 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calorie Tracker Results</title>
-    <link rel="stylesheet" href="styles-intro.css">
-    <link rel="stylesheet" href="styles-input.css">
-    <link rel="stylesheet" href="styles-advanced.css">
+    <title>CalorieTracker – Result</title>
+
+    <link rel="stylesheet" href="ui-kit.css">
     <link rel="stylesheet" href="styles-result.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body onload="calculateCalories()">
+    <button id="themeToggle" class="theme-toggle"><i class="fa-solid fa-moon"></i></button>
+
     <header>
-        <h1>Calorie Tracker</h1>
+        <h1><img src="logo.svg" class="logo"> CalorieTracker</h1>
     </header>
+
     <main>
-        <h1>Result</h1>
-        <div id="result" class="section">
-            <div class="result-container">
-                <div class="result-item" title="Basal Metabolic Rate - The number of calories your body needs at rest to maintain basic physiological functions.">
-                    <h2> BMR: </h2>
-                    <p id="bmr">BMR: <p>
-                         
-                </div>
-                <div class="result-item" title="Total Daily Energy Expenditure - The total number of calories you need per day including physical activity.">
-                    <h2> TDEE: </h2>
-                    <p id="tdee">TDEE: </p>
-                </div>
-                <div class="result-item" title="Total Calories you should consume per day after considering body fat percentage.">
-                    <h2> Total Calories: </h2>
-                    <p id="totalCalories">Total Calories:</p>
-                </div>
-                <div class="result-item" title="Calories you should consume per day to lose weight.">
-                    <h2> Calories for Weight Loss: </h2>
-                    <p id="weightLossCalories">Calories for Weight Loss: </p>
-                </div>
+        <div id="result" class="section card-3d">
+
+            <!-- Progress Ring -->
+            <div class="progress-ring">
+                <svg>
+                    <circle class="bg"></circle>
+                    <circle class="progress"></circle>
+                </svg>
+                <div class="value" id="calorieValue">0</div>
             </div>
-        </div>
-        <div class="button-container">
-            <button type="button" class="btn" onclick="location.href='weightgoals.html'">Next</button>
+
+            <h2 class="result-title">Your Personalized Calorie Target</h2>
         </div>
     </main>
+  <!-- Next button -->
+    <div class="button-container">
+        <button class="btn" onclick="goToWeightGoals()">
+            <i class="fa-solid fa-arrow-right"></i> Next
+        </button>
+    <div>
+
+
+   <!-- Back button -->
+    <div class="button-container" style="margin-bottom: 2rem;">
+        <button class="btn" onclick="goBack()">
+            <i class="fa-solid fa-arrow-left"></i> Back
+        </button>
+    </div>
+
+    </div>
     <footer>
-        <p>&copy; Visit my Portfolio <a href="https://veronikaobrtelova.netlify.app/" target="_blank">website</a>.</p>
+        <p>&copy; Visit my Portfolio 
+            <a href="https://veronikaobrtelova.netlify.app/" target="_blank">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> website
+            </a>
+        </p>
     </footer>
-    <script src="../js/script.js"></script>
+
+    <script src="theme.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

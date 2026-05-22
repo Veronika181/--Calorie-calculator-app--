@@ -1,56 +1,12 @@
 /* ============================
-   CALCULATE CALORIES
-============================ */
-
-function calculateCalories() {
-    const height = parseInt(localStorage.getItem('height'), 10) || 0;
-    const age = parseInt(localStorage.getItem('ageDisplay'), 10) || 0;
-    const weight = parseInt(localStorage.getItem('weightDisplay'), 10) || 0;
-    const gender = localStorage.getItem('gender');
-    const bodyFat = parseFloat(localStorage.getItem('bodyFat')) || 0;
-    const activityLevel = parseFloat(localStorage.getItem('activityLevel')) || 1;
-
-    let bmr;
-
-    if (gender === 'male') {
-        bmr = 10 * weight + 6.25 * height - 5 * age + 5;
-    } else {
-        bmr = 10 * weight + 6.25 * height - 5 * age - 161;
-    }
-
-    const tdee = bmr * activityLevel;
-    const bodyFatReduction = bodyFat ? tdee * (bodyFat / 100) : 0;
-    const totalCalories = tdee - bodyFatReduction;
-    const weightLossCalories = totalCalories - 500;
-
-    document.getElementById("bmr").textContent = Math.round(bmr);
-    document.getElementById("tdee").textContent = Math.round(tdee);
-    document.getElementById("totalCalories").textContent = Math.round(totalCalories);
-    document.getElementById("weightLossCalories").textContent = Math.round(weightLossCalories);
-
-    console.log({ bmr, tdee, totalCalories, weightLossCalories });
-}
-
-
-/* ============================
    GENDER SELECTION
 ============================ */
 
-function selectGender(gender) {
-    const maleBtn = document.getElementById('maleBtn');
-    const femaleBtn = document.getElementById('femaleBtn');
+let selectedGender = null;
 
-    if (gender === 'male') {
-        maleBtn.classList.add("selected");
-        femaleBtn.classList.remove("selected");
-        maleBtn.setAttribute('data-selected', 'true');
-        femaleBtn.setAttribute('data-selected', 'false');
-    } else {
-        femaleBtn.classList.add("selected");
-        maleBtn.classList.remove("selected");
-        femaleBtn.setAttribute('data-selected', 'true');
-        maleBtn.setAttribute('data-selected', 'false');
-    }
+function selectGender(gender) {
+    selectedGender = gender;
+    localStorage.setItem("gender", gender);
 }
 
 
@@ -72,7 +28,9 @@ function updateHeightDisplay() {
 function changeValue(id, delta) {
     const display = document.getElementById(id + 'Display');
     let value = parseInt(display.textContent, 10) + delta;
+
     if (value < 0) value = 0;
+
     display.textContent = value;
 }
 
@@ -83,90 +41,34 @@ function changeValue(id, delta) {
 
 function saveDataInputOnPage() {
     const height = parseInt(document.getElementById('height').value, 10);
-    localStorage.setItem('height', height);
-
     const weight = parseInt(document.getElementById('weightDisplay').textContent, 10);
-    localStorage.setItem('weightDisplay', weight);
-
     const age = parseInt(document.getElementById('ageDisplay').textContent, 10);
-    localStorage.setItem('ageDisplay', age);
 
-    const gender = document.querySelector('[data-selected="true"]').id === 'maleBtn' ? 'male' : 'female';
-    localStorage.setItem('gender', gender);
+    const gender = localStorage.getItem("gender");
 
-    window.location.href = 'adva.html';
-}
-
-
-/* ============================
-   SAVE ADVANCED PAGE DATA
-============================ */
-
-function nextStepSaveDataOnPage() {
-    const bodyFat = parseInt(document.getElementById('bodyFat').value, 10);
-    localStorage.setItem('bodyFat', bodyFat);
-
-    const activityLevel = parseFloat(document.getElementById('activityLevel').value);
-    localStorage.setItem('activityLevel', activityLevel);
-
-    window.location.href = 'result.html';
-}
-
-
-/* ============================
-   MACRONUTRIENT DISTRIBUTION
-============================ */
-
-function displayMacronutrientDistribution() {
-    const totalCalories = parseFloat(document.getElementById('totalCalories').textContent);
-
-    const breakfastCalories = 0.25 * totalCalories;
-    const snack1Calories = 0.10 * totalCalories;
-    const lunchCalories = 0.30 * totalCalories;
-    const snack2Calories = 0.10 * totalCalories;
-    const dinnerCalories = 0.15 * totalCalories;
-
-    document.getElementById('breakfast-calories').textContent = `${breakfastCalories.toFixed(2)} Kcal`;
-    document.getElementById('snack1-calories').textContent = `${snack1Calories.toFixed(2)} Kcal`;
-    document.getElementById('lunch-calories').textContent = `${lunchCalories.toFixed(2)} Kcal`;
-    document.getElementById('snack2-calories').textContent = `${snack2Calories.toFixed(2)} Kcal`;
-    document.getElementById('dinner-calories').textContent = `${dinnerCalories.toFixed(2)} Kcal`;
-}
-
-
-/* ============================
-   BUTTON GROUP SELECTION
-============================ */
-
-function toggleSelection(buttonGroupId) {
-    const buttons = document.querySelectorAll(`#${buttonGroupId} button`);
-
-    buttons.forEach(button => {
-        button.addEventListener('click', () => {
-            buttons.forEach(btn => btn.classList.remove('selected'));
-            button.classList.add('selected');
-        });
-    });
-}
-
-toggleSelection('weight-goal-group');
-toggleSelection('deficit-amount-group');
-
-
-/* ============================
-   NEXT STEP (WEIGHT GOAL)
-============================ */
-
-function nextStep() {
-    const selectedWeightGoal = document.querySelector('#weight-goal-group .selected');
-    const selectedDeficitAmount = document.querySelector('#deficit-amount-group .selected');
-
-    if (!selectedWeightGoal || !selectedDeficitAmount) {
-        alert('Please select both a weight goal and a caloric deficit amount.');
+    if (!gender) {
+        alert("Please select your gender.");
         return;
     }
 
-    alert(`Selected Weight Goal: ${selectedWeightGoal.dataset.title}\nSelected Deficit Amount: ${selectedDeficitAmount.dataset.title}`);
+    localStorage.setItem("height", height);
+    localStorage.setItem("weight", weight);
+    localStorage.setItem("age", age);
+
+    window.location.href = "adva.html";
+}
+
+
+/* ============================
+   NEXT & BACK BUTTONS
+============================ */
+
+function goNext() {
+    saveDataInputOnPage();
+}
+
+function goBack() {
+    window.history.back();
 }
 
 
@@ -174,44 +76,90 @@ function nextStep() {
    PAGE INITIALIZATION
 ============================ */
 
-document.addEventListener('DOMContentLoaded', () => {
-    if (document.body.classList.contains('input')) {
-        document.getElementById('height').addEventListener('input', updateHeightDisplay);
-    }
-    if (document.body.classList.contains('results')) {
-        calculateCalories();
-    }
-    if (document.body.classList.contains('macronutrients')) {
-        displayMacronutrientDistribution();
-    }
+document.addEventListener("DOMContentLoaded", () => {
+    const heightInput = document.getElementById("height");
+    if (heightInput) updateHeightDisplay();
+});
 
-const bodyFat = parseFloat(localStorage.getItem('bodyFat')) || 0;
-const activityLevel = parseFloat(localStorage.getItem('activityLevel')) || 1;
 
+function selectGender(gender, btn) {
+    localStorage.setItem("gender", gender);
+
+    document.querySelectorAll(".gender-btn").forEach(b => {
+        b.classList.remove("selected");
+    });
+
+    btn.classList.add("selected");
+}
 
 function nextStepSaveDataOnPage() {
-    const bodyFatSelect = document.getElementById('bodyFat');
-    const activitySelect = document.getElementById('activityLevel');
+    const weight = parseInt(localStorage.getItem("weight"), 10);
+    const height = parseInt(localStorage.getItem("height"), 10);
+    const age = parseInt(localStorage.getItem("age"), 10);
+    const gender = localStorage.getItem("gender");
 
-    const bodyFat = bodyFatSelect.value;
-    const activityLevel = activitySelect.value;
+    const bodyFat = document.getElementById("bodyFat").value;
+    const activity = parseFloat(document.getElementById("activityLevel").value);
 
-    // Kontrola, zda uživatel opravdu něco vybral
-    if (bodyFat === "") {
-        alert("Please select your body fat percentage.");
-        return;
+    let BMR;
+
+    // --- 1) Pokud je vybrán body fat → Katch-McArdle ---
+    if (bodyFat !== "") {
+        const bf = parseFloat(bodyFat) / 100;
+        const leanMass = weight * (1 - bf);
+        BMR = 370 + (21.6 * leanMass);
     }
 
-    if (activityLevel === "") {
-        alert("Please select your activity level.");
-        return;
+    // --- 2) Pokud není body fat → Mifflin-St Jeor ---
+    else {
+        if (gender === "male") {
+            BMR = 10 * weight + 6.25 * height - 5 * age + 5;
+        } else {
+            BMR = 10 * weight + 6.25 * height - 5 * age - 161;
+        }
     }
 
-    // Uložení do localStorage
-    localStorage.setItem('bodyFat', parseFloat(bodyFat));
-    localStorage.setItem('activityLevel', parseFloat(activityLevel));
+    // --- 3) TDEE ---
+    const TDEE = BMR * activity;
 
-    // Přechod na výsledkovou stránku
-    window.location.href = 'result.html';
+    // Uložit výsledky
+    localStorage.setItem("BMR", Math.round(BMR));
+    localStorage.setItem("TDEE", Math.round(TDEE));
+
+    // Přechod na výsledky
+    window.location.href = "result.html";
 }
-});
+
+
+function calculateCalories() {
+    const TDEE = localStorage.getItem("TDEE");
+
+    if (!TDEE) {
+        document.getElementById("calorieValue").textContent = "0";
+        return;
+    }
+
+    // Zobrazit výsledek
+    document.getElementById("calorieValue").textContent = TDEE;
+
+    // Animace progress kruhu
+    const circle = document.querySelector(".progress-ring .progress");
+    const radius = circle.r.baseVal.value;
+    const circumference = 2 * Math.PI * radius;
+
+    circle.style.strokeDasharray = `${circumference} ${circumference}`;
+
+    const percent = Math.min(TDEE / 4000, 1); // max 4000 kcal pro animaci
+    const offset = circumference - percent * circumference;
+
+    circle.style.strokeDashoffset = offset;
+}
+
+function goToWeightGoals() {
+    window.location.href = "weightgoals.html";
+}
+
+function resultratioofmacronutrients() {
+    window.location.href = "weightgoals.html";
+}
+
