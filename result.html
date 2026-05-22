@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CalorieTracker – Výsledek</title>
+    <title>CalorieTracker – Result</title>
 
-    <link rel="stylesheet" href="css/ui-kit.css">
-    <link rel="stylesheet" href="css/styles-result.css">
+    <link rel="stylesheet" href="ui-kit.css">
+    <link rel="stylesheet" href="styles-result.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
@@ -14,12 +14,13 @@
     <button id="themeToggle" class="theme-toggle"><i class="fa-solid fa-moon"></i></button>
 
     <header>
-        <h1><img src="images/logo.svg" class="logo"> CalorieTracker</h1>
+        <h1><img src="logo.svg" class="logo"> CalorieTracker</h1>
     </header>
 
     <main>
         <div id="result" class="section card-3d">
 
+            <!-- Progress Ring -->
             <div class="progress-ring">
                 <svg>
                     <circle class="bg"></circle>
@@ -28,10 +29,10 @@
                 <div class="value" id="calorieValue">0</div>
             </div>
 
-            <h2 class="result-title">Tvoje denní kalorická potřeba</h2>
+            <h2 class="result-title">Your Personalized Calorie Target</h2>
 
             <button class="btn" onclick="location.href='index.html'">
-                <i class="fa-solid fa-arrow-left"></i> Zpět
+                <i class="fa-solid fa-arrow-left"></i> Back
             </button>
         </div>
     </main>
@@ -44,7 +45,7 @@
         </p>
     </footer>
 
-    <script src="js/theme.js"></script>
-    <script src="js/script.js"></script>
+    <script src="theme.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
