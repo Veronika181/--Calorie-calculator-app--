@@ -8,7 +8,7 @@
 :root {
   --bg: #050816;
   --bg-soft: #0f172a;
-  --accent: #f97316;
+  --accent: drop-shadow(0 0 12px rgba(26, 249, 22, 0.7));
   --accent-soft: rgba(249, 115, 22, 0.15);
   --text-main: #e5e7eb;
   --text-muted: #9ca3af;
@@ -91,7 +91,7 @@ header h1 {
 header h1 i {
   color: var(--accent);
   font-size: 1.4rem;
-  filter: drop-shadow(0 0 12px rgba(249, 115, 22, 0.7));
+  filter: drop-shadow(0 0 12px rgba(26, 249, 22, 0.7));;
 }
 
 /* ====== Intro section ====== */
@@ -161,7 +161,7 @@ header h1 i {
 .intro-img:hover {
   transform: translateY(-6px);
   box-shadow: 0 26px 60px rgba(15, 23, 42, 1);
-  border-color: rgba(249, 115, 22, 0.7);
+  border-color:drop-shadow(0 0 12px rgba(26, 249, 22, 0.7));
 }
 
 /* ====== Intro text ====== */
@@ -199,7 +199,7 @@ header h1 i {
   padding: 0.85rem 1.6rem;
   border-radius: 999px;
   border: 1px solid rgba(248, 250, 252, 0.08);
-  background: radial-gradient(circle at top left, #f97316, #ea580c);
+  background: drop-shadow(0 0 12px rgba(26, 249, 22, 0.7));
   color: #0b1120;
   font-weight: 600;
   font-size: 0.98rem;
@@ -218,7 +218,7 @@ header h1 i {
 .btn:hover {
   transform: translateY(-1px) translateX(1px);
   box-shadow: 0 14px 32px rgba(249, 115, 22, 0.6);
-  background: radial-gradient(circle at top left, #fb923c, #f97316);
+  background: drop-shadow(0 0 12px rgba(26, 249, 22, 0.7));
   border-color: rgba(248, 250, 252, 0.18);
 }
 

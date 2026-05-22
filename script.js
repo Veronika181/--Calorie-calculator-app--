@@ -1,38 +1,4 @@
 /* ============================
-   CALCULATE CALORIES
-============================ */
-
-function calculateCalories() {
-    const height = parseInt(localStorage.getItem('height'), 10) || 0;
-    const age = parseInt(localStorage.getItem('ageDisplay'), 10) || 0;
-    const weight = parseInt(localStorage.getItem('weightDisplay'), 10) || 0;
-    const gender = localStorage.getItem('gender');
-    const bodyFat = parseFloat(localStorage.getItem('bodyFat')) || 0;
-    const activityLevel = parseFloat(localStorage.getItem('activityLevel')) || 1;
-
-    let bmr;
-
-    if (gender === 'male') {
-        bmr = 10 * weight + 6.25 * height - 5 * age + 5;
-    } else {
-        bmr = 10 * weight + 6.25 * height - 5 * age - 161;
-    }
-
-    const tdee = bmr * activityLevel;
-    const bodyFatReduction = bodyFat ? tdee * (bodyFat / 100) : 0;
-    const totalCalories = tdee - bodyFatReduction;
-    const weightLossCalories = totalCalories - 500;
-
-    document.getElementById("bmr").textContent = Math.round(bmr);
-    document.getElementById("tdee").textContent = Math.round(tdee);
-    document.getElementById("totalCalories").textContent = Math.round(totalCalories);
-    document.getElementById("weightLossCalories").textContent = Math.round(weightLossCalories);
-
-    console.log({ bmr, tdee, totalCalories, weightLossCalories });
-}
-
-
-/* ============================
    GENDER SELECTION
 ============================ */
 
@@ -51,6 +17,8 @@ function selectGender(gender) {
         femaleBtn.setAttribute('data-selected', 'true');
         maleBtn.setAttribute('data-selected', 'false');
     }
+
+    localStorage.setItem("gender", gender);
 }
 
 
@@ -83,15 +51,21 @@ function changeValue(id, delta) {
 
 function saveDataInputOnPage() {
     const height = parseInt(document.getElementById('height').value, 10);
-    localStorage.setItem('height', height);
-
     const weight = parseInt(document.getElementById('weightDisplay').textContent, 10);
-    localStorage.setItem('weightDisplay', weight);
-
     const age = parseInt(document.getElementById('ageDisplay').textContent, 10);
-    localStorage.setItem('ageDisplay', age);
 
-    const gender = document.querySelector('[data-selected="true"]').id === 'maleBtn' ? 'male' : 'female';
+    const selectedGenderBtn = document.querySelector('[data-selected="true"]');
+
+    if (!selectedGenderBtn) {
+        alert('Please select your gender.');
+        return;
+    }
+
+    const gender = selectedGenderBtn.id === 'maleBtn' ? 'male' : 'female';
+
+    localStorage.setItem('height', height);
+    localStorage.setItem('weight', weight);
+    localStorage.setItem('age', age);
     localStorage.setItem('gender', gender);
 
     window.location.href = 'adva.html';
@@ -99,17 +73,37 @@ function saveDataInputOnPage() {
 
 
 /* ============================
-   SAVE ADVANCED PAGE DATA
+   CALCULATE CALORIES
 ============================ */
 
-function nextStepSaveDataOnPage() {
-    const bodyFat = parseInt(document.getElementById('bodyFat').value, 10);
-    localStorage.setItem('bodyFat', bodyFat);
+function calculateCalories() {
+    const height = parseInt(localStorage.getItem('height'), 10);
+    const age = parseInt(localStorage.getItem('age'), 10);
+    const weight = parseInt(localStorage.getItem('weight'), 10);
+    const gender = localStorage.getItem('gender');
 
-    const activityLevel = parseFloat(document.getElementById('activityLevel').value);
-    localStorage.setItem('activityLevel', activityLevel);
+    let bmr;
 
-    window.location.href = 'result.html';
+    if (gender === "male") {
+        bmr = 88.36 + 13.4 * weight + 4.8 * height - 5.7 * age;
+    } else {
+        bmr = 447.6 + 9.2 * weight + 3.1 * height - 4.3 * age;
+    }
+
+    document.getElementById("calorieValue").textContent = Math.round(bmr);
+
+    animateRing(Math.min(100, Math.round((bmr / 3000) * 100)));
+}
+
+
+/* ============================
+   ANIMATE RING
+============================ */
+
+function animateRing(percent) {
+    const circle = document.querySelector(".progress-ring .progress");
+    const offset = 440 - (440 * percent) / 100;
+    circle.style.strokeDashoffset = offset;
 }
 
 
@@ -171,12 +165,25 @@ function nextStep() {
 
 
 /* ============================
+   BACK BUTTON
+============================ */
+
+function goBack() {
+    window.history.back();
+}
+
+
+/* ============================
    PAGE INITIALIZATION
 ============================ */
 
 document.addEventListener('DOMContentLoaded', () => {
     if (document.body.classList.contains('input')) {
-        document.getElementById('height').addEventListener('input', updateHeightDisplay);
+        const heightInput = document.getElementById('height');
+        if (heightInput) {
+            heightInput.addEventListener('input', updateHeightDisplay);
+            updateHeightDisplay();
+        }
     }
     if (document.body.classList.contains('results')) {
         calculateCalories();
@@ -184,74 +191,4 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.body.classList.contains('macronutrients')) {
         displayMacronutrientDistribution();
     }
-
-const bodyFat = parseFloat(localStorage.getItem('bodyFat')) || 0;
-const activityLevel = parseFloat(localStorage.getItem('activityLevel')) || 1;
-
-
-function nextStepSaveDataOnPage() {
-    const bodyFatSelect = document.getElementById('bodyFat');
-    const activitySelect = document.getElementById('activityLevel');
-
-    const bodyFat = bodyFatSelect.value;
-    const activityLevel = activitySelect.value;
-
-    // Kontrola, zda uživatel opravdu něco vybral
-    if (bodyFat === "") {
-        alert("Please select your body fat percentage.");
-        return;
-    }
-
-    if (activityLevel === "") {
-        alert("Please select your activity level.");
-        return;
-    }
-
-    // Uložení do localStorage
-    localStorage.setItem('bodyFat', parseFloat(bodyFat));
-    localStorage.setItem('activityLevel', parseFloat(activityLevel));
-
-    // Přechod na výsledkovou stránku
-    window.location.href = 'result.html';
-}
 });
-// === Uložení dat z input stránky ===
-function saveDataInputOnPage() {
-  const height = document.getElementById("height").value;
-  const age = document.getElementById("ageDisplay").textContent;
-  const weight = document.getElementById("weightDisplay").textContent;
-  const gender = localStorage.getItem("gender");
-
-  localStorage.setItem("height", height);
-  localStorage.setItem("age", age);
-  localStorage.setItem("weight", weight);
-
-  window.location.href = "result.html";
-}
-
-// === Výpočet kalorií ===
-function calculateCalories() {
-  const height = localStorage.getItem("height");
-  const age = localStorage.getItem("age");
-  const weight = localStorage.getItem("weight");
-  const gender = localStorage.getItem("gender");
-
-  let bmr;
-
-  if (gender === "male") {
-    bmr = 88.36 + 13.4 * weight + 4.8 * height - 5.7 * age;
-  } else {
-    bmr = 447.6 + 9.2 * weight + 3.1 * height - 4.3 * age;
-  }
-
-  document.getElementById("calorieValue").textContent = Math.round(bmr);
-
-  animateRing(Math.min(100, Math.round((bmr / 3000) * 100)));
-}
-
-// === Animace progress ringu ===
-function animateRing(percent) {
-  const circle = document.querySelector(".progress-ring .progress");
-  const offset = 440 - (440 * percent) / 100;
-  circle.style.strokeDashoffset = offset;
-}

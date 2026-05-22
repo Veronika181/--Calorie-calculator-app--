@@ -24,23 +24,21 @@
             <div class="gender-container">
                 <div class="gender-option">
                     <button class="gender-btn" onclick="selectGender('male')">
-                        <i class="fa-solid fa-person"></i> Muž
+                        <i class="fa-solid fa-person"></i> Man
                     </button>
-                    <img src="images/Vector.png" class="gender-img">
                 </div>
 
                 <div class="gender-option">
                     <button class="gender-btn" onclick="selectGender('female')">
-                        <i class="fa-solid fa-person-dress"></i> Žena
+                        <i class="fa-solid fa-person-dress"></i>Women
                     </button>
-                    <img src="images/Vector2.png" class="gender-img">
                 </div>
             </div>
 
             <!-- Height -->
             <div class="input-container">
                 <div class="input-group">
-                    <label>Výška</label>
+                    <label>Height</label>
                     <div class="height-group">
                         <span id="heightDisplay">175 cm</span>
                         <input type="range" id="height" min="100" max="250" value="175" oninput="updateHeightDisplay()">
@@ -51,7 +49,7 @@
             <!-- Age + Weight -->
             <div class="input-container">
                 <div class="input-group">
-                    <label>Věk</label>
+                    <label>Age</label>
                     <div class="number-group">
                         <button onclick="changeValue('age', -1)">-</button>
                         <span id="ageDisplay">28</span>
@@ -60,7 +58,7 @@
                 </div>
 
                 <div class="input-group">
-                    <label>Váha</label>
+                    <label>Weight</label>
                     <div class="number-group">
                         <button onclick="changeValue('weight', -1)">-</button>
                         <span id="weightDisplay">78</span>
@@ -71,7 +69,7 @@
 
             <div class="button-container">
                 <button class="btn" onclick="saveDataInputOnPage()">
-                    <i class="fa-solid fa-arrow-right"></i> Další
+                    <i class="fa-solid fa-arrow-right"></i>Next
                 </button>
             </div>
         </div>
