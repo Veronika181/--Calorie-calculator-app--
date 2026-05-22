@@ -154,3 +154,12 @@ function calculateCalories() {
 
     circle.style.strokeDashoffset = offset;
 }
+
+function goToWeightGoals() {
+    window.location.href = "weightgoals.html";
+}
+
+function resultratioofmacronutrients() {
+    window.location.href = "weightgoals.html";
+}
+
