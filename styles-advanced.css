@@ -1,29 +1,43 @@
 /* Advanced Section Container */
 .advanced-container {
-    background-color: #808080;
+    background: #0b1120; /* tmavé pozadí jako input stránka */
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 16px;
     margin-top: 20px;
     text-align: center;
+    border: 1px solid rgba(148, 163, 184, 0.3);
 }
 
 /* Input Group Styling */
 .advanced-container .input-group {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 20px;
+    background: #111827;
+    padding: 16px;
+    border-radius: 12px;
+    width: 100%;
+    border: 1px solid rgba(148, 163, 184, 0.25);
 }
 
 .advanced-container .input-group label {
-    font-weight: bold;
+    font-weight: 600;
     margin-bottom: 10px;
-    color: white;
+    color: #e5e7eb; /* světle šedá */
+    font-size: 1rem;
 }
 
-.advanced-container .input-group input[type="range"] {
-    width: 90%;
-    margin-top: 10px;
+/* Select */
+select {
+    background: #0b1120;
+    color: #e5e7eb;
+    padding: 12px;
+    border-radius: 10px;
+    width: 100%;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    cursor: pointer;
+    font-size: 1rem;
 }
 
 /* Range Input Styling */
@@ -32,143 +46,47 @@
     appearance: none;
     width: 100%;
     height: 8px;
-    background: linear-gradient(to right, #FFFFFF, #FFA500);
+    background: linear-gradient(to right, #16f92d, #0b1120);
     border-radius: 5px;
     outline: none;
-    opacity: 0.7;
+    opacity: 0.9;
     transition: opacity 0.2s;
 }
 
 .advanced-container input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 25px;
-    height: 25px;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
-    background: #FFA500;
+    background: #16f92d; /* neon zelená */
     cursor: pointer;
+    box-shadow: 0 0 10px rgba(22, 249, 22, 0.8);
 }
 
 .advanced-container input[type="range"]::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
-    background: #FFA500;
+    background: #16f92d;
     cursor: pointer;
+    box-shadow: 0 0 10px rgba(22, 249, 22, 0.8);
 }
-
-.advanced-container input[type="range"]::-moz-range-progress {
-    background-color: #FFA500;
-}
-
-.advanced-container input[type="range"]::-webkit-progress-value {
-    background-color: #FFA500;
-}
-
-/* Dropdown Button */
-.dropbtn {
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    border-radius: 5px;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    border-bottom: 1px solid #ddd;
-}
-
-.dropdown-content a:last-child {
-    border-bottom: none;
-}
-
-
-.dropdown-content a:hover {
-    background-color: #ddd;
-}
-
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-
-.dropdown:hover .dropbtn {
-    background-color: #ffffff;
-}
-
-select {
-    position: relative;
-    z-index: 10;
-    pointer-events: auto;
-}
-
-.input-group,
-.input-container {
-    position: relative;
-    z-index: 1;
-}
-
-/* === FIX: Select not clickable === */
-.advanced-container {
-    position: relative;
-    z-index: 1;
-}
-
-.advanced-container::before,
-.advanced-container::after {
-    pointer-events: none;
-}
-
-.input-group {
-    position: relative;
-    z-index: 2;
-    background-color: #fff !important;
-    padding: 12px !important;
-    border-radius: 10px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-    width: 100%;
+/* Calculate Button */
+.btn {
+    background: #16f92d; /* neon green */
+    color: #020617;      /* tmavý text pro kontrast */
+    border: 1px solid rgba(22, 249, 22, 0.4);
+    padding: 12px 24px;
+    border-radius: 999px;
+    font-weight: 600;
     font-size: 1rem;
-    gap: 8px;
+    cursor: pointer;
+    transition: 0.2s ease-out;
+    box-shadow: 0 0 12px rgba(22, 249, 22, 0.7);
 }
 
-select {
-    position: relative;
-    z-index: 5;
-    pointer-events: auto;
-    background-color: #fff;
-    color: #000;
-    padding: 10px;
-    border-radius: 8px;
-    width: 100%;
-    cursor: pointer;
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 18px rgba(22, 249, 22, 1);
 }
