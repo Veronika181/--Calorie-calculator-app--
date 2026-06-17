@@ -2,16 +2,34 @@ const saveButton = document.getElementById('saveButton') || document.querySelect
 
 if (saveButton) {
     saveButton.addEventListener('click', function() {
-        const email = document.getElementById('email').value;
-        const oldPassword = document.getElementById('oldPassword').value;
-        const newPassword = document.getElementById('newPassword').value;
-        const confirmNewPassword = document.getElementById('confirmNewPassword').value;
+        const emailInput = document.getElementById('email');
+        const oldPasswordInput = document.getElementById('oldPassword');
+        const newPasswordInput = document.getElementById('newPassword');
+        const confirmNewPasswordInput = document.getElementById('confirmNewPassword');
+
+        if (!emailInput || !oldPasswordInput || !newPasswordInput || !confirmNewPasswordInput) {
+            return;
+        }
+
+        const email = emailInput.value.trim();
+        const oldPassword = oldPasswordInput.value;
+        const newPassword = newPasswordInput.value;
+        const confirmNewPassword = confirmNewPasswordInput.value;
+
+        if (!email || !oldPassword || !newPassword || !confirmNewPassword) {
+            alert('Please fill in all fields.');
+            return;
+        }
 
         if (newPassword !== confirmNewPassword) {
             alert('New passwords do not match.');
             return;
         }
 
-        alert(`Email: ${email}\nOld Password: ${oldPassword}\nNew Password: ${newPassword}`);
+        alert('Password updated successfully.');
+
+        oldPasswordInput.value = '';
+        newPasswordInput.value = '';
+        confirmNewPasswordInput.value = '';
     });
 }

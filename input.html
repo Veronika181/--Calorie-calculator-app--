@@ -23,17 +23,23 @@
 
     <main>
         <div class="section card-3d">
+            <div class="flow-progress" aria-hidden="true">
+                <div class="flow-track">
+                    <span class="flow-fill" style="width: 16.67%"></span>
+                </div>
+                <p class="flow-help">Tell us basic body metrics. This takes under a minute.</p>
+            </div>
 
             <!-- Gender -->
             <div class="gender-container">
                 <div class="gender-option">
-                    <button class="gender-btn" onclick="selectGender('male', this)">
+                    <button type="button" class="gender-btn" onclick="selectGender('male', this)">
                         <i class="fa-solid fa-person"></i> Man
                     </button>
                 </div>
 
                 <div class="gender-option">
-                    <button class="gender-btn" onclick="selectGender('female', this)">
+                    <button type="button" class="gender-btn" onclick="selectGender('female', this)">
                         <i class="fa-solid fa-person-dress"></i> Woman
                     </button>
                 </div>
@@ -55,21 +61,24 @@
                 <div class="input-group">
                     <label>Age</label>
                     <div class="number-group">
-                        <button onclick="changeValue('age', -1)">-</button>
+                        <button type="button" onclick="changeValue('age', -1)">-</button>
                         <span id="ageDisplay">28</span>
-                        <button onclick="changeValue('age', 1)">+</button>
+                        <button type="button" onclick="changeValue('age', 1)">+</button>
                     </div>
                 </div>
 
                 <div class="input-group">
                     <label>Weight</label>
                     <div class="number-group">
-                        <button onclick="changeValue('weight', -1)">-</button>
+                        <button type="button" onclick="changeValue('weight', -1)">-</button>
                         <span id="weightDisplay">78</span>
-                        <button onclick="changeValue('weight', 1)">+</button>
+                        <button type="button" onclick="changeValue('weight', 1)">+</button>
                     </div>
                 </div>
             </div>
+
+            <p id="inputValidation" class="validation-message" aria-live="polite"></p>
+            <p id="inputDraftInfo" class="draft-note" aria-live="polite"></p>
     </main> 
     <!-- Next button -->
     <div class="button-container">

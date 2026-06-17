@@ -237,6 +237,23 @@ footer a:hover {
   font-size: 1.8rem;
   font-weight: 700;
 }
+
+.result-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.btn.btn-secondary {
+  background: transparent;
+  color: var(--text-main);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: none;
+}
+
+.btn.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
 .card-3d {
   background: var(--card-dark);
   padding: 2rem;
