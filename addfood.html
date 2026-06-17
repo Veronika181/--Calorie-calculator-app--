@@ -16,90 +16,74 @@
     </header>
     <main class="addfood-page">
         <section class="page-intro">
-            <h2>Daily meals</h2>
-            <p>Add food by meal. You can include calories in text, e.g. "Banana 95 kcal".</p>
             <p class="active-date">Active day: <strong id="active-date-label"></strong></p>
         </section>
-        <div class="result-container">
-            
-            <div class="result-item">
-                <div class="result-title-box" onclick="toggleDropdown('breakfastDropdown')">
-                    <div class="result-title">Breakfast</div>
-                    <div class="meal-actions">
-                        <span id="breakfastDisplay">0 Kcal</span>
-                        <button type="button" class="plus-button" onclick="event.stopPropagation(); showDropdown('breakfastDropdown')">+</button>
-                    </div>
-                </div>
-                <div class="result-details-box" id="breakfastDetails"></div>
-                <div class="dropdown" id="breakfastDropdown">
-                    <div class="dropdown-input">
-                        <input type="text" id="breakfastInput" placeholder="Enter food item">
-                        <button type="button" onclick="addFoodItem('breakfastDetails', 'breakfastInput')">Add Food</button>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Snack -->
-            <div class="result-item">
-                <div class="result-title-box" onclick="toggleDropdown('snack1Dropdown')">
-                    <div class="result-title">Snack</div>
-                    <div class="meal-actions">
-                        <span id="snack1Display">0 Kcal</span>
-                        <button type="button" class="plus-button" onclick="event.stopPropagation(); showDropdown('snack1Dropdown')">+</button>
-                    </div>
-                </div>
-                <div class="result-details-box" id="snack1Details"></div>
-                <div class="dropdown" id="snack1Dropdown">
-                    <div class="dropdown-input">
-                        <input type="text" id="snack1Input" placeholder="Enter food item">
-                        <button type="button" onclick="addFoodItem('snack1Details', 'snack1Input')">Add Food</button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Lunch -->
-            <div class="result-item">
-                <div class="result-title-box" onclick="toggleDropdown('lunchDropdown')">
-                    <div class="result-title">Lunch</div>
-                    <div class="meal-actions">
-                        <span id="lunchDisplay">0 Kcal</span>
-                        <button type="button" class="plus-button" onclick="event.stopPropagation(); showDropdown('lunchDropdown')">+</button>
-                    </div>
-                </div>
-                <div class="result-details-box" id="lunchDetails"></div>
-                <div class="dropdown" id="lunchDropdown">
-                    <div class="dropdown-input">
-                        <input type="text" id="lunchInput" placeholder="Enter food item">
-                        <button type="button" onclick="addFoodItem('lunchDetails', 'lunchInput')">Add Food</button>
-                    </div>
-                </div>
-            </div>
+        <!-- Meal tabs -->
+        <nav class="meal-tabs" role="tablist">
+            <button type="button" class="meal-tab active" role="tab" data-meal="breakfast">
+                <span class="tab-icon">☀️</span>
+                <span class="tab-label">Breakfast</span>
+                <span class="tab-kcal" id="breakfastDisplay">0 Kcal</span>
+            </button>
+            <button type="button" class="meal-tab" role="tab" data-meal="snack1">
+                <span class="tab-icon">🍎</span>
+                <span class="tab-label">Snack</span>
+                <span class="tab-kcal" id="snack1Display">0 Kcal</span>
+            </button>
+            <button type="button" class="meal-tab" role="tab" data-meal="lunch">
+                <span class="tab-icon">🥗</span>
+                <span class="tab-label">Lunch</span>
+                <span class="tab-kcal" id="lunchDisplay">0 Kcal</span>
+            </button>
+            <button type="button" class="meal-tab" role="tab" data-meal="dinner">
+                <span class="tab-icon">🍽️</span>
+                <span class="tab-label">Dinner</span>
+                <span class="tab-kcal" id="dinnerDisplay">0 Kcal</span>
+            </button>
+        </nav>
 
-            <!-- Dinner -->
-            <div class="result-item">
-                <div class="result-title-box" onclick="toggleDropdown('dinnerDropdown')">
-                    <div class="result-title">Dinner</div>
-                    <div class="meal-actions">
-                        <span id="dinnerDisplay">0 Kcal</span>
-                        <button type="button" class="plus-button" onclick="event.stopPropagation(); showDropdown('dinnerDropdown')">+</button>
-                    </div>
-                </div>
-                <div class="result-details-box" id="dinnerDetails"></div>
-                <div class="dropdown" id="dinnerDropdown">
-                    <div class="dropdown-input">
-                        <input type="text" id="dinnerInput" placeholder="Enter food item">
-                        <button type="button" onclick="addFoodItem('dinnerDetails', 'dinnerInput')">Add Food</button>
-                    </div>
-                </div>
+        <!-- Meal panels -->
+        <div class="meal-panel active" id="panel-breakfast">
+            <div class="panel-add-row">
+                <input type="text" id="breakfastInput" placeholder="e.g. Oatmeal 350 kcal">
+                <button type="button" class="btn-add" onclick="addFoodItem('breakfastDetails','breakfastInput')">Add</button>
             </div>
+            <div class="food-list" id="breakfastDetails"></div>
         </div>
+
+        <div class="meal-panel" id="panel-snack1">
+            <div class="panel-add-row">
+                <input type="text" id="snack1Input" placeholder="e.g. Banana 95 kcal">
+                <button type="button" class="btn-add" onclick="addFoodItem('snack1Details','snack1Input')">Add</button>
+            </div>
+            <div class="food-list" id="snack1Details"></div>
+        </div>
+
+        <div class="meal-panel" id="panel-lunch">
+            <div class="panel-add-row">
+                <input type="text" id="lunchInput" placeholder="e.g. Chicken salad 480 kcal">
+                <button type="button" class="btn-add" onclick="addFoodItem('lunchDetails','lunchInput')">Add</button>
+            </div>
+            <div class="food-list" id="lunchDetails"></div>
+        </div>
+
+        <div class="meal-panel" id="panel-dinner">
+            <div class="panel-add-row">
+                <input type="text" id="dinnerInput" placeholder="e.g. Pasta 600 kcal">
+                <button type="button" class="btn-add" onclick="addFoodItem('dinnerDetails','dinnerInput')">Add</button>
+            </div>
+            <div class="food-list" id="dinnerDetails"></div>
+        </div>
+
+        <!-- Totals bar -->
+        <div class="totals-bar">
+            <span>Total today: <strong id="daily-total">0 Kcal</strong></span>
+        </div>
+
         <div class="actions-grid">
-            <div class="button-container">
-                <button type="button" class="btn" onclick="saveFoodEntries()">Save</button>
-            </div>
-            <div class="button-container">
-                <button type="button" class="btn" onclick="location.href='choosemeal.html'">Next</button>
-            </div>
+            <button type="button" class="btn" onclick="saveFoodEntries()">Save</button>
+            <button type="button" class="btn" onclick="location.href='choosemeal.html'">Next</button>
         </div>
     </main>
     <script src="addfood.js"></script>
