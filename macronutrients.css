@@ -9,6 +9,38 @@ body {
     color: white;
 }
 
+header {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+header h1 {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    text-align: left;
+    font-size: 28px;
+}
+
+.step-chip {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.18);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
 /* MAIN */
 main {
     flex: 1;
@@ -56,6 +88,7 @@ h1 {
 
     /* moderní glass efekt */
     background: rgba(255,255,255,0.25);
+    -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }

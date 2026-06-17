@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portions per Day</title>
+    <title>CalorieTracker - Daily Portions</title>
     <link rel="stylesheet" href="styles-intro.css">
     <link rel="stylesheet" href="styles-input.css">
     <link rel="stylesheet" href="styles-advanced.css">
@@ -13,14 +13,17 @@
 </head>
 <body>
     <header>
-        <h1>Portions per Day</h1>
+        <h1>
+            CalorieTracker - Daily Portions
+            <span class="step-chip">Plan</span>
+        </h1>
     </header>
     <main>
         <div id="portions" class="section">
             <!-- Výsledky porcí se zde zobrazí -->
         </div>
         <div class="button-container">
-            <button type="button" class="btn" onclick="goToMacronutrientsDay()">Next</button>
+            <button type="button" class="btn" onclick="goToMacronutrientsDay()">Continue</button>
         </div>
     </main>
     <footer>
@@ -29,16 +32,36 @@
     <script>
         function getQueryParams() {
             const params = {};
-            window.location.search.substring(1).split("&").forEach(param => {
+            const search = window.location.search.substring(1);
+            if (!search) return params;
+
+            search.split("&").forEach(param => {
+                if (!param) return;
                 const [key, value] = param.split("=");
-                params[key] = decodeURIComponent(value);
+                if (!key) return;
+                params[key] = decodeURIComponent(value || "");
             });
+
             return params;
+        }
+
+        function getTotalCalories(params) {
+            const queryCalories = parseFloat(params.calories || "");
+            if (Number.isFinite(queryCalories) && queryCalories > 0) {
+                return queryCalories;
+            }
+
+            const savedCalories = parseFloat(localStorage.getItem('totalCalories') || "");
+            if (Number.isFinite(savedCalories) && savedCalories > 0) {
+                return savedCalories;
+            }
+
+            return 2000;
         }
 
         function displayPortions() {
             const params = getQueryParams();
-            const totalCalories = parseFloat(params.calories);
+            const totalCalories = getTotalCalories(params);
 
             const meals = [
                 { name: 'Breakfast', ratio: 0.21 },
@@ -61,15 +84,14 @@
             });
 
             document.getElementById('portions').innerHTML = portionsHtml;
+            localStorage.setItem('totalCalories', String(Math.round(totalCalories)));
             return totalCalories;
         }
 
         function goToMacronutrientsDay() {
-            const params = getQueryParams();
             const totalCalories = displayPortions();
             const url = new URL('macronutrientsday.html', window.location.href);
-            url.searchParams.set('calories', params.calories); // Původní celkové kalorie
-            url.searchParams.set('totalCalories', totalCalories); // Rozdělené kalorie pro jídla
+            url.searchParams.set('totalCalories', String(Math.round(totalCalories)));
             window.location.href = url.toString();
         }
 

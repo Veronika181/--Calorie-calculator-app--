@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Result Ratio of Macronutrients</title>
+    <title>CalorieTracker - Macronutrient Results</title>
     <link rel="stylesheet" href="styles-intro.css">
     <link rel="stylesheet" href="styles-input.css">
     <link rel="stylesheet" href="styles-advanced.css">
@@ -13,10 +13,13 @@
 </head>
 <body>
     <header>
-        <h1>Result Ratio of Macronutrients</h1>
+        <h1>
+            CalorieTracker - Macro Results
+            <span class="step-chip">Step 6 of 6</span>
+        </h1>
     </header>
     <main>
-        <h1>Results</h1>
+        <h2>Your Daily Macro Summary</h2>
         <div id="results" class="section">
             <div class="result-container">
                 <div class="result-item" id="calories" title="Total caloric intake">
@@ -38,16 +41,53 @@
             </div>
         </div>
         <div class="button-container">
-            <button type="button" class="btn" onclick="portionsday()">Next</button>
+            <button type="button" class="btn" onclick="portionsday()">Continue</button>
         </div>
     </main>
     <footer>
         <p>&copy; Visit my Portfolio <a href="https://veronikaobrtelova.netlify.app/" target="_blank">website</a>.</p>
     </footer>
     <script>
-        function portionsday() {
-            window.location.href = 'portionsday.html';
+        function readMacroPlan() {
+            const raw = localStorage.getItem('macroPlan');
+            if (!raw) return null;
+
+            try {
+                return JSON.parse(raw);
+            } catch (e) {
+                return null;
+            }
         }
+
+        function getCaloriesFromUrl() {
+            const params = new URLSearchParams(window.location.search);
+            const value = parseFloat(params.get('calories') || '');
+            return Number.isFinite(value) && value > 0 ? value : null;
+        }
+
+        function fillResults() {
+            const plan = readMacroPlan();
+            const calories = getCaloriesFromUrl() || (plan && plan.calories) || parseFloat(localStorage.getItem('totalCalories') || '2000');
+            const protein = (plan && plan.protein) || parseFloat(localStorage.getItem('proteinGrams') || '150');
+            const fat = (plan && plan.fat) || parseFloat(localStorage.getItem('fatGrams') || '67');
+            const carbs = (plan && plan.carbs) || parseFloat(localStorage.getItem('carbsGrams') || '200');
+
+            document.getElementById('calories-value').textContent = `${Math.round(calories)} kcal`;
+            document.getElementById('protein-value').textContent = `${Math.round(protein)} g`;
+            document.getElementById('fat-value').textContent = `${Math.round(fat)} g`;
+            document.getElementById('carbs-value').textContent = `${Math.round(carbs)} g`;
+
+            localStorage.setItem('totalCalories', String(Math.round(calories)));
+        }
+
+        function portionsday() {
+            const calories = localStorage.getItem('totalCalories') || '2000';
+            const url = new URL('portionsday.html', window.location.href);
+            url.searchParams.set('calories', calories);
+            window.location.href = url.toString();
+        }
+
+        fillResults();
     </script>
 </body>
 </html>

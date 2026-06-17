@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calorie Tracker – Macronutrient Ratios</title>
+    <title>CalorieTracker – Macronutrient Ratios</title>
 
     <link rel="stylesheet" href="ratioofmacronutrients.css">
     <link rel="stylesheet" href="styles-advanced.css">
@@ -16,6 +16,13 @@
 </head>
 
 <body>
+    <header>
+        <h1>
+            <i class="fa-solid fa-chart-pie"></i> CalorieTracker - Macro Ratios
+            <span class="step-chip">Step 5 of 6</span>
+        </h1>
+    </header>
+
     <main>
         <div class="section card-3d">
 
@@ -40,6 +47,8 @@
 
             </div>
 
+            <p id="macroValidation" class="inline-validation" aria-live="polite"></p>
+
             <!-- Calculate -->
             <div class="button-container">
                 <button class="btn" onclick="calculateMacros()">
@@ -53,7 +62,7 @@
             <!-- Next -->
             <div class="button-container">
                 <button class="btn" onclick="resultRatioOfMacronutrients()">
-                    <i class="fa-solid fa-arrow-right"></i> Next
+                    <i class="fa-solid fa-arrow-right"></i> Continue
                 </button>
             </div>
 

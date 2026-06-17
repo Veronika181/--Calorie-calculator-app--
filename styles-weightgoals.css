@@ -104,6 +104,16 @@ main {
     margin-top: 1rem;
 }
 
+.inline-validation {
+    width: 100%;
+    max-width: 900px;
+    margin: 0.25rem auto 0;
+    color: #fda4af;
+    font-size: 0.95rem;
+    text-align: center;
+    display: none;
+}
+
 footer {
     text-align: center;
     padding: 1.25rem;

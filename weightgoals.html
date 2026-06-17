@@ -26,7 +26,8 @@
     <header>
         <h1>
             <img src="logo.svg" class="logo" alt="logo">
-            CalorieTracker
+            CalorieTracker - Weight Goals
+            <span class="step-chip">Step 4 of 6</span>
         </h1>
     </header>
 
@@ -46,7 +47,7 @@
 
         <!-- SECTION 2 -->
         <div class="section card-3d">
-            <h2>Caloric Deficit Amount</h2>
+            <h2>Calorie Deficit Level</h2>
 
             <div class="btn-group">
                 <button class="deficit-btn" data-title="Low" onclick="selectDeficit('Low', this)">Low</button>
@@ -58,9 +59,11 @@
         <!-- NEXT BUTTON -->
         <div class="button-container">
             <button type="button" class="btn" onclick="nextPage()">
-                <i class="fa-solid fa-arrow-right"></i> Next
+                <i class="fa-solid fa-arrow-right"></i> Continue
             </button>
         </div>
+
+        <p id="goalValidation" class="inline-validation" aria-live="polite"></p>
 
     </main>
 
@@ -82,12 +85,21 @@
             weightGoal = goal;
             document.querySelectorAll(".goal-btn").forEach(b => b.classList.remove("active"));
             btn.classList.add("active");
+            showGoalValidation("");
         }
 
         function selectDeficit(deficit, btn) {
             deficitAmount = deficit;
             document.querySelectorAll(".deficit-btn").forEach(b => b.classList.remove("active"));
             btn.classList.add("active");
+            showGoalValidation("");
+        }
+
+        function showGoalValidation(message) {
+            const el = document.getElementById("goalValidation");
+            if (!el) return;
+            el.textContent = message;
+            el.style.display = message ? "block" : "none";
         }
 
         function nextPage() {
@@ -95,7 +107,7 @@
                 const url = `ratioofmacronutrients.html?goal=${weightGoal}&deficit=${deficitAmount}`;
                 location.href = url;
             } else {
-                alert("Please select all options.");
+                showGoalValidation("Please select both goal and deficit level to continue.");
             }
         }
     </script>
