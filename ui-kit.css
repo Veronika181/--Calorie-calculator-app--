@@ -60,6 +60,10 @@ body.light .step-chip {
 
 /* === Buttons === */
 .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
   padding: 0.9rem 2rem;
   border-radius: 999px;
   background: linear-gradient(135deg, #f97316, #ea580c);
@@ -120,7 +124,7 @@ body.light .step-chip {
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); box-shadow: 0 0 0 rgba(249,115,22,0.4); }
-  50% { transform: scale(1.05); box-shadow: 0 0 20px rgba(249,115,22,0.6); }
-  100% { transform: scale(1); box-shadow: 0 0 0 rgba(249,115,22,0.4); }
+  0% { box-shadow: 0 0 0 rgba(249,115,22,0.4); }
+  50% { box-shadow: 0 0 20px rgba(249,115,22,0.6); }
+  100% { box-shadow: 0 0 0 rgba(249,115,22,0.4); }
 }

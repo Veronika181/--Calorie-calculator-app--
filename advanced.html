@@ -27,6 +27,12 @@
     <main>
         <div id="advanced" class="section">
             <div class="advanced-container">
+                <div class="flow-progress" aria-hidden="true">
+                    <div class="flow-track">
+                        <span class="flow-fill" style="width: 33.33%"></span>
+                    </div>
+                    <p class="flow-help">Add optional precision to make your calorie target more accurate.</p>
+                </div>
 
                 <!-- Body Fat -->
                 <div class="input-container">
@@ -69,6 +75,9 @@
                         <i class="fa-solid fa-calculator"></i> Calculate
                     </button>
                 </div>
+
+                <p id="advancedValidation" class="validation-message" aria-live="polite"></p>
+                <p id="advancedDraftInfo" class="draft-note" aria-live="polite"></p>
 
             </div>
         </div>

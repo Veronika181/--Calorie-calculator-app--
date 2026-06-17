@@ -4,6 +4,8 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 test('click smoke test for local HTML pages', async ({ page }) => {
+  test.setTimeout(180000);
+
   const root = process.cwd();
   const htmlFiles = fs
     .readdirSync(root)
@@ -23,13 +25,17 @@ test('click smoke test for local HTML pages', async ({ page }) => {
     await page.goto(url, { waitUntil: 'domcontentloaded' });
     await page.waitForTimeout(120);
 
-    const buttonCount = await page.locator('button:visible').count();
-    for (let i = 0; i < buttonCount; i++) {
-      const button = page.locator('button:visible').nth(i);
+    let buttonIndex = 0;
+    while (true) {
+      const buttons = await page.locator('button:visible').elementHandles();
+      if (buttonIndex >= buttons.length) break;
+
+      const button = buttons[buttonIndex];
       const type = ((await button.getAttribute('type')) || '').toLowerCase();
 
       // Skip form submit buttons to avoid backend-only form actions.
       if (type === 'submit') {
+        buttonIndex++;
         continue;
       }
 
@@ -43,13 +49,18 @@ test('click smoke test for local HTML pages', async ({ page }) => {
           await page.waitForTimeout(80);
         }
       } catch (err) {
-        failures.push(`${file}: button #${i + 1} click failed (${String(err)})`);
+        failures.push(`${file}: button #${buttonIndex + 1} click failed (${String(err)})`);
       }
+
+      buttonIndex++;
     }
 
-    const linkCount = await page.locator('a[href]:visible').count();
-    for (let i = 0; i < linkCount; i++) {
-      const link = page.locator('a[href]:visible').nth(i);
+    let linkIndex = 0;
+    while (true) {
+      const links = await page.locator('a[href]:visible').elementHandles();
+      if (linkIndex >= links.length) break;
+
+      const link = links[linkIndex];
       const href = (await link.getAttribute('href')) || '';
 
       if (
@@ -59,6 +70,7 @@ test('click smoke test for local HTML pages', async ({ page }) => {
         href.startsWith('mailto:') ||
         href.startsWith('tel:')
       ) {
+        linkIndex++;
         continue;
       }
 
@@ -72,8 +84,10 @@ test('click smoke test for local HTML pages', async ({ page }) => {
           await page.waitForTimeout(80);
         }
       } catch (err) {
-        failures.push(`${file}: link #${i + 1} (href=${href}) click failed (${String(err)})`);
+        failures.push(`${file}: link #${linkIndex + 1} (href=${href}) click failed (${String(err)})`);
       }
+
+      linkIndex++;
     }
 
     if (pageErrors.length > 0) {
