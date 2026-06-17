@@ -1,59 +1,59 @@
-/* GLOBAL RESET & BASE */
+/* === RESET === */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* === BODY === */
 body, html {
-    font-family: Arial, sans-serif;
-    background: #0b1120; /* deep navy */
-    color: #e5e7eb; /* soft gray */
+    font-family: 'Inter', Arial, sans-serif;
+    background: linear-gradient(180deg, #27ae60 0%, #2ecc71 45%, #f5f7fa 100%);
     min-height: 100vh;
+    color: #333;
 }
 
-/* LAYOUT */
+/* === MAIN === */
 main {
     padding: 30px 20px;
     max-width: 700px;
     margin: auto;
 }
 
-/* HEADINGS */
+/* === NADPISY === */
 h2, .result-title {
-    color: #16f92d;
+    color: #27ae60;
     text-align: center;
     margin-bottom: 25px;
     font-size: 2rem;
     font-weight: 700;
-    text-shadow: 0 0 10px rgba(22, 249, 45, 0.7);
 }
 
-/* BUTTONS */
+/* === TLAČÍTKO === */
 .button-container {
     margin: 25px 0;
     text-align: center;
 }
 
 .btn {
-    background: #16f92d;
-    color: #020617;
-    border: 1px solid rgba(22, 249, 22, 0.4);
-    border-radius: 999px;
+    background: #FFA500;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
     padding: 14px 28px;
     font-size: 1.1rem;
     cursor: pointer;
     transition: 0.25s ease-out;
-    box-shadow: 0 0 12px rgba(22, 249, 22, 0.7);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     font-weight: 600;
 }
 
 .btn:hover {
     transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 0 20px rgba(22, 249, 22, 1);
+    background: #ff7b00;
 }
 
-/* INPUT GROUPS */
+/* === INPUT GROUPS === */
 .macro-group {
     margin-bottom: 20px;
 }
@@ -61,52 +61,45 @@ h2, .result-title {
 .section label {
     display: block;
     margin-bottom: 6px;
-    color: #a7f3d0;
+    color: #27ae60;
     font-weight: 600;
     font-size: 1rem;
 }
 
-/* INPUTS */
+/* === INPUTY === */
 input[type="number"] {
     width: 100%;
     padding: 12px;
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 10px;
-    background: #111827;
-    color: #e5e7eb;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    background: #ffffff;
+    color: #333;
     font-size: 1.1rem;
     transition: 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
 input[type="number"]:focus {
     outline: none;
-    border-color: #16f92d;
-    box-shadow: 0 0 10px rgba(22, 249, 22, 0.5);
+    border-color: #FFA500;
+    box-shadow: 0 0 10px rgba(255,165,0,0.4);
 }
 
-/* REMOVE OLD BOXES */
-.section div {
-    background: transparent;
-    border: none;
-    padding: 0;
-    margin: 0;
-}
-
-/* RESULT BOX */
+/* === RESULT BOX === */
 #result {
     margin-top: 30px;
     padding: 25px;
-    background: #111827;
-    border-radius: 14px;
-    border: 1px solid rgba(255,255,255,0.1);
-    color: #e5e7eb;
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid rgba(0,0,0,0.08);
+    color: #333;
     font-size: 1.25rem;
     line-height: 1.7;
-    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
     animation: fadeIn 0.4s ease-out;
 }
 
-/* ANIMATION */
+/* === ANIMACE === */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
