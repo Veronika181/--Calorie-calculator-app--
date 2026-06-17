@@ -58,6 +58,14 @@ body {
   font-size: 0.9rem;
 }
 
+.active-date {
+  margin-top: 0.25rem;
+}
+
+.active-date strong {
+  color: var(--kt-green-dark);
+}
+
 .result-container {
   display: flex;
   flex-direction: column;

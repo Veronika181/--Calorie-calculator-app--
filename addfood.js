@@ -1,3 +1,46 @@
+function getTodayDateKey() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
+
+function formatDateLabel(dateKey) {
+    const parts = String(dateKey).split('-');
+    if (parts.length !== 3) return dateKey;
+
+    const year = parseInt(parts[0], 10);
+    const month = parseInt(parts[1], 10) - 1;
+    const day = parseInt(parts[2], 10);
+
+    const date = new Date(year, month, day);
+    if (Number.isNaN(date.getTime())) return dateKey;
+
+    return date.toLocaleDateString('en-GB', {
+        weekday: 'short',
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
+    });
+}
+
+function getActiveDateKey() {
+    return localStorage.getItem('diarySelectedDate') || getTodayDateKey();
+}
+
+function getFoodEntriesByDate() {
+    const raw = localStorage.getItem('foodEntriesByDate');
+    if (!raw) return {};
+
+    try {
+        const parsed = JSON.parse(raw);
+        return parsed && typeof parsed === 'object' ? parsed : {};
+    } catch (error) {
+        return {};
+    }
+}
+
 function toggleDropdown(id) {
     const dropdown = document.getElementById(id);
     dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
@@ -75,25 +118,42 @@ function createFoodEntryElement(textValue, detailsId) {
 }
 
 function saveFoodEntries() {
+    const dateKey = getActiveDateKey();
+    const byDate = getFoodEntriesByDate();
     const entries = {};
+
     document.querySelectorAll('.result-details-box').forEach((box) => {
         const items = Array.from(box.querySelectorAll('.food-entry span')).map((item) => item.textContent.trim());
         entries[box.id] = items;
     });
+
+    byDate[dateKey] = entries;
+    localStorage.setItem('foodEntriesByDate', JSON.stringify(byDate));
+
+    // Keep legacy key in sync for compatibility with old code paths.
     localStorage.setItem('foodEntries', JSON.stringify(entries));
-    alert('Food entries saved.');
+    alert('Food entries saved for selected day.');
 }
 
 function loadSavedFoodEntries() {
-    const raw = localStorage.getItem('foodEntries');
-    if (!raw) return;
+    const dateKey = getActiveDateKey();
+    const byDate = getFoodEntriesByDate();
 
-    let entries;
-    try {
-        entries = JSON.parse(raw);
-    } catch (error) {
-        return;
+    let entries = byDate[dateKey];
+
+    // Backward compatibility with previous single-key storage.
+    if (!entries) {
+        const rawLegacy = localStorage.getItem('foodEntries');
+        if (rawLegacy) {
+            try {
+                entries = JSON.parse(rawLegacy);
+            } catch (error) {
+                entries = null;
+            }
+        }
     }
+
+    if (!entries || typeof entries !== 'object') return;
 
     Object.entries(entries).forEach(([detailsId, value]) => {
         const detailsBox = document.getElementById(detailsId);
@@ -116,5 +176,10 @@ function loadSavedFoodEntries() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    const dateLabel = document.getElementById('active-date-label');
+    if (dateLabel) {
+        dateLabel.textContent = formatDateLabel(getActiveDateKey());
+    }
+
     loadSavedFoodEntries();
 });

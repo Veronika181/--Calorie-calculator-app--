@@ -1,3 +1,62 @@
+let selectedDateKey = '';
+
+function getTodayDateKey() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
+
+function buildDateKey(year, monthIndex, day) {
+    const month = String(monthIndex + 1).padStart(2, '0');
+    const dayPadded = String(day).padStart(2, '0');
+    return `${year}-${month}-${dayPadded}`;
+}
+
+function parseDateKey(dateKey) {
+    const parts = String(dateKey).split('-');
+    if (parts.length !== 3) {
+        const fallback = new Date();
+        return {
+            year: fallback.getFullYear(),
+            monthIndex: fallback.getMonth(),
+            day: fallback.getDate()
+        };
+    }
+
+    return {
+        year: parseInt(parts[0], 10),
+        monthIndex: parseInt(parts[1], 10) - 1,
+        day: parseInt(parts[2], 10)
+    };
+}
+
+function formatDateLabel(dateKey) {
+    const { year, monthIndex, day } = parseDateKey(dateKey);
+    const date = new Date(year, monthIndex, day);
+    if (Number.isNaN(date.getTime())) return dateKey;
+
+    return date.toLocaleDateString('en-GB', {
+        weekday: 'short',
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
+    });
+}
+
+function getFoodEntriesByDate() {
+    const raw = localStorage.getItem('foodEntriesByDate');
+    if (!raw) return {};
+
+    try {
+        const parsed = JSON.parse(raw);
+        return parsed && typeof parsed === 'object' ? parsed : {};
+    } catch (error) {
+        return {};
+    }
+}
+
 function changeValue(meal, change) {
     const display = document.getElementById(meal + 'Display');
     if (!display) return;
@@ -47,15 +106,8 @@ function extractKcalFromText(text) {
 }
 
 function applyFoodEntriesToMenu() {
-    const rawEntries = localStorage.getItem('foodEntries');
-    if (!rawEntries) return;
-
-    let entries;
-    try {
-        entries = JSON.parse(rawEntries);
-    } catch (error) {
-        return;
-    }
+    const byDate = getFoodEntriesByDate();
+    const entries = byDate[selectedDateKey];
 
     const mapping = [
         { detailsId: 'breakfastDetails', displayId: 'breakfastDisplay', recipeId: 'breakfastRecipe' },
@@ -66,9 +118,17 @@ function applyFoodEntriesToMenu() {
     ];
 
     mapping.forEach(({ detailsId, displayId, recipeId }) => {
-        const rawValue = entries[detailsId];
-        if (!rawValue) return;
+        const displayEl = document.getElementById(displayId);
+        if (displayEl) displayEl.textContent = '0 Kcal';
 
+        if (recipeId) {
+            const recipeEl = document.getElementById(recipeId);
+            if (recipeEl) recipeEl.textContent = '';
+        }
+
+        if (!entries || !entries[detailsId]) return;
+
+        const rawValue = entries[detailsId];
         const items = Array.isArray(rawValue)
             ? rawValue
             : String(rawValue)
@@ -79,7 +139,6 @@ function applyFoodEntriesToMenu() {
         if (items.length === 0) return;
 
         const total = items.reduce((sum, item) => sum + extractKcalFromText(item), 0);
-        const displayEl = document.getElementById(displayId);
         if (displayEl) {
             displayEl.textContent = `${total} Kcal`;
         }
@@ -120,11 +179,11 @@ function applyRecipePlanToMenu() {
         const display = document.getElementById(displayId);
         const recipeEl = document.getElementById(recipeId);
 
-        if (display && Number.isFinite(Number(selected.kcal))) {
+        if (display && Number.isFinite(Number(selected.kcal)) && display.textContent === '0 Kcal') {
             display.textContent = `${Math.round(Number(selected.kcal))} Kcal`;
         }
 
-        if (recipeEl) {
+        if (recipeEl && !recipeEl.textContent) {
             recipeEl.textContent = `Selected: ${selected.title}`;
         }
     });
@@ -133,8 +192,8 @@ function applyRecipePlanToMenu() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    applyRecipePlanToMenu();
-    applyFoodEntriesToMenu();
+    selectedDateKey = localStorage.getItem('diarySelectedDate') || getTodayDateKey();
+    localStorage.setItem('diarySelectedDate', selectedDateKey);
 
     const macrosForm = document.getElementById('macros-form');
     const proteins = document.getElementById('proteins');
@@ -172,21 +231,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const months = [
-        { name: 'January', days: 31 },
-        { name: 'February', days: 28 },
-        { name: 'March', days: 31 },
-        { name: 'April', days: 30 },
-        { name: 'May', days: 31 },
-        { name: 'June', days: 30 },
-        { name: 'July', days: 31 },
-        { name: 'August', days: 31 },
-        { name: 'September', days: 30 },
-        { name: 'October', days: 31 },
-        { name: 'November', days: 30 },
-        { name: 'December', days: 31 }
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
     ];
 
-    let currentMonthIndex = new Date().getMonth();
+    const selected = parseDateKey(selectedDateKey);
+    let currentMonthIndex = selected.monthIndex;
+    let currentYear = selected.year;
+
     const monthNameElem = document.querySelector('.month-name');
     const daysContainer = document.getElementById('calendar-days');
     const selectedDateDisplay = document.getElementById('selected-date');
@@ -196,23 +248,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevButton = document.querySelector('.prev');
     const nextButton = document.querySelector('.next');
 
+    function getDaysInMonth(year, monthIndex) {
+        return new Date(year, monthIndex + 1, 0).getDate();
+    }
+
+    function updateSelectedDateText() {
+        if (selectedDateDisplay) {
+            selectedDateDisplay.textContent = `Selected date: ${formatDateLabel(selectedDateKey)}`;
+        }
+    }
+
     function renderCalendar(monthIndex) {
         if (!monthNameElem || !daysContainer || !monthSelect) return;
 
-        const month = months[monthIndex];
-        monthNameElem.textContent = `${month.name} 2024`;
+        monthNameElem.textContent = `${months[monthIndex]} ${currentYear}`;
         daysContainer.innerHTML = '';
 
-        for (let day = 1; day <= month.days; day++) {
+        const daysInMonth = getDaysInMonth(currentYear, monthIndex);
+
+        for (let day = 1; day <= daysInMonth; day++) {
             const dayElem = document.createElement('li');
             dayElem.textContent = String(day);
+
+            const dayKey = buildDateKey(currentYear, monthIndex, day);
+            if (dayKey === selectedDateKey) {
+                dayElem.classList.add('active');
+            }
+
             dayElem.addEventListener('click', function () {
+                selectedDateKey = dayKey;
+                localStorage.setItem('diarySelectedDate', selectedDateKey);
+
                 document.querySelectorAll('.days li').forEach((d) => d.classList.remove('active'));
                 this.classList.add('active');
-                if (selectedDateDisplay) {
-                    selectedDateDisplay.textContent = `Selected date: ${month.name} ${day}, 2024`;
-                }
+
+                updateSelectedDateText();
+                applyFoodEntriesToMenu();
+                applyRecipePlanToMenu();
             });
+
             daysContainer.appendChild(dayElem);
         }
     }
@@ -221,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
         months.forEach((month, index) => {
             const option = document.createElement('option');
             option.value = String(index);
-            option.textContent = month.name;
+            option.textContent = month;
             monthSelect.appendChild(option);
         });
 
@@ -234,7 +308,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (prevButton) {
         prevButton.addEventListener('click', () => {
-            currentMonthIndex = (currentMonthIndex + 11) % 12;
+            currentMonthIndex -= 1;
+            if (currentMonthIndex < 0) {
+                currentMonthIndex = 11;
+                currentYear -= 1;
+            }
             if (monthSelect) monthSelect.value = String(currentMonthIndex);
             renderCalendar(currentMonthIndex);
         });
@@ -242,7 +320,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (nextButton) {
         nextButton.addEventListener('click', () => {
-            currentMonthIndex = (currentMonthIndex + 1) % 12;
+            currentMonthIndex += 1;
+            if (currentMonthIndex > 11) {
+                currentMonthIndex = 0;
+                currentYear += 1;
+            }
             if (monthSelect) monthSelect.value = String(currentMonthIndex);
             renderCalendar(currentMonthIndex);
         });
@@ -254,6 +336,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    updateSelectedDateText();
     renderCalendar(currentMonthIndex);
+    applyFoodEntriesToMenu();
+    applyRecipePlanToMenu();
     updateMealSummary();
 });
