@@ -41,9 +41,18 @@
     </footer>
 
     <script>
-        document.querySelector(".start-btn").addEventListener("click", () => {
-            window.location.href = "input.html";
-        });
+        // Ensuite button is loaded before attaching listener
+        const startBtn = document.querySelector(".start-btn");
+        if (startBtn) {
+            startBtn.addEventListener("click", function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log("Start button clicked!");
+                window.location.href = "input.html";
+            });
+        } else {
+            console.error("Start button not found!");
+        }
     </script>
 </body>
 </html>

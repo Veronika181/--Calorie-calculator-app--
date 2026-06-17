@@ -1,27 +1,58 @@
 /* === WEIGHT GOALS PAGE === */
 
-/* Wrapper */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: radial-gradient(circle at top, #1f2937 0, #020617 45%, #000 100%);
+    color: var(--text-dark);
+}
+
+header {
+    padding: 1.5rem 1.75rem;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.65), transparent);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 2.5rem 1.5rem;
+}
+
 .section {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
     padding: 2rem;
-    border-radius: var(--radius-lg);
-    background: var(--card-dark);
-    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 26px;
+    background: radial-gradient(circle at top left, #111827 0, #020617 55%);
+    border: 1px solid rgba(148, 163, 184, 0.35);
     box-shadow: var(--shadow-soft);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
-    margin-bottom: 2rem;
     text-align: center;
 }
 
-/* Headings */
 .section h2 {
     color: var(--text-dark);
     margin-bottom: 1.4rem;
     font-size: 1.6rem;
-    text-shadow: 0 0 12px rgba(249,115,22,0.4);
+    text-shadow: 0 0 12px rgba(249, 115, 22, 0.4);
 }
 
-/* Button group */
 .btn-group {
     display: flex;
     justify-content: center;
@@ -29,17 +60,16 @@
     flex-wrap: wrap;
 }
 
-/* Buttons */
 .btn-group button {
     padding: 0.9rem 1.8rem;
     border-radius: var(--radius-md);
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
+    background: #0b1120;
+    border: 1px solid rgba(148, 163, 184, 0.3);
     color: var(--text-dark);
     cursor: pointer;
     font-size: 1rem;
     transition: var(--transition);
-    box-shadow: 0 0 12px rgba(249,115,22,0.25);
+    box-shadow: 0 0 12px rgba(249, 115, 22, 0.18);
     position: relative;
 }
 
@@ -47,15 +77,14 @@
     background: var(--accent-soft);
     border-color: var(--accent);
     color: #fff;
-    box-shadow: 0 0 18px rgba(249,115,22,0.45);
+    box-shadow: 0 0 18px rgba(249, 115, 22, 0.45);
 }
 
-/* Active (selected) button */
 .btn-group button.active {
-    background: rgba(249,115,22,0.35);
+    background: rgba(249, 115, 22, 0.35);
     border-color: var(--accent);
     color: #fff;
-    box-shadow: 0 0 22px rgba(249,115,22,0.6);
+    box-shadow: 0 0 22px rgba(249, 115, 22, 0.6);
 }
 
 .btn-group button.active::after {
@@ -66,12 +95,34 @@
     right: -18px;
     top: 50%;
     transform: translateY(-50%);
-    text-shadow: 0 0 10px rgba(249,115,22,0.8);
+    text-shadow: 0 0 10px rgba(249, 115, 22, 0.8);
 }
 
-/* Next button container */
 .button-container {
     display: flex;
     justify-content: center;
     margin-top: 1rem;
+}
+
+footer {
+    text-align: center;
+    padding: 1.25rem;
+    color: var(--text-muted-dark);
+    border-top: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+@media (max-width: 640px) {
+    .section {
+        padding: 1.4rem;
+        border-radius: 20px;
+    }
+
+    .section h2 {
+        font-size: 1.25rem;
+    }
+
+    .btn-group button {
+        width: 100%;
+        max-width: 240px;
+    }
 }
