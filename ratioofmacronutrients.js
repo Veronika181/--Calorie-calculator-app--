@@ -16,22 +16,19 @@ function getQueryParams() {
 function calculateMacros() {
     const params = getQueryParams();
 
-    // goal & deficit z předchozí stránky (např. ?goal=reduce&deficit=medium)
-    const goal = (params.goal || "").toLowerCase();
-    const deficit = (params.deficit || "").toLowerCase();
+    const goal = (params.goal || "reduce").toLowerCase();
+    const deficit = (params.deficit || "medium").toLowerCase();
 
     const proteinPercent = parseFloat(document.getElementById("protein").value) / 100;
     const carbsPercent = parseFloat(document.getElementById("carbs").value) / 100;
     const fatPercent = parseFloat(document.getElementById("fat").value) / 100;
 
-    // jednoduchá kontrola, že součet je 100 %
     const sum = proteinPercent + carbsPercent + fatPercent;
     if (Math.abs(sum - 1) > 0.01) {
         alert("The sum of protein, carbs and fat must be 100%.");
         return;
     }
 
-    // TODO: později načíst reálná data uživatele
     const weight = 70;
     const height = 175;
     const age = 25;
@@ -65,12 +62,6 @@ function calculateMacros() {
     const fat = (calories * fatPercent) / 9;
     const carbs = (calories * carbsPercent) / 4;
 
-    // buď přesměrování:
-    // const resultUrl =
-    //   `resultratioofmacronutrients.html?calories=${calories.toFixed(0)}&protein=${protein.toFixed(0)}&fat=${fat.toFixed(0)}&carbs=${carbs.toFixed(0)}`;
-    // window.location.href = resultUrl;
-
-    // nebo rovnou zobrazit na stránce:
     const resultDiv = document.getElementById("result");
     resultDiv.innerHTML = `
         <h3>Your Daily Macronutrient Breakdown</h3>

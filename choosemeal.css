@@ -1,60 +1,83 @@
 body {
     background-image: linear-gradient(#4CAF50, #63B967, #FFFFFF);
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    color: rgb(255, 255, 255);
+    color: #ffffff;
+    min-height: 100vh;
 }
+
+/* MAIN */
 main {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    height: 100vh;
+    padding-top: 60px;
 }
+
+/* NADPIS */
 h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 28px;
+    margin-bottom: 25px;
     text-align: center;
-    color: #ffffff; /* Ensure header text is white */
+    color: #ffffff;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.25);
 }
+
+/* VOLBY JÍDEL */
 .meal-options {
     display: flex;
     justify-content: center;
     margin: 20px;
-    padding: 20px;
+    padding: 10px;
+    gap: 15px;
 }
+
+/* JEDNOTLIVÁ VOLBA */
 .meal-option {
-    padding: 15px 30px;
+    padding: 14px 26px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-    border-radius: 10px;
+    border-radius: 14px;
     text-align: center;
-    color: white; /* White text */
-    background-color: gray; /* Gray background for unselected */
-    font-size: 20px; /* Adjust font size */
-    margin: 0 10px; /* Space between options */
+    font-size: 20px;
+    background-color: rgba(255,255,255,0.25);
+    color: white;
+    backdrop-filter: blur(4px);
+    transition: 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
+
 .meal-option:hover {
-    background-color: #666; /* Darker gray on hover */
+    background-color: rgba(255,255,255,0.35);
 }
+
+/* AKTIVNÍ (VYBRANÁ) VOLBA */
 .active {
-    background-color: #FFA500; /* Orange color for selected */
-    color: white; /* White text for selected */
+    background-color: #FFA500;
+    color: white;
+    box-shadow: 0 4px 12px rgba(255,165,0,0.4);
 }
+
+/* OBRÁZKY JÍDEL */
 .meal-images {
     display: none;
     text-align: center;
     margin: 20px;
 }
+
 .meal-images img {
     width: 150px;
     height: auto;
     margin: 10px;
     display: inline-block;
-    opacity: 0.5; /* Gray out images */
-    transition: opacity 0.3s;
+    opacity: 0.5;
+    border-radius: 12px;
+    transition: opacity 0.3s, transform 0.3s;
 }
+
 .meal-images img:hover {
-    opacity: 1; /* Full opacity on hover */
+    opacity: 1;
+    transform: scale(1.05);
 }

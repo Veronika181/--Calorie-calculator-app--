@@ -1,93 +1,111 @@
 body {
     background-image: linear-gradient(#4CAF50, #63B967, #FFFFFF);
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', Arial, sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    color: white;
 }
 
+/* MAIN */
 main {
-    flex: 1; 
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; 
-    padding: 20px;
+    justify-content: flex-start;
+    padding: 40px 20px;
     width: 100%;
     max-width: 1200px;
 }
 
+/* NADPIS */
 h1 {
-    margin: 0;
-    color: white;
-    margin-bottom: 30px; 
+    margin: 0 0 30px 0;
     text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.25);
 }
 
+/* SEKCE */
 .section {
     text-align: center;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 20px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    gap: 20px; 
-    justify-content: center; 
+    gap: 25px;
+    justify-content: center;
 }
 
+/* KARTY */
 .result-item1 {
     border-radius: 30px;
     padding: 40px;
     text-align: center;
-    color: white;
-    width: 291px; 
-    height: 127px; 
+    width: 291px;
+    height: 127px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    /* moderní glass efekt */
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
+/* ORANŽOVÁ KARTA – TITULEK */
 .result-title-box {
     background-color: #FF8C00;
     width: 271px;
     height: 172px;
     border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
 
+/* ŠEDÁ KARTA – DETAIL */
 .result-details-box {
     background-color: #808080;
     width: 271px;
     height: 172px;
     border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
 
+/* TLAČÍTKO */
 .button-container {
-    margin-top: 30px; /* Umožňuje mezeru mezi obsahem a tlačítkem */
+    margin-top: 30px;
 }
 
 .btn {
     background-color: #FF8C00;
     color: white;
     border: none;
-    padding: 10px 15px;
-    font-size: 16px;
-    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 18px;
+    border-radius: 50px;
     cursor: pointer;
+    transition: 0.25s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 .btn:hover {
-    background-color: #FF7F00; 
+    background-color: #FF7F00;
+    transform: translateY(-2px);
 }
 
+/* FOOTER */
 footer {
     background-color: #4CAF50;
     color: white;
     text-align: center;
-    padding: 10px 0;
+    padding: 12px 0;
     width: 100%;
-
+    font-size: 14px;
 }
-

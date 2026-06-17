@@ -8,20 +8,22 @@
 /* === BODY === */
 body {
   font-family: 'Inter', 'Segoe UI', sans-serif;
-  background: linear-gradient(180deg, #27ae60 0%, #2ecc71 50%, #f5f7fa 100%);
+  background: linear-gradient(180deg, #27ae60 0%, #2ecc71 45%, #f5f7fa 100%);
   padding: 20px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #fff;
 }
 
 /* === NADPISY === */
 h2 {
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   font-weight: 700;
-  color: #fff;
   margin: 20px 0;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.25);
 }
 
 /* === KALENDÁŘ === */
@@ -34,16 +36,22 @@ h2 {
   cursor: pointer;
   color: #fff;
   margin-bottom: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+#show-calendar-btn1:hover {
+  background: #ff7b00;
 }
 
 #calendar-container {
   background: #fff;
-  padding: 15px;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 18px;
+  border-radius: 20px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
   width: 100%;
   max-width: 380px;
   margin-bottom: 20px;
+  color: #333;
 }
 
 .calendar-header {
@@ -52,8 +60,9 @@ h2 {
   align-items: center;
   background: #FFA500;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 12px;
   color: #fff;
+  font-weight: 600;
 }
 
 .calendar-header button {
@@ -67,37 +76,44 @@ h2 {
 #calendar-days {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 #calendar-days li {
   list-style: none;
   width: 14%;
   text-align: center;
-  padding: 6px;
+  padding: 8px;
   margin: 2px;
-  background: #808080;
-  color: #fff;
-  border-radius: 6px;
+  background: #d9d9d9;
+  color: #333;
+  border-radius: 8px;
   cursor: pointer;
+  transition: 0.2s ease;
+}
+
+#calendar-days li:hover {
+  background: #ffe0b3;
 }
 
 #calendar-days li.active {
   background: #FFA500;
+  color: #fff;
 }
 
 /* === INPUT GROUP === */
 .input-group {
   background: #fff;
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 25px;
+  border-radius: 22px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
   width: 100%;
   max-width: 700px;
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
+  color: #333;
 }
 
 /* === INPUT ITEM === */
@@ -116,8 +132,8 @@ h2 {
 .input-item input {
   width: 100%;
   max-width: 120px;
-  padding: 8px;
-  border-radius: 8px;
+  padding: 10px;
+  border-radius: 10px;
   border: 1px solid #ccc;
   text-align: center;
   font-size: 1rem;
@@ -125,8 +141,8 @@ h2 {
 
 /* === MALÉ KRUHY === */
 .small-circle {
-  width: 45px;
-  height: 45px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: #FFA500;
   color: #fff;
@@ -134,6 +150,8 @@ h2 {
   justify-content: center;
   align-items: center;
   font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 /* === KRUH + CALCULATE === */
@@ -147,19 +165,20 @@ h2 {
 }
 
 .big-circle {
-  width: 140px;
-  height: 140px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   background: #27ae60;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #fff;
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   font-weight: 700;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.2);
 }
 
+/* === SUBMIT BUTTON === */
 .submit button {
   background: #FFA500;
   color: #fff;
@@ -169,6 +188,7 @@ h2 {
   font-size: 1.2rem;
   cursor: pointer;
   transition: 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .submit button:hover {
@@ -188,12 +208,13 @@ h2 {
 
 .result-item {
   background: #fff;
-  padding: 16px;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 18px;
+  border-radius: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #333;
 }
 
 .result-item-label {
@@ -214,14 +235,15 @@ h2 {
 }
 
 .result-item button {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: #FFA500;
   color: #fff;
   border: none;
   font-size: 1.2rem;
   cursor: pointer;
+  transition: 0.2s ease;
 }
 
 .result-item button:hover {
@@ -241,10 +263,13 @@ h2 {
   padding: 14px 40px;
   font-size: 1.2rem;
   cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .btn:hover {
   background: #ff7b00;
+  transform: translateY(-2px);
 }
 
 /* === RESPONSIVE === */

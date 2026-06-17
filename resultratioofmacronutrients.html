@@ -45,30 +45,5 @@
         <p>&copy; Visit my Portfolio <a href="https://veronikaobrtelova.netlify.app/" target="_blank">website</a>.</p>
     </footer>
     <script>
-        function getQueryParams() {
-            const params = {};
-            window.location.search.substring(1).split("&").forEach(param => {
-                const [key, value] = param.split("=");
-                params[key] = decodeURIComponent(value);
-            });
-            return params;
-        }
-
-        function displayResults() {
-            const params = getQueryParams();
-            document.getElementById('calories-value').innerText = `${params.calories} kcal`;
-            document.getElementById('protein-value').innerText = `${params.protein} g`;
-            document.getElementById('fat-value').innerText = `${params.fat} g`;
-            document.getElementById('carbs-value').innerText = `${params.carbs} g`;
-        }
-
-        function portionsday() {
-            const params = getQueryParams();
-            const urlParams = new URLSearchParams(params).toString();
-            window.location.href = `portionsday.html?${urlParams}`;
-        }
-
-        displayResults();
-    </script>
 </body>
 </html>

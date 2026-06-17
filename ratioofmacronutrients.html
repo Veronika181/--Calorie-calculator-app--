@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="styles-weightgoals.css">
     <link rel="stylesheet" href="macronutrientsday.css">
 
-    <!-- Font Awesome (potřebné pro ikony) -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
@@ -40,25 +40,26 @@
 
             </div>
 
+            <!-- Calculate -->
             <div class="button-container">
                 <button class="btn" onclick="calculateMacros()">
                     <i class="fa-solid fa-calculator"></i> Calculate
                 </button>
             </div>
 
-            <!-- Výsledek -->
+            <!-- Result -->
             <div id="result" class="section"></div>
 
-            <!-- Next button -->
+            <!-- Next -->
             <div class="button-container">
-                <button class="btn" onclick="resultratioofmacronutrients()">
+                <button class="btn" onclick="resultRatioOfMacronutrients()">
                     <i class="fa-solid fa-arrow-right"></i> Next
                 </button>
             </div>
 
-            <!-- Back button -->
+            <!-- Back -->
             <div class="button-container" style="margin-bottom: 2rem;">
-                <button class="btn" onclick="goBack()">
+                <button class="btn" onclick="window.history.back()">
                     <i class="fa-solid fa-arrow-left"></i> Back
                 </button>
             </div>
@@ -66,18 +67,9 @@
         </div>
     </main>
 
-    <!-- Skripty -->
+    <!-- Scripts -->
     <script src="ratioofmacronutrients.js"></script>
-
-    <script>
-        function goToWeightGoals() {
-            window.location.href = "weightgoals.html";
-        }
-
-        function goBack() {
-            window.history.back();
-        }
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>
