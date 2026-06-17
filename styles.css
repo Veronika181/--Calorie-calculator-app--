@@ -18,6 +18,7 @@ header {
     text-align: center;
     padding: 1.5rem;
     border-bottom: 1px solid rgba(148,163,184,0.3);
+    -webkit-backdrop-filter: blur(18px);
     backdrop-filter: blur(18px);
     background: linear-gradient(
         to bottom,

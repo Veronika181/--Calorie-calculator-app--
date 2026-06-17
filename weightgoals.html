@@ -1,67 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calorie Tracker - Weight Goals</title>
-    <link rel="stylesheet" href="styles-intro.css">
-    <link rel="stylesheet" href="styles-input.css">
-    <link rel="stylesheet" href="styles-advanced.css">
-    <link rel="stylesheet" href="styles-result.css">
+    <title>CalorieTracker – Weight Goals</title>
+
+    <!-- UI KIT -->
+    <link rel="stylesheet" href="ui-kit.css">
+
+    <!-- Styl pro tuto stránku -->
     <link rel="stylesheet" href="styles-weightgoals.css">
-    <link rel="stylesheet" href="macronutrientsday.css">
+
+    <!-- Ikony -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
+
+    <!-- Přepínač tématu -->
+    <button id="themeToggle" class="theme-toggle">
+        <i class="fa-solid fa-moon"></i>
+    </button>
+
+    <!-- Header -->
+    <header>
+        <h1>
+            <img src="logo.svg" class="logo" alt="logo">
+            CalorieTracker
+        </h1>
+    </header>
+
+    <!-- Main -->
     <main>
-        <div class="section">
+
+        <!-- SECTION 1 -->
+        <div class="section card-3d">
             <h2>What would you like to do with your weight?</h2>
+
             <div class="btn-group">
-                <button data-title="Reduce" onclick="selectGoal('Reduce')">Reduce</button>
-                <button data-title="Maintain" onclick="selectGoal('Maintain')">Maintain</button>
-                <button data-title="Gain" onclick="selectGoal('Gain')">Gain</button>
+                <button class="goal-btn" data-title="Reduce" onclick="selectGoal('Reduce', this)">Reduce</button>
+                <button class="goal-btn" data-title="Maintain" onclick="selectGoal('Maintain', this)">Maintain</button>
+                <button class="goal-btn" data-title="Gain" onclick="selectGoal('Gain', this)">Gain</button>
             </div>
         </div>
-        <div class="section">
+
+        <!-- SECTION 2 -->
+        <div class="section card-3d">
             <h2>Caloric Deficit Amount</h2>
+
             <div class="btn-group">
-                <button data-title="Low" onclick="selectDeficit('Low')">Low</button>
-                <button data-title="Medium" onclick="selectDeficit('Medium')">Medium</button>
-                <button data-title="High" onclick="selectDeficit('High')">High</button>
+                <button class="deficit-btn" data-title="Low" onclick="selectDeficit('Low', this)">Low</button>
+                <button class="deficit-btn" data-title="Medium" onclick="selectDeficit('Medium', this)">Medium</button>
+                <button class="deficit-btn" data-title="High" onclick="selectDeficit('High', this)">High</button>
             </div>
         </div>
+
+        <!-- NEXT BUTTON -->
         <div class="button-container">
-            <button type="button" class="btn" onclick="nextPage()">Next</button>
+            <button type="button" class="btn" onclick="nextPage()">
+                <i class="fa-solid fa-arrow-right"></i> Next
+            </button>
         </div>
+
     </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; Visit my Portfolio 
+            <a href="https://veronikaobrtelova.netlify.app/" target="_blank">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> website
+            </a>
+        </p>
+    </footer>
+
+    <!-- Logika -->
     <script>
-        let weightGoal = '';
-        let deficitAmount = '';
+        let weightGoal = "";
+        let deficitAmount = "";
 
-        function selectGoal(goal) {
+        function selectGoal(goal, btn) {
             weightGoal = goal;
-            updateButtonStyles('goal', goal);
+            document.querySelectorAll(".goal-btn").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
         }
 
-        function selectDeficit(deficit) {
+        function selectDeficit(deficit, btn) {
             deficitAmount = deficit;
-            updateButtonStyles('deficit', deficit);
-        }
-
-        function updateButtonStyles(type, value) {
-            let buttons;
-            if (type === 'goal') {
-                buttons = document.querySelectorAll('.section:first-of-type .btn-group button');
-            } else if (type === 'deficit') {
-                buttons = document.querySelectorAll('.section:nth-of-type(2) .btn-group button');
-            }
-
-            buttons.forEach(button => {
-                if (button.getAttribute('data-title') === value) {
-                    button.classList.add('active');
-                } else {
-                    button.classList.remove('active');
-                }
-            });
+            document.querySelectorAll(".deficit-btn").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
         }
 
         function nextPage() {
@@ -69,16 +95,13 @@
                 const url = `ratioofmacronutrients.html?goal=${weightGoal}&deficit=${deficitAmount}`;
                 location.href = url;
             } else {
-                alert('Please select all options.');
+                alert("Please select all options.");
             }
         }
     </script>
-    <style>
-        .btn-group button.active {
-            background-color: #FFA500;
-            color: white;
-        }
-    </style>
+
+    <!-- Theme toggle -->
+    <script src="theme.js"></script>
+
 </body>
 </html>
-

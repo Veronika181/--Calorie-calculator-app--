@@ -1,67 +1,77 @@
-/* ====== Global ====== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* === WEIGHT GOALS PAGE === */
+
+/* Wrapper */
+.section {
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    background: var(--card-dark);
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: var(--shadow-soft);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    margin-bottom: 2rem;
+    text-align: center;
 }
 
-body {
-  font-family: 'Inter', sans-serif;
-  background: radial-gradient(circle at top, #1f2937 0, #020617 45%, #000 100%);
-  color: #e5e7eb;
-  padding: 20px;
+/* Headings */
+.section h2 {
+    color: var(--text-dark);
+    margin-bottom: 1.4rem;
+    font-size: 1.6rem;
+    text-shadow: 0 0 12px rgba(249,115,22,0.4);
 }
 
-/* ====== Headings ====== */
-h1, h2 {
-  margin-bottom: 12px;
-  color: #f9fafb;
-  text-shadow: 0 0 10px rgba(249,115,22,0.6);
-}
-
-/* ====== Button Group ====== */
+/* Button group */
 .btn-group {
-  display: flex;
-  gap: 14px;
-  margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
-/* ====== Buttons ====== */
-button {
-  padding: 12px 26px;
-  border: 1px solid rgba(249,115,22,0.4);
-  border-radius: 14px;
-  background: rgba(15,23,42,0.6);
-  color: #e5e7eb;
-  cursor: pointer;
-  font-size: 1.05rem;
-  position: relative;
-  transition: 0.25s ease;
-  box-shadow: 0 0 12px rgba(249,115,22,0.25);
+/* Buttons */
+.btn-group button {
+    padding: 0.9rem 1.8rem;
+    border-radius: var(--radius-md);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--text-dark);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: var(--transition);
+    box-shadow: 0 0 12px rgba(249,115,22,0.25);
+    position: relative;
 }
 
-button:hover {
-  background: rgba(249,115,22,0.25);
-  border-color: rgba(249,115,22,0.7);
-  color: #fff;
-  box-shadow: 0 0 18px rgba(249,115,22,0.45);
+.btn-group button:hover {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: #fff;
+    box-shadow: 0 0 18px rgba(249,115,22,0.45);
 }
 
-/* ====== Selected Button ====== */
-button.selected {
-  background: rgba(249,115,22,0.35);
-  border-color: rgba(249,115,22,0.9);
-  color: #fff;
-  box-shadow: 0 0 20px rgba(249,115,22,0.6);
+/* Active (selected) button */
+.btn-group button.active {
+    background: rgba(249,115,22,0.35);
+    border-color: var(--accent);
+    color: #fff;
+    box-shadow: 0 0 22px rgba(249,115,22,0.6);
 }
 
-button.selected::after {
-  content: '•';
-  color: #f97316;
-  font-size: 26px;
-  position: absolute;
-  right: -22px;
-  top: 50%;
-  transform: translateY(-50%);
-  text-shadow: 0 0 10px rgba(249,115,22,0.8);
+.btn-group button.active::after {
+    content: '•';
+    color: var(--accent);
+    font-size: 26px;
+    position: absolute;
+    right: -18px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-shadow: 0 0 10px rgba(249,115,22,0.8);
+}
+
+/* Next button container */
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
 }

@@ -71,3 +71,7 @@ function calculateMacros() {
         <p><strong>Carbs:</strong> ${carbs.toFixed(0)} g</p>
     `;
 }
+
+function resultRatioOfMacronutrients() {
+    window.location.href = "resultratioofmacronutrients.html";
+}
