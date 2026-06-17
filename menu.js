@@ -8,6 +8,92 @@ function changeValue(meal, change) {
     currentValue += change;
     if (currentValue < 0) currentValue = 0;
     display.textContent = `${currentValue} Kcal`;
+    updateMealSummary();
+}
+
+function extractKcal(displayId) {
+    const el = document.getElementById(displayId);
+    if (!el) return 0;
+
+    const value = parseInt(el.textContent, 10);
+    return Number.isNaN(value) ? 0 : value;
+}
+
+function updateMealSummary() {
+    const mealIds = ['breakfastDisplay', 'snack1Display', 'lunchDisplay', 'snack2Display', 'dinnerDisplay'];
+    const consumed = mealIds.reduce((sum, id) => sum + extractKcal(id), 0);
+
+    const consumedEl = document.getElementById('meals-total');
+    if (consumedEl) {
+        consumedEl.textContent = `${consumed} Kcal`;
+    }
+
+    const targetEl = document.getElementById('total-calories');
+    const remainingEl = document.getElementById('remaining-kcal');
+    if (!remainingEl) return;
+
+    const target = targetEl ? parseInt(targetEl.textContent, 10) : 0;
+    const parsedTarget = Number.isNaN(target) ? 0 : target;
+    const remaining = parsedTarget > 0 ? parsedTarget - consumed : consumed;
+    remainingEl.textContent = `${remaining} Kcal`;
+}
+
+function extractKcalFromText(text) {
+    const match = String(text).match(/(\d+)\s*k?cal/i);
+    if (!match) return 0;
+
+    const value = parseInt(match[1], 10);
+    return Number.isNaN(value) ? 0 : value;
+}
+
+function applyFoodEntriesToMenu() {
+    const rawEntries = localStorage.getItem('foodEntries');
+    if (!rawEntries) return;
+
+    let entries;
+    try {
+        entries = JSON.parse(rawEntries);
+    } catch (error) {
+        return;
+    }
+
+    const mapping = [
+        { detailsId: 'breakfastDetails', displayId: 'breakfastDisplay', recipeId: 'breakfastRecipe' },
+        { detailsId: 'snack1Details', displayId: 'snack1Display' },
+        { detailsId: 'lunchDetails', displayId: 'lunchDisplay', recipeId: 'lunchRecipe' },
+        { detailsId: 'snack2Details', displayId: 'snack2Display' },
+        { detailsId: 'dinnerDetails', displayId: 'dinnerDisplay', recipeId: 'dinnerRecipe' }
+    ];
+
+    mapping.forEach(({ detailsId, displayId, recipeId }) => {
+        const rawValue = entries[detailsId];
+        if (!rawValue) return;
+
+        const items = Array.isArray(rawValue)
+            ? rawValue
+            : String(rawValue)
+                .split('\n')
+                .map((item) => item.trim())
+                .filter(Boolean);
+
+        if (items.length === 0) return;
+
+        const total = items.reduce((sum, item) => sum + extractKcalFromText(item), 0);
+        const displayEl = document.getElementById(displayId);
+        if (displayEl) {
+            displayEl.textContent = `${total} Kcal`;
+        }
+
+        if (recipeId) {
+            const recipeEl = document.getElementById(recipeId);
+            if (recipeEl) {
+                const preview = items.slice(0, 2).join(', ');
+                recipeEl.textContent = `Foods: ${preview}${items.length > 2 ? '...' : ''}`;
+            }
+        }
+    });
+
+    updateMealSummary();
 }
 
 function applyRecipePlanToMenu() {
@@ -42,10 +128,13 @@ function applyRecipePlanToMenu() {
             recipeEl.textContent = `Selected: ${selected.title}`;
         }
     });
+
+    updateMealSummary();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     applyRecipePlanToMenu();
+    applyFoodEntriesToMenu();
 
     const macrosForm = document.getElementById('macros-form');
     const proteins = document.getElementById('proteins');
@@ -63,6 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const calories = p * 4 + c * 4 + f * 9;
 
             totalCalories.textContent = `${Math.round(calories)} Kcal`;
+            updateMealSummary();
         });
 
         proteins.addEventListener('input', () => {
@@ -165,4 +255,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     renderCalendar(currentMonthIndex);
+    updateMealSummary();
 });

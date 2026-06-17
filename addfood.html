@@ -4,26 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Food</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ui-kit.css">
     <link rel="stylesheet" href="addfood.css">
 </head>
 <body>
-    <header></header>
-    <main>
-        <h2>Daily meals</h2>
+    <header class="diary-header">
+        <div class="header-inner">
+            <h1>Add Food</h1>
+            <span class="step-chip">MEAL BUILDER</span>
+        </div>
+    </header>
+    <main class="addfood-page">
+        <section class="page-intro">
+            <h2>Daily meals</h2>
+            <p>Add food by meal. You can include calories in text, e.g. "Banana 95 kcal".</p>
+        </section>
         <div class="result-container">
             
             <div class="result-item">
                 <div class="result-title-box" onclick="toggleDropdown('breakfastDropdown')">
                     <div class="result-title">Breakfast</div>
-                    <span id="breakfastDisplay">0 Kcal</span>
-                    <button class="plus-button" onclick="event.stopPropagation(); showDropdown('breakfastDropdown')">+</button>
+                    <div class="meal-actions">
+                        <span id="breakfastDisplay">0 Kcal</span>
+                        <button type="button" class="plus-button" onclick="event.stopPropagation(); showDropdown('breakfastDropdown')">+</button>
+                    </div>
                 </div>
                 <div class="result-details-box" id="breakfastDetails"></div>
                 <div class="dropdown" id="breakfastDropdown">
                     <div class="dropdown-input">
                         <input type="text" id="breakfastInput" placeholder="Enter food item">
-                        <button onclick="addFoodItem('breakfastDetails', 'breakfastInput')">Add Food</button>
+                        <button type="button" onclick="addFoodItem('breakfastDetails', 'breakfastInput')">Add Food</button>
                     </div>
                 </div>
             </div>
@@ -32,14 +42,16 @@
             <div class="result-item">
                 <div class="result-title-box" onclick="toggleDropdown('snack1Dropdown')">
                     <div class="result-title">Snack</div>
-                    <span id="snack1Display">0 Kcal</span>
-                    <button class="plus-button" onclick="event.stopPropagation(); showDropdown('snack1Dropdown')">+</button>
+                    <div class="meal-actions">
+                        <span id="snack1Display">0 Kcal</span>
+                        <button type="button" class="plus-button" onclick="event.stopPropagation(); showDropdown('snack1Dropdown')">+</button>
+                    </div>
                 </div>
                 <div class="result-details-box" id="snack1Details"></div>
                 <div class="dropdown" id="snack1Dropdown">
                     <div class="dropdown-input">
                         <input type="text" id="snack1Input" placeholder="Enter food item">
-                        <button onclick="addFoodItem('snack1Details', 'snack1Input')">Add Food</button>
+                        <button type="button" onclick="addFoodItem('snack1Details', 'snack1Input')">Add Food</button>
                     </div>
                 </div>
             </div>
@@ -48,14 +60,16 @@
             <div class="result-item">
                 <div class="result-title-box" onclick="toggleDropdown('lunchDropdown')">
                     <div class="result-title">Lunch</div>
-                    <span id="lunchDisplay">0 Kcal</span>
-                    <button class="plus-button" onclick="event.stopPropagation(); showDropdown('lunchDropdown')">+</button>
+                    <div class="meal-actions">
+                        <span id="lunchDisplay">0 Kcal</span>
+                        <button type="button" class="plus-button" onclick="event.stopPropagation(); showDropdown('lunchDropdown')">+</button>
+                    </div>
                 </div>
                 <div class="result-details-box" id="lunchDetails"></div>
                 <div class="dropdown" id="lunchDropdown">
                     <div class="dropdown-input">
                         <input type="text" id="lunchInput" placeholder="Enter food item">
-                        <button onclick="addFoodItem('lunchDetails', 'lunchInput')">Add Food</button>
+                        <button type="button" onclick="addFoodItem('lunchDetails', 'lunchInput')">Add Food</button>
                     </div>
                 </div>
             </div>
@@ -64,22 +78,28 @@
             <div class="result-item">
                 <div class="result-title-box" onclick="toggleDropdown('dinnerDropdown')">
                     <div class="result-title">Dinner</div>
-                    <span id="dinnerDisplay">0 Kcal</span>
-                    <button class="plus-button" onclick="event.stopPropagation(); showDropdown('dinnerDropdown')">+</button>
+                    <div class="meal-actions">
+                        <span id="dinnerDisplay">0 Kcal</span>
+                        <button type="button" class="plus-button" onclick="event.stopPropagation(); showDropdown('dinnerDropdown')">+</button>
+                    </div>
                 </div>
                 <div class="result-details-box" id="dinnerDetails"></div>
                 <div class="dropdown" id="dinnerDropdown">
                     <div class="dropdown-input">
                         <input type="text" id="dinnerInput" placeholder="Enter food item">
-                        <button onclick="addFoodItem('dinnerDetails', 'dinnerInput')">Add Food</button>
+                        <button type="button" onclick="addFoodItem('dinnerDetails', 'dinnerInput')">Add Food</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="button-container">
-            <button type="button" class="btn" onclick="saveFoodEntries()">Save</button>
+        <div class="actions-grid">
+            <div class="button-container">
+                <button type="button" class="btn" onclick="saveFoodEntries()">Save</button>
+            </div>
+            <div class="button-container">
+                <button type="button" class="btn" onclick="location.href='choosemeal.html'">Next</button>
+            </div>
         </div>
-        <button type="button" class="btn" onclick="location.href='choosemeal.html'">Next</button>
     </main>
     <script src="addfood.js"></script>
 </body>

@@ -1,31 +1,35 @@
-/* HLAVNÍ ŘÁDEK S NÁZVEM A PLUS TLAČÍTKEM */
+/* === Extended Menu – Modern Theme === */
+
+/* MAIN TITLE ROW WITH PLUS BUTTON */
 .result-title-box {
     display: flex;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
     position: relative;
-    padding: 10px 0;
+    padding: 0.625rem 0;
 }
 
-/* ORANŽOVÉ KOLEČKO S PLUS */
+/* GREEN CIRCLE WITH PLUS */
 .plus-button {
-    background-color: #FFA500;
-    color: white;
+    background-color: var(--kt-green);
+    color: var(--kt-white);
     border: none;
     border-radius: 50%;
     width: 32px;
     height: 32px;
-    font-size: 20px;
+    font-size: 1.25rem;
     text-align: center;
     line-height: 32px;
     cursor: pointer;
-    transition: 0.2s ease;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    transition: all var(--kt-transition);
+    box-shadow: 0 2px 8px rgba(61, 186, 127, 0.3);
 }
 
 .plus-button:hover {
-    background-color: #ff8c00;
+    background-color: var(--kt-green-dark);
+    box-shadow: 0 4px 12px rgba(61, 186, 127, 0.4);
+    transform: translateY(-2px);
 }
 
 /* DROPDOWN MENU */
@@ -34,68 +38,88 @@
     position: absolute;
     top: 110%;
     right: 0;
-    background-color: #ffffff;
+    background-color: var(--kt-white);
     min-width: 220px;
-    border-radius: 12px;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.15);
+    border-radius: var(--kt-radius-md);
+    border: 1px solid var(--kt-border);
+    box-shadow: var(--kt-shadow-md);
     z-index: 10;
     overflow: hidden;
 }
 
-/* OBSAH DROPDOWNU */
+/* DROPDOWN CONTENT */
 .dropdown-content,
 .dropdown-input {
-    color: #333;
-    padding: 12px 16px;
+    color: var(--kt-text);
+    padding: 0.75rem 1rem;
     display: block;
-    font-size: 15px;
+    font-size: 0.9rem;
 }
 
 .dropdown-content:hover {
-    background-color: #f1f1f1;
+    background-color: var(--kt-green-soft);
 }
 
-/* INPUTY V DROPDOWNU */
+/* INPUTS IN DROPDOWN */
 .dropdown-input {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 0.5rem;
 }
 
 .dropdown-input input,
 .dropdown-input select {
-    padding: 8px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+    padding: 0.5rem;
+    border-radius: var(--kt-radius-sm);
+    border: 1px solid var(--kt-border);
+    background: var(--kt-white);
+    color: var(--kt-text);
+    font-size: 0.9rem;
+    transition: border-color var(--kt-transition);
 }
 
-/* TLAČÍTKO UVNITŘ DROPDOWNU */
+.dropdown-input input:focus,
+.dropdown-input select:focus {
+    outline: none;
+    border-color: var(--kt-green);
+    box-shadow: 0 0 0 3px rgba(61, 186, 127, 0.1);
+}
+
+/* BUTTON IN DROPDOWN */
 .dropdown-input button {
-    padding: 10px;
-    background-color: #FFA500;
-    color: white;
+    padding: 0.625rem;
+    background-color: var(--kt-green);
+    color: var(--kt-white);
     border: none;
-    border-radius: 8px;
+    border-radius: var(--kt-radius-sm);
     cursor: pointer;
-    transition: 0.2s ease;
+    transition: all var(--kt-transition);
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 8px rgba(61, 186, 127, 0.2);
 }
 
 .dropdown-input button:hover {
-    background-color: #ff8c00;
+    background-color: var(--kt-green-dark);
+    box-shadow: 0 4px 12px rgba(61, 186, 127, 0.35);
+    transform: translateY(-1px);
 }
 
-/* KONTEJNER NA PŘIDANÉ POTRAVINY */
+/* FOOD ITEM CONTAINER */
 .food-item-container {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-top: 10px;
+    gap: 0.5rem;
+    margin-top: 0.625rem;
 }
 
 .food-item-container input,
 .food-item-container button {
-    padding: 8px;
-    border-radius: 8px;
+    padding: 0.5rem;
+    border-radius: var(--kt-radius-sm);
+    border: 1px solid var(--kt-border);
+    background: var(--kt-white);
+    color: var(--kt-text);
 }
 
 .food-item-container button {

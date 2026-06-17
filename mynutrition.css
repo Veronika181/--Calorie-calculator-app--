@@ -1,83 +1,107 @@
-/* === RESET === */
+/* === My Nutrition Page – Modern Theme === */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* === BODY === */
 body {
-    font-family: 'Inter', Arial, sans-serif;
-    background: linear-gradient(180deg, #27ae60 0%, #2ecc71 45%, #f5f7fa 100%);
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--kt-bg);
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: var(--kt-gap);
+    -webkit-font-smoothing: antialiased;
 }
 
-/* === HLAVNÍ KONTEJNER === */
 .container {
     display: flex;
-    gap: 25px;
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 20px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    gap: 1.5rem;
+    background: var(--kt-white);
+    padding: 1.5rem;
+    border-radius: var(--kt-radius-lg);
+    box-shadow: var(--kt-shadow);
     max-width: 900px;
+    border: 1px solid var(--kt-border);
+    flex-wrap: wrap;
 }
 
-/* === SLOUPCE === */
 .column {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 0.9rem;
 }
 
-/* === POLOŽKY === */
 .item label {
     font-weight: 600;
-    color: #27ae60;
-    margin-bottom: 5px;
+    color: var(--kt-text);
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
 }
 
 .item input {
     width: 180px;
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
+    padding: 0.625rem;
+    border-radius: var(--kt-radius-sm);
+    border: 1px solid var(--kt-border);
     font-size: 1rem;
     text-align: center;
+    background: var(--kt-white);
+    color: var(--kt-text);
+    transition: border-color var(--kt-transition);
 }
 
-/* === VÝSLEDKY === */
+.item input:focus {
+    outline: none;
+    border-color: var(--kt-green);
+    box-shadow: 0 0 0 3px rgba(61, 186, 127, 0.1);
+}
+
+/* === RESULTS === */
 span {
     display: block;
-    padding: 10px;
-    border-radius: 10px;
-    background: #f5f7fa;
-    border: 1px solid #ddd;
+    padding: 0.625rem;
+    border-radius: var(--kt-radius-sm);
+    background: var(--kt-bg);
+    border: 1px solid var(--kt-border);
     font-weight: 600;
-    color: #FFA500;
+    color: var(--kt-green);
     text-align: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    box-shadow: none;
+    font-size: 0.95rem;
 }
 
-/* === TLAČÍTKO === */
+/* === BUTTON === */
 button {
-    padding: 12px 25px;
-    background-color: #FFA500;
-    color: white;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--kt-green);
+    color: var(--kt-white);
     border: none;
-    border-radius: 50px;
+    border-radius: var(--kt-radius-sm);
     cursor: pointer;
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     font-weight: 600;
-    transition: 0.25s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: background var(--kt-transition), box-shadow var(--kt-transition), transform var(--kt-transition);
+    box-shadow: 0 2px 8px rgba(61, 186, 127, 0.2);
 }
 
 button:hover {
-    background-color: #ff7b00;
+    background-color: var(--kt-green-dark);
+    box-shadow: 0 4px 12px rgba(61, 186, 127, 0.35);
     transform: translateY(-2px);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: var(--kt-gap-md);
+    }
+
+    .item input {
+        width: 100%;
+    }
 }

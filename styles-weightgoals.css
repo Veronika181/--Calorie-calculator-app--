@@ -1,4 +1,4 @@
-/* === WEIGHT GOALS PAGE === */
+/* === Weight Goals Page – Modern Theme === */
 
 * {
     margin: 0;
@@ -10,19 +10,31 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(180deg, #27ae60 0%, #2ecc71 45%, #f5f7fa 100%);
-    color: #333;
+    background: var(--kt-bg);
+    color: var(--kt-text);
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 
 header {
-    padding: 1.5rem 1.75rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-    background: #27ae60;
-    color: #fff;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    padding: 0 var(--kt-gap-lg);
+    border-bottom: 1px solid var(--kt-border);
+    background: var(--kt-white);
+    color: var(--kt-text);
+    box-shadow: var(--kt-shadow-sm);
     position: sticky;
     top: 0;
     z-index: 10;
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+    font-weight: 700;
+    color: var(--kt-text);
 }
 
 main {
@@ -31,26 +43,27 @@ main {
     flex-direction: column;
     justify-content: center;
     gap: 1.5rem;
-    padding: 2.5rem 1.5rem;
+    padding: var(--kt-gap-lg) var(--kt-gap);
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 .section {
     width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 2rem;
-    border-radius: 26px;
-    background: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+    padding: var(--kt-gap-lg);
+    border-radius: var(--kt-radius-lg);
+    background: var(--kt-white);
+    border: 1px solid var(--kt-border);
+    box-shadow: var(--kt-shadow);
     text-align: center;
 }
 
 .section h2 {
-    color: #1f6f43;
+    color: var(--kt-text);
     margin-bottom: 1.4rem;
     font-size: 1.6rem;
-    text-shadow: 0 0 10px rgba(255, 140, 0, 0.25);
+    font-weight: 600;
 }
 
 .btn-group {
@@ -61,41 +74,41 @@ main {
 }
 
 .btn-group button {
-    padding: 0.9rem 1.8rem;
-    border-radius: var(--radius-md);
-    background: rgba(39, 174, 96, 0.1);
-    border: 1px solid rgba(39, 174, 96, 0.35);
-    color: #1f6f43;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--kt-radius-sm);
+    background: var(--kt-green-soft);
+    border: 1px solid var(--kt-green);
+    color: var(--kt-green-dark);
     cursor: pointer;
-    font-size: 1rem;
-    transition: var(--transition);
-    box-shadow: 0 0 12px rgba(255, 140, 0, 0.2);
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: background var(--kt-transition), border-color var(--kt-transition), color var(--kt-transition), box-shadow var(--kt-transition);
+    box-shadow: none;
     position: relative;
 }
 
 .btn-group button:hover {
-    background: #ffa500;
-    border-color: #ff8c00;
-    color: #fff;
-    box-shadow: 0 0 18px rgba(255, 140, 0, 0.45);
+    background: var(--kt-green-light);
+    border-color: var(--kt-green-dark);
+    color: var(--kt-green-dark);
+    box-shadow: 0 2px 8px rgba(61, 186, 127, 0.2);
 }
 
 .btn-group button.active {
-    background: #ff8c00;
-    border-color: #ff7b00;
-    color: #fff;
-    box-shadow: 0 0 22px rgba(255, 123, 0, 0.55);
+    background: var(--kt-green);
+    border-color: var(--kt-green-dark);
+    color: var(--kt-white);
+    box-shadow: 0 2px 8px rgba(61, 186, 127, 0.35);
 }
 
 .btn-group button.active::after {
-    content: '•';
-    color: #ff7b00;
-    font-size: 26px;
+    content: '✓';
+    color: var(--kt-white);
+    font-size: 14px;
     position: absolute;
-    right: -18px;
+    right: 8px;
     top: 50%;
     transform: translateY(-50%);
-    text-shadow: 0 0 10px rgba(255, 123, 0, 0.8);
 }
 
 .button-container {
@@ -108,7 +121,7 @@ main {
     width: 100%;
     max-width: 900px;
     margin: 0.25rem auto 0;
-    color: #b91c1c;
+    color: #dc2626;
     font-size: 0.95rem;
     text-align: center;
     display: none;
@@ -116,28 +129,40 @@ main {
 
 footer {
     text-align: center;
-    padding: 1.25rem;
-    color: #fff;
-    background: #27ae60;
-    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    padding: var(--kt-gap-md);
+    color: var(--kt-text-muted);
+    background: var(--kt-white);
+    border-top: 1px solid var(--kt-border);
+    font-size: 0.9rem;
 }
 
 footer a {
-    color: #ffa500;
+    color: var(--kt-green);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color var(--kt-transition);
 }
 
-@media (max-width: 640px) {
+footer a:hover {
+    color: var(--kt-green-dark);
+}
+
+@media (max-width: 768px) {
     .section {
-        padding: 1.4rem;
-        border-radius: 20px;
+        padding: var(--kt-gap-md);
+        border-radius: var(--kt-radius-md);
     }
 
     .section h2 {
-        font-size: 1.25rem;
+        font-size: 1.3rem;
     }
 
     .btn-group button {
         width: 100%;
-        max-width: 240px;
+        max-width: 220px;
+    }
+
+    main {
+        padding: var(--kt-gap) var(--kt-gap-sm);
     }
 }
