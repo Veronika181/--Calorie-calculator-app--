@@ -32,6 +32,12 @@
                     <div class="ingredients-container"></div>
 
                     <div class="instruction"></div>
+
+                    <div class="recipe-actions">
+                        <button class="save-button" type="button" onclick="addCurrentRecipeToPlan()">Add to Meal Plan</button>
+                        <button class="save-button secondary" type="button" onclick="openMealPlan()">Open Meal Plan</button>
+                    </div>
+                    <p id="planStatus" class="plan-status" aria-live="polite"></p>
                 </div>
             </div>
         </div>

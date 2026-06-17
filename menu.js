@@ -10,7 +10,43 @@ function changeValue(meal, change) {
     display.textContent = `${currentValue} Kcal`;
 }
 
+function applyRecipePlanToMenu() {
+    const rawPlan = localStorage.getItem('mealPlanRecipes');
+    if (!rawPlan) return;
+
+    let plan;
+    try {
+        plan = JSON.parse(rawPlan);
+    } catch (error) {
+        return;
+    }
+
+    const mapping = [
+        { meal: 'breakfast', displayId: 'breakfastDisplay', recipeId: 'breakfastRecipe' },
+        { meal: 'lunch', displayId: 'lunchDisplay', recipeId: 'lunchRecipe' },
+        { meal: 'dinner', displayId: 'dinnerDisplay', recipeId: 'dinnerRecipe' }
+    ];
+
+    mapping.forEach(({ meal, displayId, recipeId }) => {
+        const selected = plan && plan[meal];
+        if (!selected) return;
+
+        const display = document.getElementById(displayId);
+        const recipeEl = document.getElementById(recipeId);
+
+        if (display && Number.isFinite(Number(selected.kcal))) {
+            display.textContent = `${Math.round(Number(selected.kcal))} Kcal`;
+        }
+
+        if (recipeEl) {
+            recipeEl.textContent = `Selected: ${selected.title}`;
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+    applyRecipePlanToMenu();
+
     const macrosForm = document.getElementById('macros-form');
     const proteins = document.getElementById('proteins');
     const carbs = document.getElementById('carbs');

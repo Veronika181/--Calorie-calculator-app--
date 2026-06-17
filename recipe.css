@@ -125,6 +125,16 @@ main {
     color: #333;
 }
 
+.ingredient-amount {
+    color: #1f6f43;
+    font-weight: 700;
+    background: rgba(39, 174, 96, 0.12);
+    border: 1px solid rgba(39, 174, 96, 0.3);
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 0.86rem;
+}
+
 .ingredients-item input {
     width: 70px;
     padding: 5px;
@@ -155,6 +165,28 @@ main {
 
 .save-button:hover {
     background-color: #1f8d4e;
+}
+
+.save-button.secondary {
+    background-color: #ffa500;
+}
+
+.save-button.secondary:hover {
+    background-color: #ff7b00;
+}
+
+.recipe-actions {
+    margin-top: 16px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.plan-status {
+    margin: 10px 0 0;
+    color: #1f6f43;
+    font-weight: 600;
+    min-height: 1.2rem;
 }
 
 /* === NAVIGATION ARROWS === */
