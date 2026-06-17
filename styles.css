@@ -1,55 +1,125 @@
-body {
-    font-family: Arial, sans-serif;
+/* ====== Global ====== */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-header {
-    background: #f4f4f4;
-    padding: 1em;
-    text-align: center;
-}
-
-main {
+body {
+    font-family: 'Inter', sans-serif;
+    background: radial-gradient(circle at top, #1f2937 0, #020617 45%, #000 100%);
+    color: #e5e7eb;
+    min-height: 100vh;
     padding: 20px;
 }
 
+/* ====== Header ====== */
+header {
+    text-align: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(148,163,184,0.3);
+    backdrop-filter: blur(18px);
+    background: linear-gradient(
+        to bottom,
+        rgba(15,23,42,0.9),
+        rgba(15,23,42,0.65),
+        transparent
+    );
+}
+
+header h1 {
+    font-size: 1.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #f9fafb;
+    text-shadow: 0 0 12px rgba(249,115,22,0.7);
+}
+
+/* ====== Main ====== */
+main {
+    max-width: 900px;
+    margin: auto;
+    padding-top: 20px;
+}
+
+/* ====== Form ====== */
 #input-form {
     margin-bottom: 20px;
+    background: rgba(255,255,255,0.03);
+    padding: 20px;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 0 25px rgba(249,115,22,0.15);
 }
 
-#results {
-    margin-top: 20px;
+/* ====== Buttons ====== */
+button {
+    padding: 12px 24px;
+    border-radius: 14px;
+    border: 1px solid rgba(249,115,22,0.4);
+    background: rgba(15,23,42,0.6);
+    color: #e5e7eb;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.25s ease;
+    box-shadow: 0 0 12px rgba(249,115,22,0.25);
+    margin: 5px;
 }
 
+button:hover {
+    background: rgba(249,115,22,0.25);
+    border-color: rgba(249,115,22,0.7);
+    box-shadow: 0 0 18px rgba(249,115,22,0.45);
+}
+
+/* ====== Calendar ====== */
 #calendar-container {
     margin-top: 20px;
+    padding: 20px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: inset 0 0 25px rgba(255,255,255,0.04);
 }
 
 #calendar-days {
     list-style-type: none;
     padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
 }
 
 #calendar-days li {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
+    width: 34px;
+    height: 34px;
     text-align: center;
-    line-height: 30px;
-    margin: 2px;
+    line-height: 34px;
+    border-radius: 8px;
     cursor: pointer;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: 0.25s ease;
+}
+
+#calendar-days li:hover {
+    background: rgba(249,115,22,0.25);
+    box-shadow: 0 0 12px rgba(249,115,22,0.4);
 }
 
 #calendar-days li.active {
-    background-color: #007bff;
-    color: white;
+    background: rgba(249,115,22,0.45);
+    color: #fff;
+    border-color: rgba(249,115,22,0.8);
+    box-shadow: 0 0 16px rgba(249,115,22,0.7);
 }
 
-button {
-    margin: 5px;
-}
-
-#show-calendar-btn {
-    font-size: 24px; /* Adjust size as needed */
+/* ====== Results ====== */
+#results {
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: inset 0 0 25px rgba(255,255,255,0.04);
 }

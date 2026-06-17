@@ -1,46 +1,67 @@
+/* ====== Global ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at top, #1f2937 0, #020617 45%, #000 100%);
+  color: #e5e7eb;
+  padding: 20px;
 }
 
+/* ====== Headings ====== */
 h1, h2 {
-  margin: 0 0 10px 0;
+  margin-bottom: 12px;
+  color: #f9fafb;
+  text-shadow: 0 0 10px rgba(249,115,22,0.6);
 }
 
+/* ====== Button Group ====== */
 .btn-group {
   display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 14px;
+  margin-bottom: 25px;
 }
 
+/* ====== Buttons ====== */
 button {
-  padding: 10px 20px;
-  border: #808080;
-  border-radius: 5px;
-  background-color: 808080;
-  color: white;
+  padding: 12px 26px;
+  border: 1px solid rgba(249,115,22,0.4);
+  border-radius: 14px;
+  background: rgba(15,23,42,0.6);
+  color: #e5e7eb;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1.05rem;
   position: relative;
-  transition: background-color 0.3s, color 0.3s;
+  transition: 0.25s ease;
+  box-shadow: 0 0 12px rgba(249,115,22,0.25);
 }
 
 button:hover {
-  background-color: #FFA500;
-  color: white;
+  background: rgba(249,115,22,0.25);
+  border-color: rgba(249,115,22,0.7);
+  color: #fff;
+  box-shadow: 0 0 18px rgba(249,115,22,0.45);
 }
 
+/* ====== Selected Button ====== */
 button.selected {
-  background-color: #FFA500;
-  border-color: #FFA500;
+  background: rgba(249,115,22,0.35);
+  border-color: rgba(249,115,22,0.9);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(249,115,22,0.6);
 }
 
 button.selected::after {
   content: '•';
-  color: white;
-  font-size: 24px;
+  color: #f97316;
+  font-size: 26px;
   position: absolute;
-  right: -30px;
+  right: -22px;
   top: 50%;
   transform: translateY(-50%);
+  text-shadow: 0 0 10px rgba(249,115,22,0.8);
 }

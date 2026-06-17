@@ -1,92 +1,101 @@
-/* Advanced Section Container */
+/* === ADVANCED SECTION WRAPPER === */
 .advanced-container {
-    background: #0b1120; /* tmavé pozadí jako input stránka */
+    background: #ffffff;
     padding: 20px;
-    border-radius: 16px;
+    border-radius: 20px;
     margin-top: 20px;
     text-align: center;
-    border: 1px solid rgba(148, 163, 184, 0.3);
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
 }
 
-/* Input Group Styling */
+/* === INPUT GROUP === */
 .advanced-container .input-group {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 20px;
-    background: #111827;
+    background: #f5f7fa;
     padding: 16px;
-    border-radius: 12px;
+    border-radius: 16px;
     width: 100%;
-    border: 1px solid rgba(148, 163, 184, 0.25);
+    border: 1px solid rgba(0,0,0,0.08);
 }
 
 .advanced-container .input-group label {
     font-weight: 600;
     margin-bottom: 10px;
-    color: #e5e7eb; /* světle šedá */
+    color: #27ae60;
     font-size: 1rem;
 }
 
-/* Select */
+/* === SELECT === */
 select {
-    background: #0b1120;
-    color: #e5e7eb;
+    background: #ffffff;
+    color: #333;
     padding: 12px;
-    border-radius: 10px;
+    border-radius: 12px;
     width: 100%;
-    border: 1px solid rgba(148, 163, 184, 0.3);
+    border: 1px solid #ccc;
     cursor: pointer;
     font-size: 1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    transition: 0.2s ease;
 }
 
-/* Range Input Styling */
+select:focus {
+    border-color: #FFA500;
+    box-shadow: 0 0 10px rgba(255,165,0,0.4);
+    outline: none;
+}
+
+/* === RANGE SLIDER === */
 .advanced-container input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
     width: 100%;
     height: 8px;
-    background: linear-gradient(to right, #16f92d, #0b1120);
+    background: linear-gradient(to right, #FFA500, #27ae60);
     border-radius: 5px;
     outline: none;
-    opacity: 0.9;
-    transition: opacity 0.2s;
+    opacity: 0.95;
+    transition: 0.2s ease;
 }
 
 .advanced-container input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    appearance: none;
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    background: #16f92d; /* neon zelená */
+    background: #FFA500;
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(22, 249, 22, 0.8);
+    box-shadow: 0 0 10px rgba(255,165,0,0.7);
 }
 
 .advanced-container input[type="range"]::-moz-range-thumb {
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    background: #16f92d;
+    background: #FFA500;
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(22, 249, 22, 0.8);
+    box-shadow: 0 0 10px rgba(255,165,0,0.7);
 }
-/* Calculate Button */
+
+/* === CALCULATE BUTTON === */
 .btn {
-    background: #16f92d; /* neon green */
-    color: #020617;      /* tmavý text pro kontrast */
-    border: 1px solid rgba(22, 249, 22, 0.4);
+    background: #FFA500;
+    color: #fff;
+    border: none;
     padding: 12px 24px;
-    border-radius: 999px;
+    border-radius: 50px;
     font-weight: 600;
     font-size: 1rem;
     cursor: pointer;
-    transition: 0.2s ease-out;
-    box-shadow: 0 0 12px rgba(22, 249, 22, 0.7);
+    transition: 0.25s ease-out;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0 18px rgba(22, 249, 22, 1);
+    background: #ff7b00;
 }

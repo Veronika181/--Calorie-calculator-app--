@@ -8,7 +8,7 @@
 :root {
   --bg: #050816;
   --bg-soft: #0f172a;
-  --accent:#16f92d;
+  --accent: #16f92d;
   --accent-soft: rgba(22, 196, 249, 0.15);
   --text-main: #e5e7eb;
   --text-muted: #9ca3af;
@@ -36,7 +36,6 @@ body {
 header {
   padding: 1.5rem 1.75rem;
   border-bottom: 1px solid var(--border-soft);
-  -webkit-backdrop-filter: blur(18px);
   backdrop-filter: blur(18px);
   background: linear-gradient(
     to bottom,
@@ -122,6 +121,12 @@ main {
   color: var(--accent);
 }
 
+.gender-btn.selected {
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 4px;
+}
+
 /* ====== Input groups ====== */
 .input-container {
   display: flex;
@@ -176,7 +181,7 @@ input[type="range"] {
 .number-group button {
   background: var(--accent);
   border: none;
-  color: #000; /* 🔥 OPRAVA – aby pluska byla vidět */
+  color: #000;
   font-size: 1.4rem;
   font-weight: 700;
   width: 38px;
@@ -207,23 +212,14 @@ input[type="range"] {
   gap: 0.55rem;
   padding: 0.9rem 2rem;
   border-radius: 999px;
-  border: 1px solid rgba(248, 250, 252, 0.08);
-  background: var(--accent);
-  filter: drop-shadow(0 0 12px rgba(26, 249, 22, 0.7));
-  color: #0b1120;
+  background: #32ff4f;
+  color: #000;
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
-  box-shadow: var(--shadow-btn);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-}
-
-.btn {
-  background: #32ff4f; /* jasná, světlejší zelená */
-  color: #000;         /* černý text pro kontrast */
   filter: drop-shadow(0 0 15px rgba(50, 255, 79, 0.9));
+  transition: transform var(--transition-fast), filter var(--transition-fast);
 }
-
 
 .btn:hover {
   transform: translateY(-2px);
@@ -259,15 +255,4 @@ footer a:hover {
   .input-container {
     flex-direction: column;
   }
-}
-
-.gender-btn.selected {
-  color: var(--accent);
-  border-bottom: 2px solid var(--accent);
-  padding-bottom: 4px;
-}
-.gender-btn.selected {
-    color: var(--accent);
-    border-bottom: 2px solid var(--accent);
-    padding-bottom: 4px;
 }
