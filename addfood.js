@@ -17,3 +17,16 @@ function addFoodItem(detailsId, inputId) {
         input.value = '';
     }
 }
+
+function showDropdown(id) {
+    toggleDropdown(id);
+}
+
+function saveFoodEntries() {
+    const entries = {};
+    document.querySelectorAll('.result-details-box').forEach((box) => {
+        entries[box.id] = box.textContent.trim();
+    });
+    localStorage.setItem('foodEntries', JSON.stringify(entries));
+    alert('Food entries saved.');
+}

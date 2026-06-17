@@ -229,6 +229,13 @@ h2 {
   color: #FFA500;
 }
 
+.recipe-picked {
+  margin: 6px 0 0;
+  font-size: 0.85rem;
+  color: #1f6f43;
+  font-weight: 600;
+}
+
 .result-item-buttons {
   display: flex;
   gap: 8px;

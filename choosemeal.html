@@ -6,14 +6,13 @@
     <title>Choose Meal</title>
     <link rel="stylesheet" href="styles-advanced.css">
     <link rel="stylesheet" href="choosemeal.css">
-    <link rel="stylesheet" href="macronutrientsday.css">
+    <link rel="stylesheet" href="macronutrients.css">
     <link rel="stylesheet" href="extendedmenu.css">
     <style>
     </style>
 </head>
 <body>
-
-        <h1>Choose Your Meal</h1>
+    <h1>Choose Your Meal</h1>
     <main>
         <div class="meal-options">
             <div id="breakfast" class="meal-option" onclick="showMeals('breakfast')">Breakfast</div>
@@ -22,12 +21,10 @@
         </div>
         <div id="meal-images" class="meal-images">
             <!-- Images and names will be displayed here -->
-        
         </div>
-        <button type="button" class="btn" onclick="location.href='recipe.html'">Next</button>
-    </div> 
+        <button type="button" class="btn" onclick="goToRecipePage()">Next</button>
+        <p id="mealValidation" class="inline-validation" aria-live="polite"></p>
     </main>
-    </div>
     <script src="choosemeal.js"></script>
 </body>
 </html>

@@ -6,7 +6,41 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    color: white;
+    color: #1f2937;
+}
+
+header {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+header h1 {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    text-align: left;
+    font-size: 28px;
+    color: #ffffff;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+.step-chip {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.18);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
 }
 
 /* MAIN */
@@ -19,6 +53,7 @@ main {
     padding: 40px 20px;
     width: 100%;
     max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* NADPIS */
@@ -45,37 +80,58 @@ h1 {
 /* KARTY */
 .result-item1 {
     border-radius: 30px;
-    padding: 40px;
+    padding: 0;
     text-align: center;
     width: 291px;
-    height: 127px;
+    min-height: 280px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: stretch;
+    justify-content: flex-start;
+    overflow: hidden;
 
-    /* moderní glass efekt */
-    background: rgba(255,255,255,0.25);
-    backdrop-filter: blur(6px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    background: #ffffff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.16);
 }
 
 /* ORANŽOVÁ KARTA – TITULEK */
 .result-title-box {
     background-color: #FF8C00;
-    width: 271px;
-    height: 172px;
-    border-radius: 30px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    padding: 16px;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.result-title-box h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 1.25rem;
+    text-shadow: none;
 }
 
 /* ŠEDÁ KARTA – DETAIL */
 .result-details-box {
-    background-color: #808080;
-    width: 271px;
-    height: 172px;
-    border-radius: 30px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    background: #f8fafc;
+    padding: 16px;
+    flex: 1;
+}
+
+.result-details {
+    text-align: left;
+    color: #1f2937;
+    line-height: 1.55;
+}
+
+.result-value {
+    margin: 0 0 8px;
+    font-size: 0.98rem;
+}
+
+.result-value span {
+    color: #1f6f43;
+    font-weight: 700;
 }
 
 /* TLAČÍTKO */
@@ -85,7 +141,7 @@ h1 {
 
 .btn {
     background-color: #FF8C00;
-    color: white;
+    color: #ffffff;
     border: none;
     padding: 12px 20px;
     font-size: 18px;
@@ -108,4 +164,8 @@ footer {
     padding: 12px 0;
     width: 100%;
     font-size: 14px;
+}
+
+footer a {
+    color: #FFA500;
 }

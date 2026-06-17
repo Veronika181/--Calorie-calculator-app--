@@ -24,7 +24,8 @@
             <div class="intro-text">
                 <h2>Track your calories easily</h2>
                 <p>Start your journey to a healthier lifestyle.</p>
-                <button class="btn btn-pulse" onclick="location.href='input.html'">
+
+                <button class="btn btn-pulse start-btn">
                     <i class="fa-solid fa-play"></i> Start
                 </button>
             </div>
@@ -39,6 +40,19 @@
         </p>
     </footer>
 
-    <script src="theme.js"></script>
+    <script>
+        // Ensuite button is loaded before attaching listener
+        const startBtn = document.querySelector(".start-btn");
+        if (startBtn) {
+            startBtn.addEventListener("click", function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log("Start button clicked!");
+                window.location.href = "input.html";
+            });
+        } else {
+            console.error("Start button not found!");
+        }
+    </script>
 </body>
 </html>

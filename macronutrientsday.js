@@ -1,18 +1,51 @@
 function getQueryParams() {
     const params = {};
-    window.location.search.substring(1).split("&").forEach(param => {
+    const search = window.location.search.substring(1);
+    if (!search) return params;
+
+    search.split("&").forEach(param => {
+        if (!param) return;
         const [key, value] = param.split("=");
-        params[key] = decodeURIComponent(value);
+        if (!key) return;
+        params[key] = decodeURIComponent(value || "");
     });
+
     return params;
+}
+
+function getTotalCalories(params) {
+    const queryTotal = parseFloat(params.totalCalories || params.calories || "");
+    if (Number.isFinite(queryTotal) && queryTotal > 0) return queryTotal;
+
+    const saved = parseFloat(localStorage.getItem('totalCalories') || "");
+    if (Number.isFinite(saved) && saved > 0) return saved;
+
+    return 2000;
+}
+
+function getDailyMacroTotals(totalCalories) {
+    const savedProtein = parseFloat(localStorage.getItem('proteinGrams') || "");
+    const savedCarbs = parseFloat(localStorage.getItem('carbsGrams') || "");
+    const savedFat = parseFloat(localStorage.getItem('fatGrams') || "");
+
+    if ([savedProtein, savedCarbs, savedFat].every((v) => Number.isFinite(v) && v > 0)) {
+        return {
+            protein: savedProtein,
+            carbs: savedCarbs,
+            fat: savedFat
+        };
+    }
+
+    return {
+        protein: (totalCalories * 0.3) / 4,
+        carbs: (totalCalories * 0.4) / 4,
+        fat: (totalCalories * 0.3) / 9
+    };
 }
 
 function displayMacronutrients() {
     const params = getQueryParams();
-    const totalCalories = parseFloat(params.totalCalories);
-    const proteinPercentage = 15;
-    const carbsPercentage = 15;
-    const fatPercentage = 35;
+    const totalCalories = getTotalCalories(params);
 
     const meals = [
         { name: 'Breakfast', ratio: 0.21, class: 'result-item1' },
@@ -22,9 +55,10 @@ function displayMacronutrients() {
         { name: 'Dinner', ratio: 0.20, class: 'result-item1' }
     ];
 
-    const totalProtein = (totalCalories * (proteinPercentage / 100)) / 4;
-    const totalCarbs = (totalCalories * (carbsPercentage / 100)) / 4;
-    const totalFat = (totalCalories * (fatPercentage / 100)) / 9;
+    const totals = getDailyMacroTotals(totalCalories);
+    const totalProtein = totals.protein;
+    const totalCarbs = totals.carbs;
+    const totalFat = totals.fat;
 
     let macronutrientsHtml = '';
     meals.forEach(meal => {
@@ -50,7 +84,10 @@ function displayMacronutrients() {
         `;
     });
 
-    document.getElementById('macronutrients').innerHTML = macronutrientsHtml;
+    const container = document.getElementById('macronutrients');
+    if (container) {
+        container.innerHTML = macronutrientsHtml;
+    }
 }
 
 function goToMenu() {

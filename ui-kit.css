@@ -37,6 +37,27 @@ body.light {
   color: var(--text-light);
 }
 
+.step-chip {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(15, 23, 42, 0.45);
+  color: var(--text-dark);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+body.light .step-chip {
+  border-color: rgba(15, 23, 42, 0.2);
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--text-light);
+}
+
 /* === Buttons === */
 .btn {
   padding: 0.9rem 2rem;

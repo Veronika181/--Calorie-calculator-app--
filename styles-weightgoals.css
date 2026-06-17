@@ -1,67 +1,143 @@
-/* ====== Global ====== */
+/* === WEIGHT GOALS PAGE === */
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  background: radial-gradient(circle at top, #1f2937 0, #020617 45%, #000 100%);
-  color: #e5e7eb;
-  padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180deg, #27ae60 0%, #2ecc71 45%, #f5f7fa 100%);
+    color: #333;
 }
 
-/* ====== Headings ====== */
-h1, h2 {
-  margin-bottom: 12px;
-  color: #f9fafb;
-  text-shadow: 0 0 10px rgba(249,115,22,0.6);
+header {
+    padding: 1.5rem 1.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    background: #27ae60;
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
-/* ====== Button Group ====== */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 2.5rem 1.5rem;
+}
+
+.section {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 26px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+    text-align: center;
+}
+
+.section h2 {
+    color: #1f6f43;
+    margin-bottom: 1.4rem;
+    font-size: 1.6rem;
+    text-shadow: 0 0 10px rgba(255, 140, 0, 0.25);
+}
+
 .btn-group {
-  display: flex;
-  gap: 14px;
-  margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
-/* ====== Buttons ====== */
-button {
-  padding: 12px 26px;
-  border: 1px solid rgba(249,115,22,0.4);
-  border-radius: 14px;
-  background: rgba(15,23,42,0.6);
-  color: #e5e7eb;
-  cursor: pointer;
-  font-size: 1.05rem;
-  position: relative;
-  transition: 0.25s ease;
-  box-shadow: 0 0 12px rgba(249,115,22,0.25);
+.btn-group button {
+    padding: 0.9rem 1.8rem;
+    border-radius: var(--radius-md);
+    background: rgba(39, 174, 96, 0.1);
+    border: 1px solid rgba(39, 174, 96, 0.35);
+    color: #1f6f43;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: var(--transition);
+    box-shadow: 0 0 12px rgba(255, 140, 0, 0.2);
+    position: relative;
 }
 
-button:hover {
-  background: rgba(249,115,22,0.25);
-  border-color: rgba(249,115,22,0.7);
-  color: #fff;
-  box-shadow: 0 0 18px rgba(249,115,22,0.45);
+.btn-group button:hover {
+    background: #ffa500;
+    border-color: #ff8c00;
+    color: #fff;
+    box-shadow: 0 0 18px rgba(255, 140, 0, 0.45);
 }
 
-/* ====== Selected Button ====== */
-button.selected {
-  background: rgba(249,115,22,0.35);
-  border-color: rgba(249,115,22,0.9);
-  color: #fff;
-  box-shadow: 0 0 20px rgba(249,115,22,0.6);
+.btn-group button.active {
+    background: #ff8c00;
+    border-color: #ff7b00;
+    color: #fff;
+    box-shadow: 0 0 22px rgba(255, 123, 0, 0.55);
 }
 
-button.selected::after {
-  content: '•';
-  color: #f97316;
-  font-size: 26px;
-  position: absolute;
-  right: -22px;
-  top: 50%;
-  transform: translateY(-50%);
-  text-shadow: 0 0 10px rgba(249,115,22,0.8);
+.btn-group button.active::after {
+    content: '•';
+    color: #ff7b00;
+    font-size: 26px;
+    position: absolute;
+    right: -18px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-shadow: 0 0 10px rgba(255, 123, 0, 0.8);
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.inline-validation {
+    width: 100%;
+    max-width: 900px;
+    margin: 0.25rem auto 0;
+    color: #b91c1c;
+    font-size: 0.95rem;
+    text-align: center;
+    display: none;
+}
+
+footer {
+    text-align: center;
+    padding: 1.25rem;
+    color: #fff;
+    background: #27ae60;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+footer a {
+    color: #ffa500;
+}
+
+@media (max-width: 640px) {
+    .section {
+        padding: 1.4rem;
+        border-radius: 20px;
+    }
+
+    .section h2 {
+        font-size: 1.25rem;
+    }
+
+    .btn-group button {
+        width: 100%;
+        max-width: 240px;
+    }
 }
