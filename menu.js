@@ -57,6 +57,18 @@ function getFoodEntriesByDate() {
     }
 }
 
+function getMacrosByDate() {
+    const raw = localStorage.getItem('diaryMacrosByDate');
+    if (!raw) return {};
+
+    try {
+        const parsed = JSON.parse(raw);
+        return parsed && typeof parsed === 'object' ? parsed : {};
+    } catch (error) {
+        return {};
+    }
+}
+
 function changeValue(meal, change) {
     const display = document.getElementById(meal + 'Display');
     if (!display) return;
@@ -201,6 +213,55 @@ document.addEventListener('DOMContentLoaded', () => {
     const fats = document.getElementById('fats');
     const totalCalories = document.getElementById('total-calories');
 
+    function renderMacroCircles(p, c, f) {
+        const proteinsCircle = document.getElementById('proteins-circle');
+        const carbsCircle = document.getElementById('carbs-circle');
+        const fatsCircle = document.getElementById('fats-circle');
+
+        if (proteinsCircle) proteinsCircle.textContent = p > 0 ? `${p}g` : 'P';
+        if (carbsCircle) carbsCircle.textContent = c > 0 ? `${c}g` : 'C';
+        if (fatsCircle) fatsCircle.textContent = f > 0 ? `${f}g` : 'F';
+    }
+
+    function loadMacrosForSelectedDate() {
+        if (!proteins || !carbs || !fats || !totalCalories) return;
+
+        const macrosByDate = getMacrosByDate();
+        const dayMacros = macrosByDate[selectedDateKey];
+
+        if (!dayMacros) {
+            proteins.value = '';
+            carbs.value = '';
+            fats.value = '';
+            totalCalories.textContent = '0 Kcal';
+            renderMacroCircles(0, 0, 0);
+            return;
+        }
+
+        const p = Number(dayMacros.proteins) || 0;
+        const c = Number(dayMacros.carbs) || 0;
+        const f = Number(dayMacros.fats) || 0;
+        const calories = Number(dayMacros.targetCalories) || (p * 4 + c * 4 + f * 9);
+
+        proteins.value = p > 0 ? String(p) : '';
+        carbs.value = c > 0 ? String(c) : '';
+        fats.value = f > 0 ? String(f) : '';
+        totalCalories.textContent = `${Math.round(calories)} Kcal`;
+        renderMacroCircles(p, c, f);
+    }
+
+    function saveMacrosForSelectedDate(p, c, f, targetCalories) {
+        const macrosByDate = getMacrosByDate();
+        macrosByDate[selectedDateKey] = {
+            proteins: p,
+            carbs: c,
+            fats: f,
+            targetCalories: Math.round(targetCalories)
+        };
+
+        localStorage.setItem('diaryMacrosByDate', JSON.stringify(macrosByDate));
+    }
+
     if (macrosForm && proteins && carbs && fats && totalCalories) {
         macrosForm.addEventListener('submit', (event) => {
             event.preventDefault();
@@ -211,22 +272,29 @@ document.addEventListener('DOMContentLoaded', () => {
             const calories = p * 4 + c * 4 + f * 9;
 
             totalCalories.textContent = `${Math.round(calories)} Kcal`;
+            saveMacrosForSelectedDate(p, c, f, calories);
             updateMealSummary();
         });
 
         proteins.addEventListener('input', () => {
-            const el = document.getElementById('proteins-circle');
-            if (el) el.textContent = `${proteins.value}g`;
+            const p = parseFloat(proteins.value) || 0;
+            const c = parseFloat(carbs.value) || 0;
+            const f = parseFloat(fats.value) || 0;
+            renderMacroCircles(p, c, f);
         });
 
         carbs.addEventListener('input', () => {
-            const el = document.getElementById('carbs-circle');
-            if (el) el.textContent = `${carbs.value}g`;
+            const p = parseFloat(proteins.value) || 0;
+            const c = parseFloat(carbs.value) || 0;
+            const f = parseFloat(fats.value) || 0;
+            renderMacroCircles(p, c, f);
         });
 
         fats.addEventListener('input', () => {
-            const el = document.getElementById('fats-circle');
-            if (el) el.textContent = `${fats.value}g`;
+            const p = parseFloat(proteins.value) || 0;
+            const c = parseFloat(carbs.value) || 0;
+            const f = parseFloat(fats.value) || 0;
+            renderMacroCircles(p, c, f);
         });
     }
 
@@ -283,6 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.classList.add('active');
 
                 updateSelectedDateText();
+                loadMacrosForSelectedDate();
                 applyFoodEntriesToMenu();
                 applyRecipePlanToMenu();
             });
@@ -338,6 +407,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateSelectedDateText();
     renderCalendar(currentMonthIndex);
+    loadMacrosForSelectedDate();
     applyFoodEntriesToMenu();
     applyRecipePlanToMenu();
     updateMealSummary();
