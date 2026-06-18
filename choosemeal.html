@@ -3,17 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ui-kit.css">
     <title>Choose Meal</title>
-    <link rel="stylesheet" href="styles-advanced.css">
     <link rel="stylesheet" href="choosemeal.css">
-    <link rel="stylesheet" href="macronutrients.css">
-    <link rel="stylesheet" href="extendedmenu.css">
-    <style>
-    </style>
 </head>
 <body>
-    <h1>Choose Your Meal</h1>
+    <header>
+        <h1>Choose Your Meal</h1>
+    </header>
+    <nav class="app-top-nav" aria-label="Main pages">
+        <a href="menu.html">Meal Plan</a>
+        <a href="addfood.html">Add Food</a>
+        <a href="choosemeal.html">Choose Meal</a>
+        <a href="recipe.html">Recipes</a>
+    </nav>
     <main>
+        <p class="page-subtitle">Select a meal type to see recipe ideas, then continue to details.</p>
         <div class="meal-options">
             <div id="breakfast" class="meal-option" onclick="showMeals('breakfast')">Breakfast</div>
             <div id="lunch" class="meal-option" onclick="showMeals('lunch')">Lunch</div>
@@ -22,9 +27,13 @@
         <div id="meal-images" class="meal-images">
             <!-- Images and names will be displayed here -->
         </div>
-        <button type="button" class="btn" onclick="goToRecipePage()">Next</button>
+        <div class="actions-row">
+            <button type="button" class="btn btn-secondary" onclick="window.location.href='menu.html'">Back to Meal Plan</button>
+            <button type="button" class="btn" onclick="goToRecipePage()">Open Recipes</button>
+        </div>
         <p id="mealValidation" class="inline-validation" aria-live="polite"></p>
     </main>
+    <script src="recipes-data.js"></script>
     <script src="choosemeal.js"></script>
 </body>
 </html>

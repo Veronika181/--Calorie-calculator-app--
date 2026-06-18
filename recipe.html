@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ui-kit.css">
     <title>Recipes</title>
     <link rel="stylesheet" href="recipe.css">
 </head>
@@ -10,6 +11,12 @@
     <header>
         <h1>Recipes</h1>
     </header>
+    <nav class="app-top-nav" aria-label="Main pages">
+        <a href="menu.html">Meal Plan</a>
+        <a href="addfood.html">Add Food</a>
+        <a href="choosemeal.html">Choose Meal</a>
+        <a href="recipe.html">Recipes</a>
+    </nav>
 
     <main>
         <div class="navigation-arrows">
@@ -34,6 +41,7 @@
                     <div class="instruction"></div>
 
                     <div class="recipe-actions">
+                        <button class="save-button secondary" type="button" onclick="window.location.href='choosemeal.html'">Back to Choose Meal</button>
                         <button class="save-button" type="button" onclick="addCurrentRecipeToPlan()">Add to Meal Plan</button>
                         <button class="save-button secondary" type="button" onclick="openMealPlan()">Open Meal Plan</button>
                     </div>
@@ -43,6 +51,7 @@
         </div>
     </main>
 
+    <script src="recipes-data.js"></script>
     <script src="recipe.js"></script>
 </body>
 </html>

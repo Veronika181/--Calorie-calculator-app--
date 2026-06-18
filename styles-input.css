@@ -1,66 +1,47 @@
-/* ====== Global styles ====== */
+/* ====== Input/Onboarding Page – Modern Theme ====== */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-:root {
-  --bg: #050816;
-  --bg-soft: #0f172a;
-  --accent: #16f92d;
-  --accent-soft: rgba(22, 196, 249, 0.15);
-  --text-main: #e5e7eb;
-  --text-muted: #9ca3af;
-  --border-soft: rgba(148, 163, 184, 0.3);
-  --radius-lg: 18px;
-  --radius-md: 12px;
-  --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.9);
-  --shadow-btn: 0 10px 25px rgba(22, 249, 22, 0.45);
-  --transition-fast: 0.18s ease-out;
-  --transition-med: 0.25s ease-out;
-  --font-main: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-    "Segoe UI", sans-serif;
-}
-
 body {
-  font-family: var(--font-main);
-  background: radial-gradient(circle at top, #1f2937 0, #020617 45%, #000 100%);
-  color: var(--text-main);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--kt-bg);
+  color: var(--kt-text);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* ====== Header ====== */
 header {
-  padding: 1.5rem 1.75rem;
-  border-bottom: 1px solid var(--border-soft);
-  -webkit-backdrop-filter: blur(18px);
-  backdrop-filter: blur(18px);
-  background: linear-gradient(
-    to bottom,
-    rgba(15, 23, 42, 0.9),
-    rgba(15, 23, 42, 0.65),
-    transparent
-  );
+  padding: 0 var(--kt-gap-lg);
+  border-bottom: 2px solid var(--kt-green);
+  background: var(--kt-white);
   position: sticky;
   top: 0;
   z-index: 10;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 12px rgba(61, 186, 127, 0.12);
 }
 
 header h1 {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  font-size: 1.4rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  font-weight: 700;
+  color: var(--kt-text);
 }
 
 header h1 i {
-  color: var(--accent);
-  filter: drop-shadow(0 0 12px rgba(26, 249, 22, 0.7));
+  color: var(--kt-green);
 }
 
 /* ====== Main layout ====== */
@@ -68,17 +49,17 @@ main {
   flex: 1;
   display: flex;
   justify-content: center;
-  padding: 2.5rem 1.5rem;
+  padding: 2.5rem var(--kt-gap);
 }
 
 .section {
   width: 100%;
   max-width: 900px;
-  background: radial-gradient(circle at top left, #111827 0, #020617 55%);
-  border-radius: 26px;
+  background: var(--kt-white);
+  border-radius: var(--kt-radius-lg);
   padding: 2.25rem;
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--kt-border);
+  box-shadow: var(--kt-shadow);
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -93,9 +74,9 @@ main {
 
 .flow-track {
   width: 100%;
-  height: 10px;
+  height: 8px;
   border-radius: 999px;
-  background: rgba(148, 163, 184, 0.25);
+  background: var(--kt-border);
   overflow: hidden;
 }
 
@@ -103,11 +84,12 @@ main {
   display: block;
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, #22f99f, #16f92d);
+  background: var(--kt-green);
+  transition: width 0.3s ease;
 }
 
 .flow-help {
-  color: var(--text-muted);
+  color: var(--kt-text-muted);
   font-size: 0.95rem;
 }
 
@@ -120,23 +102,29 @@ main {
 
 .gender-option {
   flex: 1;
-  background: #0b1120;
-  border: 1px solid var(--border-soft);
-  border-radius: 20px;
+  background: var(--kt-bg);
+  border: 2px solid var(--kt-border);
+  border-radius: var(--kt-radius-md);
   padding: 1.5rem;
   text-align: center;
-  transition: transform var(--transition-med), border-color var(--transition-med);
+  transition: border-color var(--kt-transition), background var(--kt-transition);
+  cursor: pointer;
 }
 
 .gender-option:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent);
+  border-color: var(--kt-green);
+  background: var(--kt-green-soft);
+}
+
+.gender-option.selected {
+  border-color: var(--kt-green);
+  background: var(--kt-green-light);
 }
 
 .gender-btn {
   background: transparent;
   border: none;
-  color: var(--text-main);
+  color: var(--kt-text);
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
@@ -145,13 +133,7 @@ main {
 
 .gender-btn i {
   margin-right: 0.5rem;
-  color: var(--accent);
-}
-
-.gender-btn.selected {
-  color: var(--accent);
-  border-bottom: 2px solid var(--accent);
-  padding-bottom: 4px;
+  color: var(--kt-green);
 }
 
 /* ====== Input groups ====== */
@@ -169,8 +151,9 @@ main {
 }
 
 label {
-  font-size: 1rem;
-  color: var(--text-muted);
+  font-size: 0.95rem;
+  color: var(--kt-text);
+  font-weight: 500;
 }
 
 /* ====== Height slider ====== */
@@ -178,20 +161,22 @@ label {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #0b1120;
+  background: var(--kt-bg);
   padding: 1rem;
-  border-radius: 16px;
-  border: 1px solid var(--border-soft);
+  border-radius: var(--kt-radius-md);
+  border: 1px solid var(--kt-border);
 }
 
 #heightDisplay {
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 700;
+  color: var(--kt-text);
 }
 
 input[type="range"] {
   width: 60%;
-  accent-color: var(--accent);
+  accent-color: var(--kt-green);
+  cursor: pointer;
 }
 
 /* ====== Age & Weight buttons ====== */
@@ -199,45 +184,48 @@ input[type="range"] {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #0b1120;
+  background: var(--kt-bg);
   padding: 1rem;
-  border-radius: 16px;
-  border: 1px solid var(--border-soft);
+  border-radius: var(--kt-radius-md);
+  border: 1px solid var(--kt-border);
 }
 
 .number-group button {
-  background: var(--accent);
+  background: var(--kt-green);
   border: none;
-  color: #000;
-  font-size: 1.4rem;
+  color: var(--kt-white);
+  font-size: 1.2rem;
   font-weight: 700;
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   cursor: pointer;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  transition: background var(--kt-transition), box-shadow var(--kt-transition), transform var(--kt-transition);
+  box-shadow: 0 2px 8px rgba(61, 186, 127, 0.2);
 }
 
 .number-group button:hover {
+  background: var(--kt-green-dark);
+  box-shadow: 0 4px 12px rgba(61, 186, 127, 0.35);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-btn);
 }
 
 .number-group span {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 600;
+  color: var(--kt-text);
 }
 
 .validation-message {
   min-height: 1.4rem;
-  color: #ffb2b2;
+  color: #dc2626;
   font-size: 0.92rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .draft-note {
   min-height: 1.2rem;
-  color: #93fbb7;
+  color: var(--kt-green-dark);
   font-size: 0.9rem;
 }
 
@@ -250,43 +238,43 @@ input[type="range"] {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  padding: 0.9rem 2rem;
-  border-radius: 999px;
-  background: #32ff4f;
-  color: #000;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--kt-radius-sm);
+  background: var(--kt-green);
+  color: var(--kt-white);
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.95rem;
   cursor: pointer;
-  filter: drop-shadow(0 0 15px rgba(50, 255, 79, 0.9));
-  transition: transform var(--transition-fast), filter var(--transition-fast);
+  border: none;
+  box-shadow: 0 2px 8px rgba(61, 186, 127, 0.35);
+  transition: background var(--kt-transition), box-shadow var(--kt-transition), transform var(--kt-transition);
 }
 
 .btn:hover {
+  background: var(--kt-green-dark);
+  box-shadow: 0 4px 16px rgba(61, 186, 127, 0.45);
   transform: translateY(-2px);
-  filter: drop-shadow(0 0 16px rgba(26, 249, 22, 0.9));
 }
 
 /* ====== Footer ====== */
 footer {
   text-align: center;
-  padding: 1.25rem;
+  padding: var(--kt-gap-md);
   font-size: 0.9rem;
-  color: var(--text-muted);
+  color: var(--kt-text-muted);
+  background: var(--kt-white);
+  border-top: 2px solid var(--kt-green);
 }
 
 footer a {
-  color: var(--accent);
+  color: var(--kt-green);
   text-decoration: none;
-  padding: 0.2rem 0.4rem;
-  border-radius: 999px;
-  background: var(--accent-soft);
-  border: 1px solid rgba(90, 249, 22, 0.4);
-  transition: 0.2s;
+  font-weight: 600;
+  transition: color var(--kt-transition);
 }
 
 footer a:hover {
-  background: rgba(249, 115, 22, 0.22);
-  border-color: rgba(60, 249, 22, 0.7);
+  color: var(--kt-green-dark);
 }
 
 /* ====== Responsive ====== */
@@ -294,5 +282,13 @@ footer a:hover {
   .gender-container,
   .input-container {
     flex-direction: column;
+  }
+
+  .section {
+    padding: var(--kt-gap-md);
+  }
+
+  main {
+    padding: var(--kt-gap) var(--kt-gap-sm);
   }
 }

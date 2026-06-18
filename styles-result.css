@@ -1,4 +1,4 @@
-/* ====== KalorickéTabulky-inspired design ====== */
+/* ====== Modern clean design system ====== */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 * {
@@ -43,7 +43,7 @@ body {
 /* ====== Header ====== */
 header {
   background: var(--kt-white);
-  border-bottom: 1px solid var(--kt-border);
+  border-bottom: 2px solid var(--kt-green);
   padding: 0 2rem;
   height: 64px;
   display: flex;
@@ -291,7 +291,7 @@ button.btn {
 /* ====== Footer ====== */
 footer {
   background: var(--kt-white);
-  border-top: 1px solid var(--kt-border);
+  border-top: 2px solid var(--kt-green);
   text-align: center;
   padding: 1.25rem;
   font-size: 0.85rem;

@@ -1,17 +1,4 @@
-const mealPreviews = {
-    breakfast: [
-        { title: 'Greek Yogurt Bowl', desc: 'Berries + oats + seeds', src: 'menu.png' },
-        { title: 'Egg Toast Plate', desc: 'Eggs + wholegrain toast', src: 'menu.png' }
-    ],
-    lunch: [
-        { title: 'Chicken Rice Bowl', desc: 'Chicken + rice + vegetables', src: 'menu.png' },
-        { title: 'Tuna Pasta Salad', desc: 'Tuna + pasta + greens', src: 'menu.png' }
-    ],
-    dinner: [
-        { title: 'Salmon & Potatoes', desc: 'Salmon + potatoes + salad', src: 'menu.png' },
-        { title: 'Turkey Stir-Fry', desc: 'Turkey + mixed vegetables', src: 'menu.png' }
-    ]
-};
+const mealPreviews = (window.recipeCatalog && window.recipeCatalog.mealPreviews) || {};
 
 function setValidation(message) {
     const el = document.getElementById('mealValidation');
@@ -58,3 +45,8 @@ function goToRecipePage() {
     url.searchParams.set('meal', selectedMeal);
     window.location.href = url.toString();
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const selected = localStorage.getItem('selectedMealType') || 'breakfast';
+    showMeals(selected);
+});
