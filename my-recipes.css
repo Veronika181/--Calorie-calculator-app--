@@ -1,0 +1,734 @@
+/* === GLOBAL === */
+body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+    background: linear-gradient(135deg, #1e1f29, #2a2d3e, #3a3f55);
+    background-attachment: fixed;
+    color: #fff;
+    transition: 0.3s;
+}
+
+/* === LIGHT MODE === */
+body.light {
+    background: linear-gradient(135deg, #f0f0f0, #ffffff);
+    color: #222;
+}
+
+body.light .form-container,
+body.light .recipe {
+    background: rgba(255,255,255,0.8);
+    color: #222;
+}
+
+/* === GLASS PANELS === */
+.form-container, .recipe {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 20px;
+    margin-bottom: 30px;
+    color: #fff;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    animation: fadeUp 0.6s ease forwards;
+    opacity: 0;
+}
+
+/* === ANIMACE === */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* === HOVER EFEKT === */
+.recipe:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    transition: 0.25s;
+}
+
+/* === NADPISY === */
+h1, h2 {
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 0 0 12px rgba(255,255,255,0.3);
+}
+
+/* === ODKAZY === */
+nav a {
+    color: #76c7ff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Inputs – lepší kontrast */
+.form-container input,
+.form-container select,
+.form-container textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.35);
+    background: rgba(255,255,255,0.25);
+    color: #fff;
+    font-size: 16px;
+    backdrop-filter: blur(10px);
+    transition: 0.2s;
+}
+
+/* Placeholder – jasnější */
+.form-container input::placeholder,
+.form-container textarea::placeholder {
+    color: #f5f5f5;
+    opacity: 0.9;
+}
+
+/* Focus – ještě lepší viditelnost */
+.form-container input:focus,
+.form-container textarea:focus,
+.form-container select:focus {
+    background: rgba(255,255,255,0.35);
+    border: 1px solid #00eaff;
+    box-shadow: 0 0 12px #00eaff;
+    outline: none;
+}
+
+
+.form-container input:focus,
+.form-container textarea:focus,
+.form-container select:focus {
+    background: rgba(255,255,255,0.25);
+    box-shadow: 0 0 10px #00eaff;
+    outline: none;
+}
+
+.form-container input::placeholder,
+.form-container textarea::placeholder {
+    color: #ddd;
+}
+
+/* === TLAČÍTKO === */
+.form-container button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0, 242, 254, 0.4);
+    transition: 0.25s;
+}
+
+.form-container button:hover {
+    background: linear-gradient(135deg, #00f2fe, #4facfe);
+    transform: translateY(-2px);
+}
+
+/* === RECEPTY === */
+.recipe h3 {
+    margin: 0 0 5px 0;
+    color: #fff;
+    font-size: 20px;
+    text-shadow: 0 0 10px rgba(0,255,255,0.3);
+}
+
+.recipe small {
+    color: #ccc;
+}
+
+/* === BAREVNÉ TAGY === */
+.tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.tag-snidane { background: #ffd54f; color: #000; }
+.tag-obed { background: #ff9800; color: #000; }
+.tag-svacina { background: #8bc34a; color: #000; }
+.tag-vecere { background: #42a5f5; color: #000; }
+
+/* === GRID LAYOUT === */
+.recipe-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* === NUTRIČNÍ BADGE === */
+.nutrition-badge {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 13px;
+    color: #00eaff;
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.nutrition-badge .manual-tag {
+    color: #ffd54f;
+    font-size: 12px;
+}
+
+.nutrition-badge .override-btn {
+    margin-left: auto;
+    padding: 3px 10px;
+    font-size: 12px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.2s;
+    width: auto;
+}
+
+.nutrition-badge .override-btn:hover {
+    background: rgba(255,255,255,0.25);
+    transform: none;
+}
+
+.nutrition-override {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) auto;
+    gap: 6px;
+    margin-top: 8px;
+    align-items: center;
+}
+
+.nutrition-override input {
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: 13px;
+    width: 100%;
+    margin: 0;
+}
+
+.nutrition-override .save-override-btn {
+    padding: 6px 12px;
+    font-size: 13px;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    white-space: nowrap;
+    width: auto;
+}
+
+/* === PROGRESS BARS === */
+.progress-bar {
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    height: 12px;
+    margin: 4px 0 12px 0;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 8px;
+    transition: width 0.4s ease;
+}
+
+.progress-fill.kcal    { background: linear-gradient(90deg, #4facfe, #00f2fe); }
+.progress-fill.protein { background: linear-gradient(90deg, #f093fb, #f5576c); }
+.progress-fill.carbs   { background: linear-gradient(90deg, #ffd54f, #ff9800); }
+.progress-fill.fat     { background: linear-gradient(90deg, #8bc34a, #4caf50); }
+.progress-fill.over    { background: #f5576c !important; }
+
+/* === DENNÍ PLÁN === */
+.meal-section {
+    margin-bottom: 30px;
+}
+
+.meal-add-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.meal-add-row select {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.meal-add-row select option {
+    background: #2a2d3e;
+    color: #fff;
+}
+
+.add-recipe-btn {
+    padding: 10px 18px;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    transition: 0.25s;
+    white-space: nowrap;
+}
+
+.add-recipe-btn:hover {
+    background: linear-gradient(135deg, #00f2fe, #4facfe);
+    transform: translateY(-2px);
+}
+
+.meal-list-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 14px;
+    margin-bottom: 6px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.08);
+    font-size: 14px;
+    gap: 10px;
+}
+
+.meal-list-row .recipe-title {
+    flex: 1;
+}
+
+.meal-list-row .macro-info {
+    color: #00eaff;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.meal-list-row .remove-btn {
+    background: none;
+    border: none;
+    color: #f5576c;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+    padding: 0 4px;
+    transition: 0.15s;
+}
+
+.meal-list-row .remove-btn:hover {
+    transform: scale(1.2);
+}
+
+.meal-subtotal {
+    text-align: right;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    padding-right: 6px;
+    margin-top: 4px;
+}
+
+.macro-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-top: 6px;
+    color: #ccc;
+}
+
+.macro-row span:last-child {
+    color: #fff;
+    font-weight: bold;
+}
+
+.goals-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.goals-grid label {
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+    color: #ccc;
+    gap: 4px;
+}
+
+.goals-grid input {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: 14px;
+    margin: 0;
+    width: 100%;
+}
+
+/* === STAVOVÝ TEXT === */
+.goal-status {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 12px;
+    font-size: 15px;
+    min-height: 22px;
+}
+
+.goal-status.ok    { color: #8bc34a; }
+.goal-status.over  { color: #f5576c; }
+.goal-status.under { color: #ffd54f; }
+
+/* === DATE PICKER === */
+.date-picker-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.date-picker-row label {
+    color: #ccc;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.date-picker-row input[type="date"] {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: 15px;
+    backdrop-filter: blur(10px);
+}
+
+/* === NAV === */
+nav {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* === GITHUB SETTINGS === */
+.github-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    user-select: none;
+}
+
+.gh-badge {
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.gh-badge-on  { background: #8bc34a; color: #000; }
+.gh-badge-off { background: rgba(255,255,255,0.15); color: #ccc; }
+
+/* === NÁKUPNÍ SEZNAM === */
+.shopping-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.shopping-item {
+    padding: 8px 12px;
+    margin-bottom: 6px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.08);
+    transition: 0.2s;
+}
+
+.shopping-item label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.shopping-item input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: #4facfe;
+    flex-shrink: 0;
+}
+
+.shopping-item.checked {
+    opacity: 0.45;
+    text-decoration: line-through;
+}
+
+.share-btn {
+    background: rgba(139,195,74,0.15);
+    border: 1px solid #8bc34a;
+    color: #8bc34a;
+    border-radius: 6px;
+    padding: 4px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.share-btn:hover { background: rgba(139,195,74,0.3); }
+
+/* === MODAL SDÍLENÍ === */
+.share-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.share-modal-box {
+    background: linear-gradient(135deg, #2a2d3e, #3a3f55);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 16px;
+    padding: 28px;
+    max-width: 540px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.share-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.share-modal-close:hover { background: rgba(255,255,255,0.25); }
+
+/* === AKCE NA RECEPTU === */
+.recipe-actions {
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.delete-btn {
+    background: rgba(245,87,108,0.15);
+    border: 1px solid #f5576c;
+    color: #f5576c;
+    border-radius: 6px;
+    padding: 4px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.delete-btn:hover { background: rgba(245,87,108,0.3); }
+
+.edit-btn {
+    background: rgba(79,172,254,0.15);
+    border: 1px solid #4facfe;
+    color: #4facfe;
+    border-radius: 6px;
+    padding: 4px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.edit-btn:hover { background: rgba(79,172,254,0.3); }
+
+/* === VYHLEDÁVÁNÍ === */
+.search-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.search-container input {
+    max-width: 420px;
+    width: 100%;
+    padding: 12px 18px;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: 15px;
+    backdrop-filter: blur(10px);
+    outline: none;
+    transition: 0.2s;
+}
+
+.search-container input:focus {
+    border-color: #00eaff;
+    box-shadow: 0 0 12px #00eaff;
+    background: rgba(255,255,255,0.22);
+}
+
+.search-container input::placeholder { color: #ddd; }
+
+/* === MĚSÍČNÍ KALENDÁŘ === */
+.cal-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.cal-legend {
+    display: flex;
+    gap: 16px;
+    font-size: 12px;
+    color: #ccc;
+    margin-bottom: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.cal-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 4px;
+}
+
+.cal-dot.cal-ok    { background: #8bc34a; }
+.cal-dot.cal-over  { background: #f5576c; }
+.cal-dot.cal-under { background: #ffd54f; }
+.cal-dot.cal-empty { background: rgba(255,255,255,0.2); }
+
+.cal-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-size: 12px;
+    color: #aaa;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+}
+
+.cal-cell {
+    background: rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 8px 6px;
+    min-height: 72px;
+    cursor: pointer;
+    transition: 0.2s;
+    border: 1px solid transparent;
+}
+
+.cal-cell:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: rgba(0,234,255,0.3);
+}
+
+.cal-cell.cal-dnes {
+    border-color: #00eaff;
+    box-shadow: 0 0 8px rgba(0,234,255,0.3);
+}
+
+.cal-empty-cell {
+    background: transparent;
+    cursor: default;
+    border: none;
+    min-height: 72px;
+}
+
+.cal-den {
+    font-size: 13px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.cal-kcal {
+    font-size: 11px;
+    border-radius: 4px;
+    padding: 1px 4px;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+.cal-stav-ok    { background: rgba(139,195,74,0.25);  color: #8bc34a; }
+.cal-stav-over  { background: rgba(245,87,108,0.25);  color: #f5576c; }
+.cal-stav-under { background: rgba(255,213,79,0.25);  color: #ffd54f; }
+.cal-stav-empty { color: #666; }
+
+.cal-meal-dot {
+    font-size: 13px;
+    margin-right: 2px;
+}
+
+@media (max-width: 600px) {
+    .cal-cell { min-height: 54px; padding: 5px 3px; }
+    .cal-kcal { font-size: 9px; }
+    .cal-den  { font-size: 11px; }
+    .cal-meal-dot { font-size: 10px; }
+    .cal-nav button { padding: 6px 10px; font-size: 13px; }
+}
+
+/* === MĚSÍČNÍ KALENDÁŘ KONEC === */
+
+/* === RESPONZIVITA === */
+@media (max-width: 600px) {
+    .goals-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .nutrition-override {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .nutrition-override .save-override-btn {
+        grid-column: 1 / -1;
+    }
+    .meal-list-row {
+        flex-wrap: wrap;
+    }
+}
