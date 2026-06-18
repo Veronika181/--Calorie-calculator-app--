@@ -52,7 +52,7 @@
 
             <!-- Calculate -->
             <div class="button-container">
-                <button class="btn" onclick="calculateMacros()">
+                <button class="btn btn-calculate" onclick="calculateMacros()">
                     <i class="fa-solid fa-calculator"></i> Calculate
                 </button>
             </div>
@@ -60,17 +60,17 @@
             <!-- Result -->
             <div id="result" class="section"></div>
 
-            <!-- Next -->
+            <!-- Back -->
             <div class="button-container">
-                <button class="btn" onclick="resultRatioOfMacronutrients()">
-                    <i class="fa-solid fa-arrow-right"></i> Continue
+                <button class="btn" onclick="window.history.back()">
+                    <i class="fa-solid fa-arrow-left"></i> Back
                 </button>
             </div>
 
-            <!-- Back -->
-            <div class="button-container" style="margin-bottom: 2rem;">
-                <button class="btn" onclick="window.history.back()">
-                    <i class="fa-solid fa-arrow-left"></i> Back
+            <!-- Next (bottom/final action) -->
+            <div class="button-container button-container-bottom" style="margin-bottom: 2rem;">
+                <button class="btn" onclick="resultRatioOfMacronutrients()">
+                    <i class="fa-solid fa-arrow-right"></i> Continue
                 </button>
             </div>
 
