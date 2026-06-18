@@ -7,13 +7,18 @@
   --kt-green-dark:  #2fa06b;
   --kt-green-light: #e8f8f1;
   --kt-green-soft:  rgba(61, 186, 127, 0.12);
+  --kt-orange:      #f59e0b;
+  --kt-orange-dark: #d97706;
+  --kt-orange-soft: rgba(245, 158, 11, 0.16);
 
   /* Neutral Colors */
   --kt-text:        #1c1c1c;
   --kt-text-muted:  #6b7280;
-  --kt-border:      #e5e7eb;
-  --kt-bg:          #f7f8fa;
+  --kt-border:      #dde8e2;
+  --kt-bg:          #d8eedf;
   --kt-white:       #ffffff;
+  --kt-surface:     #dff1e5;
+  --kt-surface-strong: #d2eada;
 
   /* Radius */
   --kt-radius-lg:   16px;
@@ -48,6 +53,8 @@
   --accent:         var(--kt-green);
   --accent-soft:    var(--kt-green-soft);
   --accent-glow:    0 2px 8px rgba(61, 186, 127, 0.35);
+  --accent-warm:    var(--kt-orange);
+  --accent-warm-soft: var(--kt-orange-soft);
   --radius-lg:      var(--kt-radius-lg);
   --radius-md:      var(--kt-radius-md);
   --shadow-soft:    var(--kt-shadow-md);
@@ -63,11 +70,13 @@
 
 html {
   scroll-behavior: smooth;
+  background: #c7e5d1;
 }
 
 body {
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: var(--kt-bg);
+  background: linear-gradient(155deg, #b8dfc4 0%, #cbe8d4 45%, #def2e4 100%) !important;
+  background-attachment: fixed;
   color: var(--kt-text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -75,6 +84,14 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+img,
+svg,
+canvas,
+video {
+  max-width: 100%;
+  height: auto;
 }
 
 /* Hide theme toggle across all pages */
@@ -87,8 +104,8 @@ button[id*="theme"] {
 /* === Header === */
 header {
   background: var(--kt-white);
-  border-bottom: 1px solid var(--kt-border);
-  box-shadow: var(--kt-shadow-sm);
+  border-bottom: 2px solid var(--kt-green);
+  box-shadow: 0 2px 12px rgba(61, 186, 127, 0.12);
   padding: 0 var(--kt-gap-lg);
   height: 64px;
   display: flex;
@@ -150,7 +167,7 @@ main {
 /* === Section / Card Container === */
 .section,
 .card {
-  background: var(--kt-white);
+  background: var(--kt-surface);
   border: 1px solid var(--kt-border);
   border-radius: var(--kt-radius-lg);
   box-shadow: var(--kt-shadow-md);
@@ -167,6 +184,22 @@ main {
   color: var(--kt-text);
   margin-bottom: var(--kt-gap-md);
   letter-spacing: -0.01em;
+}
+
+/* Stronger green surfaces across page-level cards/wrappers. */
+.container,
+.toolbar-card,
+#calendar-container,
+.overview-card,
+.meals-card,
+.meal-panel,
+.result-item,
+.summary-strip > div,
+.input-item,
+.totals-bar,
+.result-details-box,
+.dropdown {
+  background: var(--kt-surface) !important;
 }
 
 /* === Buttons === */
@@ -301,7 +334,7 @@ a:hover {
 /* === Footer === */
 footer {
   background: var(--kt-white);
-  border-top: 1px solid var(--kt-border);
+  border-top: 2px solid var(--kt-green);
   text-align: center;
   padding: var(--kt-gap-md);
   font-size: 0.85rem;
@@ -316,6 +349,30 @@ footer a {
 
 footer a:hover {
   color: var(--kt-green);
+}
+
+/* === Warm Accent Controls (plus/minus/add-ons) === */
+.plus-button,
+.result-item-buttons button,
+.dropdown-input button,
+.food-item-container button,
+.btn-add,
+.add-food-link {
+  background: var(--kt-orange);
+  color: var(--kt-white);
+  border-color: transparent;
+  box-shadow: 0 2px 10px rgba(245, 158, 11, 0.28);
+}
+
+.plus-button:hover,
+.result-item-buttons button:hover,
+.dropdown-input button:hover,
+.food-item-container button:hover,
+.btn-add:hover,
+.add-food-link:hover {
+  background: var(--kt-orange-dark);
+  color: var(--kt-white);
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.38);
 }
 
 /* === 3D Card (flattened for minimal design) === */
@@ -366,6 +423,28 @@ footer a:hover {
     border-radius: var(--kt-radius-md);
   }
 
+  .container,
+  .wrapper,
+  .content,
+  .page,
+  .panel {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .container,
+  .section,
+  .card {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
   .btn,
   button {
     width: 100%;
@@ -379,6 +458,11 @@ footer a:hover {
 }
 
 @media (max-width: 480px) {
+  main {
+    padding-left: var(--kt-gap-sm);
+    padding-right: var(--kt-gap-sm);
+  }
+
   header {
     height: 56px;
     padding: 0 var(--kt-gap-sm);

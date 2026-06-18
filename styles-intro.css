@@ -21,8 +21,8 @@ header {
     text-align: center;
     padding: 0 var(--kt-gap-lg);
     background: var(--kt-white);
-    border-bottom: 1px solid var(--kt-border);
-    box-shadow: var(--kt-shadow-sm);
+    border-bottom: 2px solid var(--kt-green);
+    box-shadow: 0 2px 12px rgba(61, 186, 127, 0.12);
     position: sticky;
     top: 0;
     z-index: 10;
@@ -149,7 +149,7 @@ footer {
     font-size: 0.9rem;
     color: var(--kt-text-muted);
     background: var(--kt-white);
-    border-top: 1px solid var(--kt-border);
+    border-top: 2px solid var(--kt-green);
 }
 
 footer a {

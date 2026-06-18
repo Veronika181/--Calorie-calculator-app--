@@ -19,7 +19,7 @@ body {
 /* ====== Header ====== */
 header {
   padding: 0 var(--kt-gap-lg);
-  border-bottom: 1px solid var(--kt-border);
+  border-bottom: 2px solid var(--kt-green);
   background: var(--kt-white);
   position: sticky;
   top: 0;
@@ -27,7 +27,7 @@ header {
   min-height: 64px;
   display: flex;
   align-items: center;
-  box-shadow: var(--kt-shadow-sm);
+  box-shadow: 0 2px 12px rgba(61, 186, 127, 0.12);
 }
 
 header h1 {
@@ -263,7 +263,7 @@ footer {
   font-size: 0.9rem;
   color: var(--kt-text-muted);
   background: var(--kt-white);
-  border-top: 1px solid var(--kt-border);
+  border-top: 2px solid var(--kt-green);
 }
 
 footer a {

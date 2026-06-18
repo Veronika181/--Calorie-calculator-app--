@@ -21,8 +21,8 @@ header {
     background-color: var(--kt-white);
     color: var(--kt-text);
     font-weight: 700;
-    box-shadow: var(--kt-shadow-sm);
-    border-bottom: 1px solid var(--kt-border);
+    box-shadow: 0 2px 12px rgba(61, 186, 127, 0.12);
+    border-bottom: 2px solid var(--kt-green);
     position: sticky;
     top: 0;
     z-index: 10;
