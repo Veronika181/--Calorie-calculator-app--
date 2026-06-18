@@ -1,124 +1,7 @@
 let currentRecipeIndex = 0;
 let currentMealType = "breakfast";
 let currentRecipes = [];
-
-const recipeLibrary = {
-    breakfast: [
-        {
-            title: "Greek Yogurt Bowl",
-            image: "menu.png",
-            cookingTime: 8,
-            difficulty: "Easy",
-            kcal: 420,
-            protein: 28,
-            ingredients: [
-                { name: "Greek yogurt", amount: "200 g" },
-                { name: "Oats", amount: "40 g" },
-                { name: "Berries", amount: "80 g" },
-                { name: "Chia seeds", amount: "10 g" }
-            ],
-            instructions: [
-                "Add yogurt to a bowl and mix in oats.",
-                "Top with berries and chia seeds.",
-                "Let it rest for 5 minutes and serve."
-            ]
-        },
-        {
-            title: "Egg Toast Plate",
-            image: "menu.png",
-            cookingTime: 12,
-            difficulty: "Easy",
-            kcal: 470,
-            protein: 30,
-            ingredients: [
-                { name: "Eggs", amount: "3 pcs" },
-                { name: "Wholegrain toast", amount: "2 slices" },
-                { name: "Avocado", amount: "70 g" }
-            ],
-            instructions: [
-                "Cook eggs on a non-stick pan.",
-                "Toast bread and spread avocado.",
-                "Serve eggs over toast."
-            ]
-        }
-    ],
-    lunch: [
-        {
-            title: "Chicken Rice Bowl",
-            image: "menu.png",
-            cookingTime: 25,
-            difficulty: "Medium",
-            kcal: 690,
-            protein: 48,
-            ingredients: [
-                { name: "Chicken breast", amount: "180 g" },
-                { name: "Cooked rice", amount: "180 g" },
-                { name: "Mixed vegetables", amount: "150 g" }
-            ],
-            instructions: [
-                "Season and sear chicken until cooked through.",
-                "Stir-fry vegetables for 4-5 minutes.",
-                "Plate with rice and sliced chicken."
-            ]
-        },
-        {
-            title: "Tuna Pasta Salad",
-            image: "menu.png",
-            cookingTime: 20,
-            difficulty: "Easy",
-            kcal: 610,
-            protein: 38,
-            ingredients: [
-                { name: "Wholegrain pasta", amount: "90 g dry" },
-                { name: "Tuna", amount: "120 g" },
-                { name: "Greek yogurt dressing", amount: "60 g" }
-            ],
-            instructions: [
-                "Cook pasta and let it cool slightly.",
-                "Mix tuna with yogurt dressing.",
-                "Combine and season to taste."
-            ]
-        }
-    ],
-    dinner: [
-        {
-            title: "Salmon and Potatoes",
-            image: "menu.png",
-            cookingTime: 28,
-            difficulty: "Medium",
-            kcal: 640,
-            protein: 42,
-            ingredients: [
-                { name: "Salmon fillet", amount: "170 g" },
-                { name: "Potatoes", amount: "220 g" },
-                { name: "Leafy salad", amount: "80 g" }
-            ],
-            instructions: [
-                "Bake salmon for 15-18 minutes.",
-                "Boil or roast potatoes until tender.",
-                "Serve with fresh salad."
-            ]
-        },
-        {
-            title: "Turkey Stir-Fry",
-            image: "menu.png",
-            cookingTime: 22,
-            difficulty: "Easy",
-            kcal: 560,
-            protein: 44,
-            ingredients: [
-                { name: "Turkey strips", amount: "180 g" },
-                { name: "Mixed vegetables", amount: "200 g" },
-                { name: "Olive oil", amount: "1 tbsp" }
-            ],
-            instructions: [
-                "Heat oil and cook turkey until golden.",
-                "Add vegetables and stir-fry 5-6 minutes.",
-                "Season and serve warm."
-            ]
-        }
-    ]
-};
+const recipeLibrary = (window.recipeCatalog && window.recipeCatalog.recipeLibrary) || {};
 
 function getSelectedMealType() {
     const params = new URLSearchParams(window.location.search);
@@ -238,7 +121,11 @@ function openMealPlan() {
 
 function initRecipes() {
     currentMealType = getSelectedMealType();
-    currentRecipes = recipeLibrary[currentMealType] || recipeLibrary.breakfast;
+    currentRecipes = recipeLibrary[currentMealType] || recipeLibrary.breakfast || [];
+    if (currentRecipes.length === 0) {
+        setPlanStatus('No recipes found. Please refresh or select another meal.');
+        return;
+    }
     currentRecipeIndex = 0;
     updateRecipe(currentRecipes[currentRecipeIndex]);
     updateNavButtons();

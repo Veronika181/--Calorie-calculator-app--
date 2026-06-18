@@ -22,8 +22,15 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding-top: 2rem;
+    padding: 2rem 1rem 1.5rem;
     flex: 1;
+}
+
+.page-subtitle {
+    font-size: 0.95rem;
+    color: var(--kt-text-muted);
+    text-align: center;
+    margin: 0.25rem 0 0.75rem;
 }
 
 /* HEADING */
@@ -79,8 +86,9 @@ h1 {
     text-align: center;
     margin: 1.25rem;
     gap: 0.875rem;
-    flex-wrap: wrap;
-    justify-content: center;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 860px;
+    width: 100%;
 }
 
 .meal-images img {
@@ -94,10 +102,10 @@ h1 {
 }
 
 .meal-preview-card {
-    background: var(--kt-white);
+    background: var(--kt-surface);
     border-radius: var(--kt-radius-md);
     padding: 0.75rem;
-    width: 180px;
+    width: 100%;
     box-shadow: var(--kt-shadow);
     color: var(--kt-text);
     border: 1px solid var(--kt-border);
@@ -127,4 +135,27 @@ h1 {
 .meal-images img:hover {
     opacity: 1;
     transform: scale(1.05);
+}
+
+.actions-row {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .meal-images {
+        grid-template-columns: 1fr;
+    }
+
+    .meal-option {
+        min-width: 120px;
+    }
+
+    .actions-row .btn {
+        width: 100%;
+        max-width: 280px;
+    }
 }

@@ -14,11 +14,11 @@
   /* Neutral Colors */
   --kt-text:        #1c1c1c;
   --kt-text-muted:  #6b7280;
-  --kt-border:      #dde8e2;
-  --kt-bg:          #d8eedf;
+  --kt-border:      #c4dfce;
+  --kt-bg:          #b7dbc2;
   --kt-white:       #ffffff;
-  --kt-surface:     #dff1e5;
-  --kt-surface-strong: #d2eada;
+  --kt-surface:     #cfe8d8;
+  --kt-surface-strong: #c0decf;
 
   /* Radius */
   --kt-radius-lg:   16px;
@@ -70,12 +70,12 @@
 
 html {
   scroll-behavior: smooth;
-  background: #c7e5d1;
+  background: #a9d0b6;
 }
 
 body {
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: linear-gradient(155deg, #b8dfc4 0%, #cbe8d4 45%, #def2e4 100%) !important;
+  background: linear-gradient(155deg, #9fcfb0 0%, #b4dbc1 44%, #c8e8d1 100%) !important;
   background-attachment: fixed;
   color: var(--kt-text);
   line-height: 1.6;
@@ -84,6 +84,50 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
+  isolation: isolate;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(74, 150, 105, 0.24) 0%, rgba(74, 150, 105, 0) 40%),
+    radial-gradient(circle at 88% 14%, rgba(58, 130, 92, 0.18) 0%, rgba(58, 130, 92, 0) 36%),
+    radial-gradient(circle at 72% 82%, rgba(90, 165, 120, 0.2) 0%, rgba(90, 165, 120, 0) 40%);
+}
+
+.app-top-nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 0.5rem var(--kt-gap);
+  background: rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid var(--kt-border);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.app-top-nav a {
+  text-decoration: none;
+  color: var(--kt-green-dark);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(47, 160, 107, 0.2);
+}
+
+.app-top-nav a:hover {
+  background: var(--kt-green-soft);
+  color: var(--kt-green-dark);
+  text-decoration: none;
 }
 
 img,
