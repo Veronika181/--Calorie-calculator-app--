@@ -1,0 +1,194 @@
+[
+    {
+        "title": "Avokádová pomazánka",
+        "category": "snidane",
+        "ingredients": [
+            "Avokádo: 100 g",
+            "Vejce: 1 ks",
+            "Jogurt: 30 g",
+            "Citronová šťáva: 1 lžička",
+            "Pečivo: 90 g"
+        ],
+        "instructions": "Smíchej avokádo, vejce, jogurt a citron. Podávej s pečivem."
+    },
+    {
+        "title": "Šunková pomazánka",
+        "category": "svacina",
+        "ingredients": [
+            "Šunka: 70 g",
+            "Jogurt: 20 g",
+            "Lučina: 20 g",
+            "Rýžové chlebíčky: 3 ks (21 g)"
+        ],
+        "instructions": "Rozmixuj šunku s jogurtem a Lučinou. Podávej s rýžovými chlebíčky."
+    },
+    {
+        "title": "Kuřecí maso na mrkvi s bramborami",
+        "category": "obed",
+        "ingredients": [
+            "Kuřecí maso: 200 g (140–150 g upečeného)",
+            "Mrkev: 120 g",
+            "Cibule: 40 g",
+            "Olej: 5 g",
+            "Brambory: 200 g"
+        ],
+        "instructions": "Orestuj cibuli, přidej maso a mrkev. Podávej s vařenými bramborami."
+    },
+    {
+        "title": "Mozzarellové lívance",
+        "category": "vecere",
+        "ingredients": [
+            "Mozzarella: 40 g",
+            "Ovesné vločky: 50 g",
+            "Vejce: 1 ks"
+        ],
+        "instructions": "Smíchej ingredience a smaž malé lívance."
+    },
+
+    {
+        "title": "Ovesná pizza",
+        "category": "snidane",
+        "ingredients": [
+            "Ovesné vločky: 50 g",
+            "Vejce: 1 ks",
+            "Rajčata: 80 g",
+            "Šunka: 50 g",
+            "Mozzarella: 40 g",
+            "Hrášek: 30 g"
+        ],
+        "instructions": "Smíchej vločky s vejcem, upeč základ a ozdob surovinami."
+    },
+    {
+        "title": "Jahodové smoothie",
+        "category": "svacina",
+        "ingredients": [
+            "Jogurt Milko: 120 g",
+            "Oříškové máslo: 10 g",
+            "Jahody: 150 g"
+        ],
+        "instructions": "Vše rozmixuj do hladka."
+    },
+    {
+        "title": "Špagety s masovými koulemi",
+        "category": "obed",
+        "ingredients": [
+            "Mleté hovězí: 150 g (105–120 g upečeného)",
+            "Špagety (suché): 70 g",
+            "Rajčata konzervovaná: 200 g",
+            "Cibule: 40 g",
+            "Česnek: 1 stroužek",
+            "Olej: 5 g"
+        ],
+        "instructions": "Uvař špagety, připrav masové koule a rajčatovou omáčku."
+    },
+    {
+        "title": "Chléb ve vajíčku",
+        "category": "vecere",
+        "ingredients": [
+            "Chléb: 80 g",
+            "Vejce: 2 ks"
+        ],
+        "instructions": "Obal chléb ve vejci a osmaž."
+    },
+
+    {
+        "title": "Cottage se zeleninou",
+        "category": "snidane",
+        "ingredients": [
+            "Cottage: 200 g",
+            "Ředkvičky: 80 g",
+            "Jarní cibulka: 20 g",
+            "Drcené ořechy: 10 g"
+        ],
+        "instructions": "Smíchej cottage se zeleninou a posyp ořechy."
+    },
+    {
+        "title": "Sýrové placičky",
+        "category": "svacina",
+        "ingredients": [
+            "Eidam: 50 g",
+            "Ovesné vločky: 30 g",
+            "Vejce: 2 ks",
+            "Jarní cibulka: 15 g"
+        ],
+        "instructions": "Smíchej suroviny a smaž malé placičky."
+    },
+    {
+        "title": "Vepřový Katův šleh s bramborami",
+        "category": "obed",
+        "ingredients": [
+            "Vepřové maso: 160 g (115–105 g upečeného)",
+            "Paprika: 80 g",
+            "Okurka: 60 g",
+            "Červená cibule: 40 g",
+            "Rajčata: 80 g",
+            "Olej: 5 g",
+            "Brambory: 250 g"
+        ],
+        "instructions": "Orestuj maso se zeleninou. Podávej s bramborami."
+    },
+    {
+        "title": "Cuketový perník",
+        "category": "vecere",
+        "ingredients": [
+            "Cuketa: 150 g",
+            "Ovesné vločky: 50 g",
+            "Vejce: 1 ks",
+            "Protein: 20 g",
+            "Kakao: 5 g",
+            "Prášek do pečiva: 3 g"
+        ],
+        "instructions": "Smíchej suroviny a upeč perník."
+    },
+
+    {
+        "title": "Zapečená citronová kaše",
+        "category": "snidane",
+        "ingredients": [
+            "Ovesné vločky: 50 g",
+            "Vejce: 1 ks",
+            "Jogurt: 100 g",
+            "Citronová šťáva: 1 lžíce",
+            "Citronová kůra: z 1/2 citronu",
+            "Prášek do pečiva: 3 g",
+            "Kešu máslo: 10 g"
+        ],
+        "instructions": "Smíchej suroviny a upeč kaši."
+    },
+    {
+        "title": "Sýrovo-ovesné nugetky",
+        "category": "svacina",
+        "ingredients": [
+            "Eidam: 50 g",
+            "Ovesné vločky: 30 g",
+            "Vejce: 2 ks",
+            "Petrželka: 5 g"
+        ],
+        "instructions": "Vytvoř nugetky a upeč."
+    },
+    {
+        "title": "Zapečená pohanka s vepřovým masem",
+        "category": "obed",
+        "ingredients": [
+            "Vepřové maso: 160 g (115–105 g upečeného)",
+            "Pohanka (suchá): 70 g",
+            "Kysané zelí: 100 g",
+            "Cibule: 40 g",
+            "Česnek: 1 stroužek",
+            "Sýr na zapečení: 25 g"
+        ],
+        "instructions": "Smíchej suroviny a zapeč v troubě."
+    },
+    {
+        "title": "Pomazánka s vejci a šunkou",
+        "category": "vecere",
+        "ingredients": [
+            "Vejce: 2 ks",
+            "Šunka: 60 g",
+            "Lučina: 30 g",
+            "Jogurt: 20 g",
+            "Knäckebrot"
+        ],
+        "instructions": "Smíchej vejce, šunku a Lučinu. Podávej s knäckebrotem."
+    }
+]

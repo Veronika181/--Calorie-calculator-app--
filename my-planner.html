@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denní plán – CalorieTracker</title>
+    <link rel="stylesheet" href="my-recipes.css">
+</head>
+<body>
+
+<h1>Denní plán jídel</h1>
+
+<nav>
+    <a href="menu.html">CalorieTracker</a>
+    &nbsp;|&nbsp;
+    <a href="my-recipes.html">Recepty</a>
+    &nbsp;|&nbsp;
+    <a href="my-calendar.html">Kalendář</a>
+</nav>
+
+<!-- GitHub nastavení -->
+<div class="form-container" id="github-settings">
+    <div class="github-header" id="github-toggle" style="cursor:pointer">
+        <span>⚙️ Nastavení synchronizace s GitHubem</span>
+        <span id="github-status-badge" class="gh-badge gh-badge-off">Nepřipojeno</span>
+        <span id="github-toggle-arrow">▼</span>
+    </div>
+    <div id="github-settings-body" style="display:none; margin-top:14px">
+        <p style="font-size:13px; color:#ccc; margin:0 0 10px 0">
+            Zadej svůj GitHub Personal Access Token pro synchronizaci plánu a cílů.
+        </p>
+        <div style="display:flex; gap:10px; align-items:center">
+            <input id="github-token-input" type="password" placeholder="github_pat_..." style="flex:1; margin:0">
+            <button id="github-save-token-btn" style="width:auto; padding:10px 18px">Připojit</button>
+            <button id="github-clear-token-btn" style="width:auto; padding:10px 18px; background: rgba(255,255,255,0.15); box-shadow:none">Odpojit</button>
+        </div>
+        <p id="github-token-msg" style="font-size:13px; margin:8px 0 0 0"></p>
+    </div>
+</div>
+
+<!-- BMR kalkulačka -->
+<div class="form-container" id="bmr-section">
+    <h2>BMR kalkulačka</h2>
+    <p style="font-size:13px; color:#ccc; margin:0 0 12px 0">Zadej svůj bazální metabolismus a cíle se automaticky přepočítají.</p>
+    <div style="display:flex; gap:10px; align-items:center">
+        <input type="number" id="bmr-input" placeholder="Váš BMR (kcal)" style="flex:1; margin:0">
+        <button id="bmr-apply-btn" style="width:auto; padding:10px 18px">Přepočítat cíle</button>
+    </div>
+    <p id="bmr-msg" style="font-size:13px; margin:8px 0 0 0; min-height:18px"></p>
+</div>
+
+<!-- Denní cíle -->
+<div class="form-container" id="goals-section">
+    <h2>Denní cíle</h2>
+    <div class="goals-grid">
+        <label>Kalorie (kcal)<input id="goal-kcal"    type="number" placeholder="2000" min="0"></label>
+        <label>Bílkoviny (g) <input id="goal-protein" type="number" placeholder="120"  min="0"></label>
+        <label>Sacharidy (g) <input id="goal-carbs"   type="number" placeholder="200"  min="0"></label>
+        <label>Tuky (g)      <input id="goal-fat"     type="number" placeholder="70"   min="0"></label>
+    </div>
+    <button id="save-goals-btn">Uložit cíle</button>
+</div>
+
+<!-- Výběr dne -->
+<div class="form-container date-picker-row">
+    <label>Datum: <input type="date" id="date-picker"></label>
+</div>
+
+<!-- Snídaně -->
+<div class="form-container meal-section">
+    <h2>Snídaně</h2>
+    <div class="meal-add-row">
+        <select id="select-snidane"><option value="">— vyberte recept —</option></select>
+        <button class="add-recipe-btn" data-cat="snidane">Přidat</button>
+    </div>
+    <div class="meal-list" id="list-snidane"></div>
+    <div class="meal-subtotal" id="subtotal-snidane"></div>
+</div>
+
+<!-- Oběd -->
+<div class="form-container meal-section">
+    <h2>Oběd</h2>
+    <div class="meal-add-row">
+        <select id="select-obed"><option value="">— vyberte recept —</option></select>
+        <button class="add-recipe-btn" data-cat="obed">Přidat</button>
+    </div>
+    <div class="meal-list" id="list-obed"></div>
+    <div class="meal-subtotal" id="subtotal-obed"></div>
+</div>
+
+<!-- Svačina -->
+<div class="form-container meal-section">
+    <h2>Svačina</h2>
+    <div class="meal-add-row">
+        <select id="select-svacina"><option value="">— vyberte recept —</option></select>
+        <button class="add-recipe-btn" data-cat="svacina">Přidat</button>
+    </div>
+    <div class="meal-list" id="list-svacina"></div>
+    <div class="meal-subtotal" id="subtotal-svacina"></div>
+</div>
+
+<!-- Večeře -->
+<div class="form-container meal-section">
+    <h2>Večeře</h2>
+    <div class="meal-add-row">
+        <select id="select-vecere"><option value="">— vyberte recept —</option></select>
+        <button class="add-recipe-btn" data-cat="vecere">Přidat</button>
+    </div>
+    <div class="meal-list" id="list-vecere"></div>
+    <div class="meal-subtotal" id="subtotal-vecere"></div>
+</div>
+
+<!-- Denní součet -->
+<div class="form-container" id="day-totals">
+    <h2>Denní součet</h2>
+    <div class="macro-row"><span>Kalorie</span><span id="total-kcal-label">0 kcal</span></div>
+    <div class="progress-bar"><div class="progress-fill kcal" id="bar-kcal" style="width:0%"></div></div>
+    <div class="macro-row"><span>Bílkoviny</span><span id="total-protein-label">0 g</span></div>
+    <div class="progress-bar"><div class="progress-fill protein" id="bar-protein" style="width:0%"></div></div>
+    <div class="macro-row"><span>Sacharidy</span><span id="total-carbs-label">0 g</span></div>
+    <div class="progress-bar"><div class="progress-fill carbs" id="bar-carbs" style="width:0%"></div></div>
+    <div class="macro-row"><span>Tuky</span><span id="total-fat-label">0 g</span></div>
+    <div class="progress-bar"><div class="progress-fill fat" id="bar-fat" style="width:0%"></div></div>
+    <p id="goal-status" class="goal-status"></p>
+    <div id="remaining-row" style="display:none; margin-top:14px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.1)">
+        <div style="font-size:13px; color:#ccc; margin-bottom:6px">Zbývá dnes:</div>
+        <div id="remaining-values" style="display:flex; gap:16px; flex-wrap:wrap; font-size:14px; font-weight:bold; color:#00eaff"></div>
+    </div>
+</div>
+
+<!-- Nákupní seznam -->
+<div class="form-container" id="shopping-section">
+    <h2>Nákupní seznam</h2>
+    <p style="font-size:13px; color:#ccc; margin:0 0 12px 0">Vygeneruje seznam ingrediencí ze všech receptů vybraného dne.</p>
+    <button id="generate-shopping-btn">Generovat nákupní seznam</button>
+    <div id="shopping-list-output" style="display:none; margin-top:16px">
+        <div style="display:flex; gap:10px; justify-content:flex-end; margin-bottom:10px">
+            <button id="copy-shopping-btn" style="width:auto; padding:8px 16px; font-size:13px">📋 Kopírovat</button>
+            <button id="clear-shopping-btn" style="width:auto; padding:8px 16px; font-size:13px; background:rgba(255,255,255,0.15); box-shadow:none">Vymazat</button>
+        </div>
+        <ul id="shopping-items" class="shopping-list"></ul>
+    </div>
+</div>
+
+<script src="my-nutrition.js"></script>
+<script src="my-github-storage.js"></script>
+<script src="my-planner.js"></script>
+</body>
+</html>

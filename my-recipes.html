@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moje recepty – CalorieTracker</title>
+    <link rel="stylesheet" href="my-recipes.css">
+</head>
+<body>
+
+<h1>Moje recepty</h1>
+
+<nav>
+    <a href="menu.html">CalorieTracker</a>
+    &nbsp;|&nbsp;
+    <a href="my-planner.html">Denní plán</a>
+    &nbsp;|&nbsp;
+    <a href="my-calendar.html">Kalendář</a>
+</nav>
+
+<!-- GitHub nastavení -->
+<div class="form-container" id="github-settings">
+    <div class="github-header" id="github-toggle" style="cursor:pointer">
+        <span>⚙️ Nastavení synchronizace s GitHubem</span>
+        <span id="github-status-badge" class="gh-badge gh-badge-off">Nepřipojeno</span>
+        <span id="github-toggle-arrow">▼</span>
+    </div>
+    <div id="github-settings-body" style="display:none; margin-top:14px">
+        <p style="font-size:13px; color:#ccc; margin:0 0 10px 0">
+            Zadej svůj GitHub Personal Access Token pro ukládání receptů do repozitáře.<br>
+            <strong>Jak ho získat:</strong> GitHub → Settings → Developer settings → Personal access tokens → Fine-grained tokens → New token → vyber repozitář → oprávnění <em>Contents: Read and Write</em>.
+        </p>
+        <div style="display:flex; gap:10px; align-items:center">
+            <input id="github-token-input" type="password" placeholder="github_pat_..." style="flex:1; margin:0">
+            <button id="github-save-token-btn" style="width:auto; padding:10px 18px">Připojit</button>
+            <button id="github-clear-token-btn" style="width:auto; padding:10px 18px; background: rgba(255,255,255,0.15); box-shadow:none">Odpojit</button>
+        </div>
+        <p id="github-token-msg" style="font-size:13px; margin:8px 0 0 0"></p>
+    </div>
+</div>
+
+<!-- Přidat recept -->
+<div class="form-container">
+    <h2>Přidat nový recept</h2>
+    <input id="title" type="text" placeholder="Název receptu">
+    <select id="category">
+        <option value="snidane">Snídaně</option>
+        <option value="obed">Oběd</option>
+        <option value="svacina">Svačina</option>
+        <option value="vecere">Večeře</option>
+    </select>
+    <textarea id="ingredients" placeholder="Ingredience (každá na nový řádek, formát: Název: množství g)"></textarea>
+    <textarea id="instructions" placeholder="Postup přípravy"></textarea>
+    <button id="addBtn">Přidat recept</button>
+    <p id="save-status" style="text-align:center; font-size:13px; min-height:18px; margin:6px 0 0 0"></p>
+</div>
+
+<div class="search-container">
+    <input id="search-input" type="text" placeholder="🔍 Hledat recept...">
+</div>
+
+<h2>Snídaně</h2>
+<div id="snidane" class="recipe-list"></div>
+
+<h2>Oběd</h2>
+<div id="obed" class="recipe-list"></div>
+
+<h2>Svačina</h2>
+<div id="svacina" class="recipe-list"></div>
+
+<h2>Večeře</h2>
+<div id="vecere" class="recipe-list"></div>
+
+<script src="my-nutrition.js"></script>
+<script src="my-github-storage.js"></script>
+<script src="my-recipes.js"></script>
+
+<!-- Modal pro sdílený recept -->
+<div id="share-modal" class="share-modal" style="display:none">
+    <div class="share-modal-box">
+        <button id="share-modal-close" class="share-modal-close">✕</button>
+        <div id="share-modal-content"></div>
+    </div>
+</div>
+
+</body>
+</html>
